@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EducateursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,6 +37,14 @@ class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?bool $rgpd = null;
+
+    #[ORM\OneToMany(mappedBy: 'educateurs_id', targetEntity: Eleves::class)]
+    private Collection $eleves;
+
+    public function __construct()
+    {
+        $this->eleves = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +148,36 @@ class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRgpd(bool $rgpd): static
     {
         $this->rgpd = $rgpd;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eleves>
+     */
+    public function getEleves(): Collection
+    {
+        return $this->eleves;
+    }
+
+    public function addElefe(Eleves $elefe): static
+    {
+        if (!$this->eleves->contains($elefe)) {
+            $this->eleves->add($elefe);
+            $elefe->setEducateursId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElefe(Eleves $elefe): static
+    {
+        if ($this->eleves->removeElement($elefe)) {
+            // set the owning side to null (unless already changed)
+            if ($elefe->getEducateursId() === $this) {
+                $elefe->setEducateursId(null);
+            }
+        }
 
         return $this;
     }
