@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+form {
+  width: 50%;
+  margin: auto;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 20px;
+}
+form > div {
+  margin-bottom: 20px;
+}
+form > div > label {
+  margin-right: 10px;
+}/*# sourceMappingURL=register.css.map */

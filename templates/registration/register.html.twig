@@ -2,8 +2,13 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/register.min.css')}}">
+{% endblock %}
+
 {% block body %}
-    <h1>Register</h1>
+
+    <h1>Inscription</h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -18,6 +23,6 @@
             label: 'J\'accepte la collecte de mes données'
         }) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">S'inscrire</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
