@@ -19,8 +19,8 @@ class ElevesFixtures extends Fixture
         $manager->persist($eleve);
 
         $eleve2 = new Eleves;
-        $eleve2->setNom('Michel');
-        $eleve2->setPrenom('Jean');
+        $eleve2->setNom('D\'arc');
+        $eleve2->setPrenom('Jeanne');
         $eleve2->setEducateursId($educateur);
         $manager->persist($eleve2);
 

@@ -2,18 +2,29 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
+
 {% block body %}
 
+    <div class="flex">
 
-<p>blabla</p>
-<pre>
-    {{ dump(elevesRepository) }}
-</pre>
-    
+        <section class="navbar">
+            <ul>
+                <li>+ Ajouter un élève</li>
+                
+                {% for eleve in elevesRepository %}
+                    <li>
+                
+                        {{ eleve.nom }} {{ eleve.prenom }}
 
-    <div>
+                    </li>
 
-        <section class="navbar"></section>
+                {% endfor %}
+            </ul>
+        
+        </section>
 
         <section class="eleves"></section>
 

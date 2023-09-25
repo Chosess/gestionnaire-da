@@ -12,6 +12,8 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(ElevesRepository $elevesRepository): Response
     {
-        return $this->render('main/index.html.twig', compact('elevesRepository'));
+        return $this->render('main/index.html.twig', [
+            'elevesRepository' => $elevesRepository->findAll()
+        ]);
     }
 }
