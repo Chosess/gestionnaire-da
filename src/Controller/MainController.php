@@ -9,11 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/', name: 'app_main')]
+    #[Route('/accueil', name: 'app_main')]
     public function index(ElevesRepository $elevesRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'elevesRepository' => $elevesRepository->findAll()
+            'elevesRepository' => $elevesRepository->findBy([], 
+            ['nom' => 'ASC']
+            )
         ]);
     }
 }

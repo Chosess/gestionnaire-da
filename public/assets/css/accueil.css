@@ -4,6 +4,7 @@ body div.flex {
 body div.flex section.navbar {
   border: 1px solid black;
   border-radius: 5px;
+  width: 300px;
 }
 body div.flex section.navbar ul {
   list-style-type: none;
@@ -13,4 +14,5 @@ body div.flex section.navbar ul li {
   border: 1px solid black;
   border-radius: 5px;
   margin: 10px;
+  padding-left: 5px;
 }/*# sourceMappingURL=accueil.css.map */

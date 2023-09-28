@@ -116,6 +116,9 @@ class Eleves
     #[ORM\Column(nullable: true)]
     private ?bool $droit_image = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $suivi = null;
+
     public function __construct()
     {
         $this->entretiens = new ArrayCollection();
@@ -593,6 +596,18 @@ class Eleves
     public function setDroitImage(bool $droit_image): static
     {
         $this->droit_image = $droit_image;
+
+        return $this;
+    }
+
+    public function isSuivi(): ?bool
+    {
+        return $this->suivi;
+    }
+
+    public function setSuivi(bool $suivi): static
+    {
+        $this->suivi = $suivi;
 
         return $this;
     }
