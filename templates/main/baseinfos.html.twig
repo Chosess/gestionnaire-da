@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="flex">
+
+        <section class="navbar">
+            <ul>
+                <li>+ Ajouter un élève</li>
+                
+                {% for eleve in elevesRepository %}
+                    <li>
+                
+                        {{ eleve.nom }} {{ eleve.prenom }}
+
+                    </li>
+
+                {% endfor %}
+            </ul>
+        
+        </section>
+
+        
+
+        <section class="eleve">
+        
+            <div>
+                <img src="{{ asset('assets/uploads/avatar.svg')}}" alt="">
+                <p>{{ eleves.nom }} {{ eleves.prenom }}</p>
+                <p>{{ eleves.educateursId.nom }} {{ eleves.educateursId.prenom }}</p>
+            </div>
+
+            <div>
+                <ul>
+                    <li><a href="">Informations Personnelles</a></li>
+                    <li><a href="">Pièces Administratives</a></li>
+                    <li><a href="">Suivi / Accompagnement</a></li>
+                    <li><a href="">Absences</a></li>
+                </ul>
+            </div>
+
+        </section>
+
+{% block infos %}{% endblock %}
+
+    </div>
+{% endblock %}

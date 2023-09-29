@@ -1,5 +1,6 @@
 body div.flex {
   display: flex;
+  gap: 20px;
 }
 body div.flex section.navbar {
   border: 1px solid black;
@@ -15,4 +16,42 @@ body div.flex section.navbar ul li {
   border-radius: 5px;
   margin: 10px;
   padding-left: 5px;
+}
+body div.flex section.eleve {
+  height: 100%;
+}
+body div.flex section.eleve div:first-child {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 200px;
+}
+body div.flex section.eleve div:first-child img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 10px 0;
+}
+body div.flex section.eleve div:first-child p {
+  margin: 10px;
+  padding-left: 5px;
+}
+body div.flex section.eleve div:first-child p:last-child {
+  font-style: italic;
+}
+body div.flex section.eleve div:last-child ul {
+  list-style-type: none;
+  padding-left: 5px;
+}
+body div.flex section.eleve div:last-child ul li {
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom: -1px;
+}
+body div.flex section.eleve div:last-child ul li a {
+  text-decoration: none;
+  color: black;
+}
+body div.flex section.eleve div:last-child ul li a:hover {
+  text-decoration: underline;
+  color: blue;
 }/*# sourceMappingURL=accueil.css.map */

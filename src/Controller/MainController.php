@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Eleves;
 use App\Repository\ElevesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,15 @@ class MainController extends AbstractController
             'elevesRepository' => $elevesRepository->findBy([], 
             ['nom' => 'ASC']
             )
+        ]);
+    }
+
+    #[Route('/{id}/infos', name: 'app_main')]
+    public function infos(Eleves $eleves, ElevesRepository $elevesRepository): Response
+    {
+        return $this->render('main/infos.html.twig', [
+            'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
+            'eleves' => $eleves
         ]);
     }
 }
