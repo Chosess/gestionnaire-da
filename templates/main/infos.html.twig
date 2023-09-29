@@ -2,15 +2,114 @@
 
 
 {% block infos %}
-        
-    <section class="infos">
-        
-        
-        
-    </section>
-        
+
+	<section class="infos">
+		<form action="">
+
+			<div>
+				<div>
+					<h2>Etat Civil</h2>
+					<p>Adresse :
+						<input type="text" value="{{ eleves.adresse }}"></p>
+					<p>Code postal :
+						<input type="text" value="{{ eleves.codePostal }}"></p>
+					<p>Ville :
+						<input type="text" value="{{ eleves.ville }}"></p>
+					<p>Email :
+						<input type="text" value="{{ eleves.email }}"></p>
+					<p>Portable :<input type="text" value="{{ eleves.portable }}"></p>
+					<p>Fixe :
+						<input type="text" value="{{ eleves.fixe }}"></p>
+				</div>
+
+				<div>
+					<h2>Personne à contacter en cas d'urgence</h2>
+					<p>Nom :
+						<input type="text" value="{{ eleves.nomUrgence }}"></p>
+					<p>Prénom :
+						<input type="text" value="{{ eleves.prenomUrgence }}"></p>
+					<p>Portable :<input type="text" value="{{ eleves.telephoneUrgence }}"></p>
+				</div>
+
+				<div>
+					<h2>Lieu de naissance</h2>
+					<p>Ville :
+						<input type="text" value="{{ eleves.lieuNaissance }}"></p>
+					<p>Date :
+						<input type="date" value="{{ eleves.dateNaissance }}"></p>
+					<p>Nationalité :
+						<input type="text" value="{{ eleves.nationalite }}"></p>
+				</div>
+
+				<div>
+					<h2>Situation Personnelle</h2>
+					<p>Statut :
+						<input type="text" value="{{ eleves.etatCivil }}"></p>
+					<p>Enfant(s) :
+						<input type="number" value="{{ eleves.enfants }}"></p>
+				</div>
+
+				<div>
+					<h2>Moyen de locomotion</h2>
+					{% for transport in eleves.transports %}
+						<p>{{ transport }}</p>
+						{# Il faut rajouter l'option de suppression d'un moyen de transport #}
+					{% endfor %}
+					<p>Ajouter un moyen de locomotion :
+						<input type="text"></p>
+				</div>
+
+			</div>
+
+
+			<div>
+				<div>
+					<h2>Matériel informatique</h2>
+					<p>Possède un ordinateur :
+						<input type="checkbox" name="ordinateur" id="ordinateur" value="1"></p>
+				</div>
+
+				<div>
+					<h2>Apte au sport</h2>
+					<p>Apte :
+						<input type="checkbox" name="ordinateur" id="ordinateur" value="1"></p>
+				</div>
+
+				<div>
+					<h2>Inscription validée</h2>
+					<p>Apte :
+						<input type="checkbox" name="ordinateur" id="ordinateur" value="1"></p>
+				</div>
+
+				<div>
+					<h2>Parcours</h2>
+					<p>Date d'inscription à la Digitale Académie :
+						<input type="date" value="{{ eleves.dateInscription }}"></p>
+					<p>Formation :
+						<input type="text" value="{{ eleves.formation }}"></p>
+					<p>Niveau de la formation :
+						<input type="text" value="{{ eleves.niveauFormation }}"></p>
+					<p>Année de formation :
+						<input type="number" value="{{ eleves.anneeFormation }}"></p>
+				</div>
+
+				<div>
+					<h2>Suivi</h2>
+					<p>Éducateur référent :
+						<input type="text" value="{{ eleves.educateursId.nom }} {{ eleves.educateursId.prenom }}"></p>
+					<p>Prescripteur :
+						<input type="text" value="{{ eleves.prescripteur }}"></p>
+					<p>Conseiller(e) :
+						<input type="text" value="{{ eleves.conseiller }}"></p>
+					<p>Droit à l'image :
+						<input type="checkbox" name="ordinateur" id="ordinateur" value="1"></p>
+				</div>
+
+                <button>Confirmer les changements</button>
+			</div>
+
+
+		</form>
+	</section>
+
 {% endblock %}
-
-        
-
-

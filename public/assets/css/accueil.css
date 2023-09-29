@@ -54,4 +54,25 @@ body div.flex section.eleve div:last-child ul li a {
 body div.flex section.eleve div:last-child ul li a:hover {
   text-decoration: underline;
   color: blue;
+}
+body div.flex section.infos > form {
+  display: flex;
+  gap: 20px;
+}
+body div.flex section.infos > form > div > div {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+body div.flex section.infos > form > div > div h2 {
+  font-size: 20px;
+  text-decoration: underline;
+}
+body div.flex section.infos > form > div > div p {
+  font-size: 14px;
+  margin: 10px;
+}
+body div.flex section.infos > form > div > div p input {
+  text-align: center;
 }/*# sourceMappingURL=accueil.css.map */

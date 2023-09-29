@@ -21,6 +21,8 @@ body {
             }
         }
 
+
+
         section.eleve {
             height: 100%;
 
@@ -71,5 +73,32 @@ body {
         }
 
 
+
+        section.infos{
+            &>form{
+                display: flex;
+                gap: 20px;
+                &>div{
+                    &>div{
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        margin: 10px 0;
+                        padding: 0 10px;
+    
+                        h2{
+                            font-size: 20px;
+                            text-decoration: underline;
+                        }
+                        p{
+                            font-size: 14px;
+                            margin: 10px;
+                            input{
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
