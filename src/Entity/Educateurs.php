@@ -128,6 +128,10 @@ class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function __toString() {
+        return $this->nom . ' ' . $this->prenom;
+    }
+
     public function getPrenom(): ?string
     {
         return $this->prenom;
@@ -160,22 +164,22 @@ class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->eleves;
     }
 
-    public function addElefe(Eleves $elefe): static
+    public function addEleve(Eleves $eleve): static
     {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves->add($elefe);
-            $elefe->setEducateursId($this);
+        if (!$this->eleves->contains($eleve)) {
+            $this->eleves->add($eleve);
+            $eleve->setEducateursId($this);
         }
 
         return $this;
     }
 
-    public function removeElefe(Eleves $elefe): static
+    public function removeEleve(Eleves $eleve): static
     {
-        if ($this->eleves->removeElement($elefe)) {
+        if ($this->eleves->removeElement($eleve)) {
             // set the owning side to null (unless already changed)
-            if ($elefe->getEducateursId() === $this) {
-                $elefe->setEducateursId(null);
+            if ($eleve->getEducateursId() === $this) {
+                $eleve->setEducateursId(null);
             }
         }
 
