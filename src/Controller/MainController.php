@@ -26,13 +26,13 @@ class MainController extends AbstractController
     #[Route('/{id}/infos', name: '_infos')]
     public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = new Eleves();
-        $form = $this->createForm(ElevesFormType::class, $user);
+        // $eleves = new Eleves();
+        $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $entityManager->persist($user);
+            $entityManager->persist($eleves);
             $entityManager->flush();
         }
         
