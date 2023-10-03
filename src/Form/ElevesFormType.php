@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ElevesFormType extends AbstractType
 {
@@ -16,7 +17,14 @@ class ElevesFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('photo', FileType::class)
+            ->add('photo', FileType::class, array(
+                'data_class' => null,
+                'label' => 'image',
+                'mapped' => false,
+                'constraints' => [
+                    new Image()
+                ]
+            ))
             ->add('civilite')
             ->add('validation_inscription')
             ->add('date_inscription', TextType::class, array(

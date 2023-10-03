@@ -34,7 +34,7 @@
             {% if eleves.photo == null %}
                 <img src="{{ asset('assets/uploads/avatar.svg')}}" alt="Photo de profil">
             {% else %}
-                <img src="{{ asset('assets/uploads/' ~ eleves.photo)}}" alt="Photo de profil">
+                <img src="{{ asset('assets/uploads/image/' ~ eleves.photo)}}" alt="Photo de profil">
             {% endif %}
             
                 <p>{{ eleves.civilite }} {{ eleves.nom }} {{ eleves.prenom }}</p>

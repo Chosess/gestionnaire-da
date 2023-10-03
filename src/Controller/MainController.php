@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Eleves;
 use App\Form\ElevesFormType;
 use App\Repository\ElevesRepository;
+use App\Service\ImageService;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,13 +26,21 @@ class MainController extends AbstractController
     }
 
     #[Route('/{id}/infos', name: '_infos')]
-    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager): Response
+    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         // $eleves = new Eleves();
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('photo')->getData();
+
+            $folder = 'image';
+
+            $fichier = $pictureService->add($image, $folder, 300, 300);
+
+            $eleves->setPhoto($fichier);
 
             $entityManager->persist($eleves);
             $entityManager->flush();

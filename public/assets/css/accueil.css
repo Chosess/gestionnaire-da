@@ -30,6 +30,8 @@ body div.flex section.eleve div:first-child img {
   left: 50%;
   transform: translateX(-50%);
   margin: 10px 0;
+  width: 150px;
+  height: 150px;
 }
 body div.flex section.eleve div:first-child p {
   margin: 10px;
