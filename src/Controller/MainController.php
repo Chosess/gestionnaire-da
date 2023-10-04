@@ -38,6 +38,10 @@ class MainController extends AbstractController
 
             $folder = 'image';
 
+            $previmage = $eleves->getPhoto();
+
+            $pictureService->delete($previmage, $folder);
+
             $fichier = $pictureService->add($image, $folder, 300, 300);
 
             $eleves->setPhoto($fichier);
