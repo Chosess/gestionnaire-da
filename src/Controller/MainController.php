@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Eleves;
+use App\Entity\Transports;
 use App\Form\ElevesFormType;
+use App\Form\TransportsFormType;
 use App\Repository\ElevesRepository;
-use App\Service\ImageService;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/accueil', name: 'app_main')]
-    public function index(ElevesRepository $elevesRepository): Response
+    public function index(Eleves $eleves, ElevesRepository $elevesRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'elevesRepository' => $elevesRepository->findBy([], 
-            ['nom' => 'ASC']
-            )
+            'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
+            'eleves' => $eleves
         ]);
     }
 
@@ -31,32 +32,70 @@ class MainController extends AbstractController
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 
+        $formtransport = $this->createForm(TransportsFormType::class);
+        $formtransport->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             // on récupère le fichier envoyer dans le champ 'photo'
             $image = $form->get('photo')->getData();
-
-            $folder = 'image';
-
-            // on récupère l'ancienne photo
-            $previmage = $eleves->getPhoto();
-
-            // on supprime l'ancienne photo de profil
-            $pictureService->delete($previmage, $folder);
-
-            // on ajoute la nouvelle photo de profil
-            $fichier = $pictureService->add($image, $folder, 300, 300);
-
-            $eleves->setPhoto($fichier);
-
+            
+            // on vérifie qu'il y ait un fichier envoyé
+            if($image != null){
+                
+                $folder = 'image';
+                
+                // on récupère l'ancienne photo
+                $previmage = $eleves->getPhoto();
+                
+                // on supprime l'ancienne photo de profil
+                $pictureService->delete($previmage, $folder);
+                
+                // on ajoute la nouvelle photo de profil
+                $fichier = $pictureService->add($image, $folder, 300, 300);
+                
+                $eleves->setPhoto($fichier);
+                
+                
+                
+        
+                if ($formtransport->isSubmitted() && $formtransport->isValid()) {
+        
+                    $transports = new Transports;
+        
+                    $transport = $formtransport->get('transport')->getData();
+        
+                    $transports->setTransport($transport);
+        
+                    $transports->setEleves($eleves);
+        
+                    $entityManager->persist($transports);
+                    $entityManager->flush();
+                }
+            }
+            
             $entityManager->persist($eleves);
             $entityManager->flush();
         }
         
+
+
+
+
         return $this->render('main/infos.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'elevesForm' => $form->createView(),
+            'transportsForm' => $formtransport->createView()
+        ]);
+    }
+
+    #[Route('//{id}/documents', name: '_documents')]
+    public function documents(Eleves $eleves, ElevesRepository $elevesRepository): Response
+    {
+        return $this->render('main/documents.html.twig', [
+            'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
+            'eleves' => $eleves
         ]);
     }
 }

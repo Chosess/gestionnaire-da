@@ -77,4 +77,7 @@ body div.flex section.infos > form > div > div p {
 }
 body div.flex section.infos > form > div > div p input {
   text-align: center;
+}
+body div.flex section.infos > form > div > div .dnone {
+  display: none;
 }/*# sourceMappingURL=accueil.css.map */

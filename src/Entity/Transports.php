@@ -37,6 +37,10 @@ class Transports
         return $this;
     }
 
+    public function __toString() {
+        return $this->transport;
+    }
+
     public function getEleves(): ?Eleves
     {
         return $this->eleves;

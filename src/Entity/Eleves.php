@@ -143,6 +143,10 @@ class Eleves
 
         return $this;
     }
+    
+    public function __toString() {
+        return $this->nom;
+    }
 
     public function getPrenom(): ?string
     {

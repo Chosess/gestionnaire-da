@@ -16,15 +16,15 @@
                     value: eleves.civilite,
                     label: 'Civilité : '
                 }) }}
-                {{ form_row(elevesForm.nom, {
+				{{ form_row(elevesForm.nom, {
                     value: eleves.nom,
                     label: 'Nom : '
                 }) }}
-                {{ form_row(elevesForm.prenom, {
+				{{ form_row(elevesForm.prenom, {
                     value: eleves.prenom,
                     label: 'Prénom : '
                 }) }}
-                {{ form_row(elevesForm.photo, {
+				{{ form_row(elevesForm.photo, {
                     value: eleves.photo,
                     label: 'Photo : '
                 }) }}
@@ -32,26 +32,26 @@
 
 			<div>
 				<h2>Etat Civil</h2>
-                {{ form_row(elevesForm.adresse, {
+				{{ form_row(elevesForm.adresse, {
                     value: eleves.adresse,
                     label: 'Adresse : '
                 }) }}
-                {{ form_row(elevesForm.code_postal, {
+				{{ form_row(elevesForm.code_postal, {
                     value: eleves.codePostal,
                     label: 'Code postal : '
                 }) }}
-                {{ form_row(elevesForm.ville, {
+				{{ form_row(elevesForm.ville, {
                     value: eleves.ville,
                     label: 'Ville : '
                 }) }}
-                {{ form_row(elevesForm.email, {
+				{{ form_row(elevesForm.email, {
                     value: eleves.email,
                     label: 'email : '
                 }) }}{{ form_row(elevesForm.portable, {
                     value: eleves.portable,
                     label: 'Portable : '
                 }) }}
-                {{ form_row(elevesForm.fixe, {
+				{{ form_row(elevesForm.fixe, {
                     value: eleves.fixe,
                     label: 'Fixe : '
                 }) }}
@@ -59,15 +59,15 @@
 
 			<div>
 				<h2>Personne à contacter en cas d'urgence</h2>
-                {{ form_row(elevesForm.nom_urgence, {
+				{{ form_row(elevesForm.nom_urgence, {
                     value: eleves.nomUrgence,
                     label: 'Nom : '
                 }) }}
-                {{ form_row(elevesForm.prenom_urgence, {
+				{{ form_row(elevesForm.prenom_urgence, {
                     value: eleves.prenomUrgence,
                     label: 'Prénom : '
                 }) }}
-                {{ form_row(elevesForm.telephone_urgence, {
+				{{ form_row(elevesForm.telephone_urgence, {
                     value: eleves.telephoneUrgence,
                     label: 'Téléphone : '
                 }) }}
@@ -75,15 +75,15 @@
 
 			<div>
 				<h2>Lieu de naissance</h2>
-                {{ form_row(elevesForm.lieu_naissance, {
+				{{ form_row(elevesForm.lieu_naissance, {
                     value: eleves.lieuNaissance,
                     label: 'Lieu : '
                 }) }}
-                {{ form_row(elevesForm.date_naissance, {
+				{{ form_row(elevesForm.date_naissance, {
                     value: eleves.dateNaissance,
                     label: 'Date : '
                 }) }}
-                {{ form_row(elevesForm.nationalite, {
+				{{ form_row(elevesForm.nationalite, {
                     value: eleves.nationalite,
                     label: 'Nationalité : '
                 }) }}
@@ -91,11 +91,11 @@
 
 			<div>
 				<h2>Situation Personnelle</h2>
-                {{ form_row(elevesForm.etat_civil, {
+				{{ form_row(elevesForm.etat_civil, {
                     value: eleves.etatCivil,
                     label: 'Etat Civil : '
                 }) }}
-                {{ form_row(elevesForm.enfants, {
+				{{ form_row(elevesForm.enfants, {
                     value: eleves.enfants,
                     label: 'Enfants : '
                 }) }}
@@ -103,12 +103,31 @@
 
 			<div>
 				<h2>Moyen de locomotion</h2>
-					{# à modifier #}
+				{% if eleves.transports == null %}
+					<p>Aucun transports sélectionné</p>
+				{% endif %}
+
 				{% for transport in eleves.transports %}
-					<p>{{ transport }}</p>
+					{{ form_row(elevesForm.transports, {
+                    choice: transport,
+                    label: 'Transport(s) : '
+                    }) }}
 				{% endfor %}
-				<p>Ajouter un moyen de locomotion :
-					<input type="text" name="transports"></p>
+
+				{{ form_errors(transportsForm) }}
+
+				{{ form_start(transportsForm) }}
+
+				{{ form_row(transportsForm.transport, {
+                    label: 'Ajouter un transport : '
+                    }) 
+                }}
+
+                <div class="dnone">
+                    {{ form_row(transportsForm.eleves) }}
+                </div>
+
+
 			</div>
 
 		</div>
@@ -117,7 +136,7 @@
 		<div>
 			<div>
 				<h2>Matériel informatique</h2>
-                {{ form_row(elevesForm.ordinateur, {
+				{{ form_row(elevesForm.ordinateur, {
                     value: eleves.ordinateur,
                     label: 'Possède un ordinateur : '
                 }) }}
@@ -181,6 +200,8 @@
 
 			<button>Confirmer les changements</button>
 		</div>
+
+		{{ form_end(transportsForm) }}
 
 		{{ form_end(elevesForm) }}
 

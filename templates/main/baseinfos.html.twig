@@ -43,8 +43,8 @@
 
             <div>
                 <ul>
-                    <a href=""><li>Informations Personnelles</li></a>
-                    <a href=""><li>Pièces Administratives</li></a>
+                    <a href="{{ path('_infos', {id: eleves.id}) }}"><li>Informations Personnelles</li></a>
+                    <a href="{{ path('_documents', {id: eleves.id}) }}"><li>Pièces Administratives</li></a>
                     <a href=""><li>Suivi / Accompagnement</li></a>
                     <a href=""><li>Absences</li></a>
                 </ul>

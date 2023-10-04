@@ -19,6 +19,7 @@ class ElevesFormType extends AbstractType
             ->add('prenom')
             ->add('photo', FileType::class, array(
                 'data_class' => null,
+                'required' => false,
                 'label' => 'image',
                 'mapped' => false,
                 'constraints' => [
@@ -62,6 +63,7 @@ class ElevesFormType extends AbstractType
             ->add('droit_image')
             ->add('suivi')
             ->add('educateurs_id')
+            ->add('transports')
         ;
     }
 
