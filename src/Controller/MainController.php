@@ -28,7 +28,6 @@ class MainController extends AbstractController
     #[Route('/{id}/infos', name: '_infos')]
     public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
-        // $eleves = new Eleves();
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 
