@@ -34,14 +34,18 @@ class MainController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // on récupère le fichier envoyer dans le champ 'photo'
             $image = $form->get('photo')->getData();
 
             $folder = 'image';
 
+            // on récupère l'ancienne photo
             $previmage = $eleves->getPhoto();
 
+            // on supprime l'ancienne photo de profil
             $pictureService->delete($previmage, $folder);
 
+            // on ajoute la nouvelle photo de profil
             $fichier = $pictureService->add($image, $folder, 300, 300);
 
             $eleves->setPhoto($fichier);
