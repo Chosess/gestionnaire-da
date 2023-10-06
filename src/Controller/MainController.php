@@ -9,7 +9,6 @@ use App\Form\TransportsFormType;
 use App\Repository\ElevesRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,50 +33,61 @@ class MainController extends AbstractController
 
         $formtransport = $this->createForm(TransportsFormType::class);
         $formtransport->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             // on récupère le fichier envoyer dans le champ 'photo'
             $image = $form->get('photo')->getData();
-            
+
             // on vérifie qu'il y ait un fichier envoyé
-            if($image != null){
-                
+            if ($image != null) {
+
                 $folder = 'image';
-                
+
                 // on récupère l'ancienne photo
                 $previmage = $eleves->getPhoto();
-                
+
                 // on supprime l'ancienne photo de profil
                 $pictureService->delete($previmage, $folder);
-                
+
                 // on ajoute la nouvelle photo de profil
                 $fichier = $pictureService->add($image, $folder, 300, 300);
-                
+
                 $eleves->setPhoto($fichier);
-                
-                
-                
-        
-                if ($formtransport->isSubmitted() && $formtransport->isValid()) {
-        
-                    $transports = new Transports;
-        
-                    $transport = $formtransport->get('transport')->getData();
-        
-                    $transports->setTransport($transport);
-        
-                    $transports->setEleves($eleves);
-        
-                    $entityManager->persist($transports);
-                    $entityManager->flush();
-                }
+
+
+
+
+                // if ($formtransport->isSubmitted() && $formtransport->isValid()) {
+
+                //     $transports = new Transports;
+
+                //     $transport = $formtransport->get('transport')->getData();
+
+                //     $transports->setTransport($transport);
+
+                //     $transports->setEleves($eleves);
+
+                //     $entityManager->persist($transports);
+                //     $entityManager->flush();
+                // }
             }
-            
+
+            $newtransport = $form->get('newtransport')->getData();
+
+            if ($newtransport != null) {
+                $nouvelleEntite = new Transports();
+                $nouvelleEntite->setTransport($newtransport);
+                $eleves->addTransport($nouvelleEntite);
+                $entityManager->persist($nouvelleEntite);
+            }
+
+
+
             $entityManager->persist($eleves);
             $entityManager->flush();
         }
-        
+
 
 
 

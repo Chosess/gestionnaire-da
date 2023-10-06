@@ -107,14 +107,23 @@
 					<p>Aucun transports sélectionné</p>
 				{% endif %}
 
-				{% for transport in eleves.transports %}
+				{# {% for transport in eleves.transports %}
 					{{ form_row(elevesForm.transports, {
                     choice: transport,
                     label: 'Transport(s) : '
                     }) }}
-				{% endfor %}
+				{% endfor %} #}
 
-				{{ form_errors(transportsForm) }}
+                {{ form_row(elevesForm.transports, {
+                    label: 'Transport(s) : ',
+                    checked: true
+                    }) }}
+
+                {{ form_row(elevesForm.newtransport, {
+                    label: 'Ajouter un transport : '
+                    }) }}
+
+				{# {{ form_errors(transportsForm) }}
 
 				{{ form_start(transportsForm) }}
 
@@ -125,7 +134,7 @@
 
                 <div class="dnone">
                     {{ form_row(transportsForm.eleves) }}
-                </div>
+                </div> #}
 
 
 			</div>
@@ -201,7 +210,7 @@
 			<button>Confirmer les changements</button>
 		</div>
 
-		{{ form_end(transportsForm) }}
+		{# {{ form_end(transportsForm) }} #}
 
 		{{ form_end(elevesForm) }}
 
