@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Eleves;
 use App\Entity\Transports;
 use App\Form\ElevesFormType;
-use App\Form\TransportsFormType;
 use App\Repository\ElevesRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,16 +30,13 @@ class MainController extends AbstractController
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 
-        $formtransport = $this->createForm(TransportsFormType::class);
-        $formtransport->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             // on récupère le fichier envoyer dans le champ 'photo'
             $image = $form->get('photo')->getData();
 
             // on vérifie qu'il y ait un fichier envoyé
-            if ($image != null) {
+            if (!empty($image)) {
 
                 $folder = 'image';
 
@@ -55,31 +51,24 @@ class MainController extends AbstractController
 
                 $eleves->setPhoto($fichier);
 
-
-
-
-                // if ($formtransport->isSubmitted() && $formtransport->isValid()) {
-
-                //     $transports = new Transports;
-
-                //     $transport = $formtransport->get('transport')->getData();
-
-                //     $transports->setTransport($transport);
-
-                //     $transports->setEleves($eleves);
-
-                //     $entityManager->persist($transports);
-                //     $entityManager->flush();
-                // }
             }
 
             $newtransport = $form->get('newtransport')->getData();
 
-            if ($newtransport != null) {
+            if (!empty($newtransport)) {
                 $nouvelleEntite = new Transports();
                 $nouvelleEntite->setTransport($newtransport);
                 $eleves->addTransport($nouvelleEntite);
                 $entityManager->persist($nouvelleEntite);
+            }
+
+            $removetransport = $form->get('transports');
+            
+            if(!empty($removetransport)){
+                foreach($removetransport->getNormData() as $rt){
+                    $rt->setEleves(null);
+                    $entityManager->remove($rt);
+                }
             }
 
 
@@ -96,7 +85,6 @@ class MainController extends AbstractController
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'elevesForm' => $form->createView(),
-            'transportsForm' => $formtransport->createView()
         ]);
     }
 

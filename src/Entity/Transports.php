@@ -17,7 +17,7 @@ class Transports
     private ?string $transport = null;
 
     #[ORM\ManyToOne(inversedBy: 'transports')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Eleves $eleves = null;
 
     public function getId(): ?int
