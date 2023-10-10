@@ -219,15 +219,6 @@ class MainController extends AbstractController
         ]);
     }
 
-    // #[Route('//{id}/suivi', name: '_suivi')]
-    // public function suivi(Eleves $eleves, ElevesRepository $elevesRepository): Response
-    // {
-    //     return $this->render('main/suivi.html.twig', [
-    //         'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
-    //         'eleves' => $eleves
-    //     ]);
-    // }
-
     #[Route('//{id}/absences', name: '_absences')]
     public function absences(Eleves $eleves, ElevesRepository $elevesRepository): Response
     {
