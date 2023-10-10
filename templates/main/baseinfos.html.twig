@@ -12,12 +12,12 @@
 
         <section class="navbar">
             <ul>
-                <li>+ Ajouter un élève</li>
+                <li><a href="{{ path('app_main') }}">+ Ajouter un élève</a></li>
                 
                 {% for eleve in elevesRepository %}
                     <li>
                 
-                        {{ eleve.nom }} {{ eleve.prenom }}
+                        <a href="{{ path('_infos', {id: eleve.id}) }}">{{ eleve.nom }} {{ eleve.prenom }}</a>
 
                     </li>
 

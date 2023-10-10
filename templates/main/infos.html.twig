@@ -80,7 +80,7 @@
                     label: 'Lieu : '
                 }) }}
 				{{ form_row(elevesForm.date_naissance, {
-                    value: eleves.dateNaissance,
+                    value: dn,
                     label: 'Date : '
                 }) }}
 				{{ form_row(elevesForm.nationalite, {
@@ -106,13 +106,6 @@
 				{% if eleves.transports == null %}
 					<p>Aucun transports sélectionné</p>
 				{% endif %}
-
-				{# {% for transport in eleves.transports %}
-					{{ form_row(elevesForm.transports, {
-                    choice: transport,
-                    label: 'Transport(s) : '
-                    }) }}
-				{% endfor %} #}
 
                 {{ form_row(elevesForm.transports, {
                     label: 'Transport(s) : ',
@@ -157,7 +150,7 @@
 			<div>
 				<h2>Parcours</h2>
 				{{ form_row(elevesForm.date_inscription, {
-                    value: eleves.dateInscription,
+                    value: di,
                     label: 'Date d\'inscription à la Digitale Académie : '
                 }) }}
 				{{ form_row(elevesForm.formation, {
@@ -189,6 +182,10 @@
                     label: 'Conseiller(e) (Pôle emploi ou Mission locale) : '
                 }) }}
 				{{ form_row(elevesForm.droit_image, {
+                    value: eleves.droitImage,
+                    label: 'Droit à l\'image : '
+                }) }}
+                {{ form_row(elevesForm.droit_image, {
                     value: eleves.droitImage,
                     label: 'Droit à l\'image : '
                 }) }}

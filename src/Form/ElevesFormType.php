@@ -6,6 +6,8 @@ use App\Entity\Eleves;
 use App\Entity\Transports;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,8 +35,9 @@ class ElevesFormType extends AbstractType
             ->add('date_inscription', TextType::class, array(
                 'required' => false,
                 'empty_data' => null,
+                'mapped' => false,
                 'attr' => array(
-                    'placeholder' => 'mm/dd/yyyy'
+                    'placeholder' => 'jj/mm/aaaa'
                 )))
             ->add('formation')
             ->add('niveau_formation')
@@ -54,9 +57,11 @@ class ElevesFormType extends AbstractType
             ->add('date_naissance', TextType::class, array(
                 'required' => false,
                 'empty_data' => null,
+                'mapped' => false,
                 'attr' => array(
-                    'placeholder' => 'mm/dd/yyyy'
-                )))
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
             ->add('nationalite')
             ->add('etat_civil')
             ->add('enfants')
