@@ -9,7 +9,7 @@
 
 		<div>
 			<div>
-				<h2>Eleve</h2>
+				<h2>Etudiant</h2>
 				{{ form_row(elevesForm.civilite, {
                     value: eleves.civilite,
                     label: 'Civilité : '
@@ -29,7 +29,7 @@
 			</div>
 
 			<div>
-				<h2>Etat Civil</h2>
+				<h2>Coordonnées</h2>
 				{{ form_row(elevesForm.adresse, {
                     value: eleves.adresse,
                     label: 'Adresse : '
@@ -72,7 +72,7 @@
 			</div>
 
 			<div>
-				<h2>Lieu de naissance</h2>
+				<h2>Naissance</h2>
 				{{ form_row(elevesForm.lieu_naissance, {
                     value: eleves.lieuNaissance,
                     label: 'Lieu : '
@@ -169,7 +169,7 @@
 				<h2>Suivi</h2>
 				{{ form_row(elevesForm.educateurs_id, {
                     choice: eleves.educateursId,
-                    label: 'Éducateur référent : '
+                    label: 'Coach référent : '
                 }) }}
 				{{ form_row(elevesForm.prescripteur, {
                     value: eleves.prescripteur,
@@ -185,7 +185,7 @@
                 }) }}
                 {{ form_row(elevesForm.suivi, {
                     value: eleves.suivi,
-                    label: 'L\'élève n\'est plus suivi à la digitale académie : '
+                    label: 'L\'étudiant n\'est plus suivi à la digitale académie : '
                 }) }}
 			</div>
 
