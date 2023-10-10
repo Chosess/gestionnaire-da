@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -13,17 +14,20 @@
 
 		<section class="navbar">
 			<ul>
-				<li>
-					<a href="{{ path('app_main') }}">+ Ajouter un élève</a>
-				</li>
+
+				<a href="{{ path('app_main') }}">
+					<li>+ Ajouter un élève</li>
+				</a>
+
 
 				{% for eleve in elevesRepository %}
-					<li>
 
-						<a href="{{ path('_infos', {id: eleve.id}) }}">{{ eleve.nom }}
-							{{ eleve.prenom }}</a>
 
-					</li>
+					<a href="{{ path('_infos', {id: eleve.id}) }}">
+						<li>{{ eleve.nom }}
+							{{ eleve.prenom }}</li>
+					</a>
+
 
 				{% endfor %}
 			</ul>
@@ -34,11 +38,11 @@
 		<section class="eleve">
 
 			<div>
-                <img src="{{ asset('assets/uploads/avatar.svg')}}" alt="Photo de profil">
-            
-                <p>Civilité / Nom / Prénom</p>
-                <p>Nom / Prénom du Coach</p>
-            </div>
+				<img src="{{ asset('assets/uploads/avatar.svg')}}" alt="Photo de profil">
+
+				<p>Civilité / Nom / Prénom</p>
+				<p>Nom / Prénom du Coach</p>
+			</div>
 
 		</section>
 
