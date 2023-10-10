@@ -113,6 +113,7 @@
                     }) }}
 
                 {{ form_row(elevesForm.newtransport, {
+                    value: '',
                     label: 'Ajouter un transport : '
                     }) }}
 
@@ -185,9 +186,9 @@
                     value: eleves.droitImage,
                     label: 'Droit à l\'image : '
                 }) }}
-                {{ form_row(elevesForm.droit_image, {
-                    value: eleves.droitImage,
-                    label: 'Droit à l\'image : '
+                {{ form_row(elevesForm.suivi, {
+                    value: eleves.suivi,
+                    label: 'L\'élève n\'est plus suivi à la digitale académie : '
                 }) }}
 			</div>
 
