@@ -104,6 +104,7 @@ class MainController extends AbstractController
 
         return $this->render('main/eleve.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
+            'eleves' => $eleves,
             'elevesForm' => $form->createView(),
         ]);
     }
