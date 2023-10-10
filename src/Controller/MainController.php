@@ -18,11 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/accueil', name: 'app_main')]
-    public function index( ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
+    public function index( Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
-        $eleves = new Eleves;
+        $eleve = new Eleves;
 
-        $form = $this->createForm(ElevesFormType::class, $eleves);
+        $form = $this->createForm(ElevesFormType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -35,16 +35,10 @@ class MainController extends AbstractController
 
                 $folder = 'image';
 
-                // on récupère l'ancienne photo
-                $previmage = $eleves->getPhoto();
-
-                // on supprime l'ancienne photo de profil
-                $pictureService->delete($previmage, $folder);
-
                 // on ajoute la nouvelle photo de profil
                 $fichier = $pictureService->add($image, $folder, 300, 300);
 
-                $eleves->setPhoto($fichier);
+                $eleve->setPhoto($fichier);
 
             }
 
@@ -54,7 +48,7 @@ class MainController extends AbstractController
             if (!empty($newtransport)) {
                 $nouvelleEntite = new Transports();
                 $nouvelleEntite->setTransport($newtransport);
-                $eleves->addTransport($nouvelleEntite);
+                $eleve->addTransport($nouvelleEntite);
                 $entityManager->persist($nouvelleEntite);
             }
 
@@ -74,35 +68,34 @@ class MainController extends AbstractController
             $date = DateTime::createFromFormat("d/m/Y",$date);
 
             if(!empty($date)){
-                $eleves->setDateNaissance($date);
+                $eleve->setDateNaissance($date);
             }
 
             // la date d'inscription
-            $inscri = $eleves->isValidationInscription();
-            $inscription = $form->get('validation_inscription')->getData();
+            $dateinscription = $form->get('date_inscription')->getData();
+            
+            $dateinscription = DateTime::createFromFormat("d/m/Y", $dateinscription);
 
-            if($inscription == true && $inscri == false){
-                $fuseauHoraire = new DateTimeZone('Europe/Paris');
-                $dateActuelle = new DateTime('now', $fuseauHoraire);
-                $eleves->setValidationInscription(true);
+            if(!empty($dateinscription)){
+                $eleves->setDateInscription($dateinscription);
             }
 
 
 
-            $entityManager->persist($eleves);
+            $entityManager->persist($eleve);
             $entityManager->flush();
         }
 
 
         //dn = date de naissance
-        $dn = $eleves->getDateNaissance();
+        $dn = $eleve->getDateNaissance();
         if(!empty($dn)){
             $dn = $dn->format('d/m/Y');
         }
 
         //di = date d'inscription
-        $inscri = $eleves->isValidationInscription();
-        $di = $eleves->getDateInscription();
+        $inscri = $eleve->isValidationInscription();
+        $di = $eleve->getDateInscription();
         if(!empty($di) && $inscri == true){
             $di = $di->format('d/m/Y');
         } else {
@@ -177,13 +170,12 @@ class MainController extends AbstractController
             }
 
             // la date d'inscription
-            $inscri = $eleves->isValidationInscription();
-            $inscription = $form->get('validation_inscription')->getData();
+            $dateinscription = $form->get('date_inscription')->getData();
+            
+            $dateinscription = DateTime::createFromFormat("d/m/Y", $dateinscription);
 
-            if($inscription == true && $inscri == false){
-                $fuseauHoraire = new DateTimeZone('Europe/Paris');
-                $dateActuelle = new DateTime('now', $fuseauHoraire);
-                $eleves->setValidationInscription(true);
+            if(!empty($dateinscription)){
+                $eleves->setDateInscription($dateinscription);
             }
 
 

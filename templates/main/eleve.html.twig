@@ -1,0 +1,229 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="flex">
+
+		<section class="navbar">
+			<ul>
+				<li>
+					<a href="{{ path('app_main') }}">+ Ajouter un élève</a>
+				</li>
+
+				{% for eleve in elevesRepository %}
+					<li>
+
+						<a href="{{ path('_infos', {id: eleve.id}) }}">{{ eleve.nom }}
+							{{ eleve.prenom }}</a>
+
+					</li>
+
+				{% endfor %}
+			</ul>
+
+		</section>
+
+
+		<section class="eleve">
+
+			<div>
+                <img src="{{ asset('assets/uploads/avatar.svg')}}" alt="Photo de profil">
+            
+                <p>Civilité / Nom / Prénom</p>
+                <p>Nom / Prénom de l'éducateur</p>
+            </div>
+
+			<div>
+				<ul>
+					<a href="{{ path('_infos', {id: eleves.id}) }}">
+						<li>Informations Personnelles</li>
+					</a>
+					<a href="{{ path('_documents', {id: eleves.id}) }}">
+						<li>Pièces Administratives</li>
+					</a>
+					<a href="">
+						<li>Suivi / Accompagnement</li>
+					</a>
+					<a href="">
+						<li>Absences</li>
+					</a>
+				</ul>
+			</div>
+
+		</section>
+
+
+		<section class="infos">
+
+			{{ form_errors(elevesForm) }}
+
+			{{ form_start(elevesForm) }}
+
+			<div>
+				<div>
+					<h2>Eleve</h2>
+					{{ form_row(elevesForm.civilite, {
+                    label: 'Civilité : '
+                }) }}
+					{{ form_row(elevesForm.nom, {
+                    label: 'Nom : '
+                }) }}
+					{{ form_row(elevesForm.prenom, {
+                    label: 'Prénom : '
+                }) }}
+					{{ form_row(elevesForm.photo, {
+                    label: 'Photo : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Etat Civil</h2>
+					{{ form_row(elevesForm.adresse, {
+                    label: 'Adresse : '
+                }) }}
+					{{ form_row(elevesForm.code_postal, {
+                    label: 'Code postal : '
+                }) }}
+					{{ form_row(elevesForm.ville, {
+                    label: 'Ville : '
+                }) }}
+					{{ form_row(elevesForm.email, {
+                    label: 'email : '
+                }) }}{{ form_row(elevesForm.portable, {
+                    label: 'Portable : '
+                }) }}
+					{{ form_row(elevesForm.fixe, {
+                    label: 'Fixe : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Personne à contacter en cas d'urgence</h2>
+					{{ form_row(elevesForm.nom_urgence, {
+                    label: 'Nom : '
+                }) }}
+					{{ form_row(elevesForm.prenom_urgence, {
+                    label: 'Prénom : '
+                }) }}
+					{{ form_row(elevesForm.telephone_urgence, {
+                    label: 'Téléphone : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Lieu de naissance</h2>
+					{{ form_row(elevesForm.lieu_naissance, {
+                    label: 'Lieu : '
+                }) }}
+					{{ form_row(elevesForm.date_naissance, {
+                    label: 'Date : '
+                }) }}
+					{{ form_row(elevesForm.nationalite, {
+                    label: 'Nationalité : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Situation Personnelle</h2>
+					{{ form_row(elevesForm.etat_civil, {
+                    label: 'Etat Civil : '
+                }) }}
+					{{ form_row(elevesForm.enfants, {
+                    label: 'Enfants : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Moyen de locomotion</h2>
+					{% if eleves.transports == null %}
+						<p>Aucun transports sélectionné</p>
+					{% endif %}
+
+					{{ form_row(elevesForm.transports, {
+                    label: 'Transport(s) : '
+                    }) }}
+
+					{{ form_row(elevesForm.newtransport, {
+                    value: '',
+                    label: 'Ajouter un transport : '
+                    }) }}
+
+
+				</div>
+
+			</div>
+
+
+			<div>
+				<div>
+					<h2>Matériel informatique</h2>
+					{{ form_row(elevesForm.ordinateur, {
+                    label: 'Possède un ordinateur : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Apte au sport</h2>
+					{{ form_row(elevesForm.sport, {
+                    label: 'Est apte au sport : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Validation inscription</h2>
+					{{ form_row(elevesForm.validation_inscription, {
+                    label: 'Inscription Validée : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Parcours</h2>
+					{{ form_row(elevesForm.date_inscription, {
+                    label: 'Date d\'inscription à la Digitale Académie : '
+                }) }}
+				{{ form_row(elevesForm.formation, {
+                    label: 'Intitulé de la formation : '
+                }) }}
+				{{ form_row(elevesForm.niveau_formation, {
+                    label: 'Niveau de la formation : '
+                }) }}
+				{{ form_row(elevesForm.annee_formation, {
+                    label: 'Année de la formation : '
+                }) }}
+			</div>
+
+			<div>
+				<h2>Suivi</h2>
+				{{ form_row(elevesForm.educateurs_id, {
+                    choice: eleves.educateursId,
+                    label: 'Éducateur référent : '
+                }) }}
+				{{ form_row(elevesForm.prescripteur, {
+                    label: 'Prescripteur : '
+                }) }}
+				{{ form_row(elevesForm.conseiller, {
+                    label: 'Conseiller(e) (Pôle emploi ou Mission locale) : '
+                }) }}
+				{{ form_row(elevesForm.droit_image, {
+                    label: 'Droit à l\'image : '
+                }) }}
+					{{ form_row(elevesForm.suivi, {
+                    label: 'L\'élève n\'est plus suivi à la digitale académie : '
+                }) }}
+				</div>
+
+				<button>Confirmer les changements</button>
+			</div>
+
+			{{ form_end(elevesForm) }}
+
+		</section>
+
+	{% endblock %}
