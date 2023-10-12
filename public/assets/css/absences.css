@@ -1,0 +1,16 @@
+div.grid {
+  display: grid;
+  grid: auto-flow 80px/repeat(7, 1fr);
+  border: 2px solid black;
+}
+div.grid > div {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  text-align: center;
+}
+div.grid > div.actuel {
+  font-weight: bold;
+  text-decoration: underline;
+  color: green;
+}/*# sourceMappingURL=absences.css.map */

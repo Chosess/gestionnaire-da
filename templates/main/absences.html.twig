@@ -1,8 +1,46 @@
 {% extends 'main/infos.html.twig' %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/absences.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
 
 {% block infos %}
-ejknvfeir
 
+	<div class="grid">
+		<div>Lundi</div>
+		<div>Mardi</div>
+		<div>Mercredi</div>
+		<div>Jeudi</div>
+		<div>Vendredi</div>
+		<div>Samedi</div>
+		<div>Dimanche</div>
+
+		{% for vide in infosUtiles.jourUn %}
+			<div></div>
+		{% endfor %}
+
+
+		{% for jour in jours %}
+
+			{% if infosUtiles.jourActuel == jour %}
+
+				<div class="actuel" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
+
+			{% else %}
+
+				<div id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
+                
+
+			{% endif %}
+
+
+		{% endfor %}
+
+		{% for vide in infosUtiles.jourDernier %}
+			<div></div>
+		{% endfor %}
+
+	</div>
 
 {% endblock %}

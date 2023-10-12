@@ -12,3 +12,8 @@ date inscription ne s'affiche pas
 éducateur devient coach
 
 rajouter le champ 'lien de parenté' dans la personnes à contacter
+
+faire un formulaire pour les absences avec début absences / fin absences, 
+et lorsque l'on clique sur un jour sa valeur (id) s'inscrit dans début / fin (donc en javascript)
+
+faire un champ date pour naviguer entre les mois et années
