@@ -1,19 +1,35 @@
 faire le scroll pour la barre des élèves 
 
-la validation de l'inscription doit aussi ajouter la date de l'inscription
+// la validation de l'inscription doit aussi ajouter la date de l'inscription
 
-voir à quoi sert le champ suivi (réponse : encore suivi ou pas à la digitale académie)
+// voir à quoi sert le champ suivi (réponse : encore suivi ou pas à la digitale académie)
 
 empêcher l'accès aux page du site si non-connecté
 
-date inscription ne s'affiche pas
+// date inscription ne s'affiche pas
 
 élève devient étudiants
 éducateur devient coach
 
 rajouter le champ 'lien de parenté' dans la personnes à contacter
 
+
+faire un champ date pour naviguer entre les mois et années
+
+faire une barre de défilement avec les absences des élèves
+
+réinitialiser le mot de passe
+
+créer un git pour Jérémy
+
+à régler : ajouter / supprimer un transport le fais pour tous les étudiants en même temps
+
 faire un formulaire pour les absences avec début absences / fin absences, 
 et lorsque l'on clique sur un jour sa valeur (id) s'inscrit dans début / fin (donc en javascript)
 
-faire un champ date pour naviguer entre les mois et années
+faire l'ajout de document via l'ajout d'absences
+
+verifier si le champ debut ou fin d'absence est selectionné
+une variable représente le dernier champ selectionné avec addEventListener 'focus'
+
+transformer le champ document en fileType et faire le traitement

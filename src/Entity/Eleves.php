@@ -119,6 +119,9 @@ class Eleves
     #[ORM\Column(nullable: true)]
     private ?bool $suivi = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lien_parente = null;
+
     public function __construct()
     {
         $this->entretiens = new ArrayCollection();
@@ -612,6 +615,18 @@ class Eleves
     public function setSuivi(bool $suivi): static
     {
         $this->suivi = $suivi;
+
+        return $this;
+    }
+
+    public function getLienParente(): ?string
+    {
+        return $this->lien_parente;
+    }
+
+    public function setLienParente(?string $lien_parente): static
+    {
+        $this->lien_parente = $lien_parente;
 
         return $this;
     }

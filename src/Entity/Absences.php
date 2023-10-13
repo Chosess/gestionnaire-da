@@ -23,10 +23,10 @@ class Absences
     #[ORM\Column(type: Types::TEXT)]
     private ?string $motif = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $justif = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $document = null;
 
     #[ORM\ManyToOne(inversedBy: 'absences')]

@@ -80,6 +80,7 @@ class ElevesFormType extends AbstractType
                 'required' => false,
                 'mapped' => false
                 ))
+            ->add('lien_parente')
         ;
     }
 
