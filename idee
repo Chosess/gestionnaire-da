@@ -35,3 +35,5 @@ une variable représente le dernier champ selectionné avec addEventListener 'fo
 // transformer le champ document en fileType et faire le traitement
 
 retourner une erreur si la date de fin d'absences est avant la date de début
+
+chiffrer toutes les infos en base de données

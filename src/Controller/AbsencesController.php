@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Absences;
+use App\Entity\Documents;
 use App\Entity\Eleves;
 use App\Form\AbsencesFormType;
 use App\Repository\AbsencesRepository;
@@ -97,6 +98,10 @@ class AbsencesController extends AbstractController
                 if(!empty($file)){
                     $file = $fileService->add($file, 'file');
                     $absences->setDocument($file);
+                    $document = new Documents;
+                    $document->setDocument($file);
+                    $eleves->addDocument($document);
+                    $entityManager->persist($document);
                 }
 
                 
@@ -218,6 +223,10 @@ class AbsencesController extends AbstractController
                 if(!empty($file)){
                     $file = $fileService->add($file, 'file');
                     $absences->setDocument($file);
+                    $document = new Documents;
+                    $document->setDocument($file);
+                    $eleves->addDocument($document);
+                    $entityManager->persist($document);
                 }
 
 
