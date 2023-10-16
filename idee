@@ -1,4 +1,4 @@
-faire le scroll pour la barre des élèves et des absences
+// faire le scroll pour la barre des élèves et des absences
 
 // la validation de l'inscription doit aussi ajouter la date de l'inscription
 
@@ -14,9 +14,9 @@ empêcher l'accès aux page du site si non-connecté
 // rajouter le champ 'lien de parenté' dans la personnes à contacter
 
 
-faire un champ date pour naviguer entre les mois et années
+faire un champ date pour naviguer entre les mois et années (bonus)
 
-faire une barre de défilement avec les absences des élèves
+// faire une barre de défilement avec les absences des élèves
 
 réinitialiser le mot de passe
 
@@ -24,13 +24,13 @@ créer un git pour Jérémy
 
 à régler : ajouter / supprimer un transport le fais pour tous les étudiants en même temps
 
-faire un formulaire pour les absences avec début absences / fin absences, 
-et lorsque l'on clique sur un jour sa valeur (id) s'inscrit dans début / fin (donc en javascript)
+// faire un formulaire pour les absences avec début absences / fin absences, 
+// et lorsque l'on clique sur un jour sa valeur (id) s'inscrit dans début / fin (donc en javascript)
 
-faire l'ajout de document via l'ajout d'absences
+// faire l'ajout de document via l'ajout d'absences
 
-verifier si le champ debut ou fin d'absence est selectionné
-une variable représente le dernier champ selectionné avec addEventListener 'focus'
+// verifier si le champ debut ou fin d'absence est selectionné
+// une variable représente le dernier champ selectionné avec addEventListener 'focus'
 
 // transformer le champ document en fileType et faire le traitement
 
@@ -40,6 +40,6 @@ chiffrer toutes les infos en base de données
 
 mettre l'option multiple sur les documents
 
-mettre le champ remove documents en display none et le remplir en javascript
+// mettre le champ remove documents en display none et le remplir en javascript
 
 les élèves non suivi doivent être affiché après les autres
