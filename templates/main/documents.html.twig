@@ -1,8 +1,36 @@
 {% extends 'main/baseinfos.html.twig' %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/documents.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('assets/js/documents.js')}}" defer></script>
+{% endblock %}
 
 {% block infos %}
-ejknvfeir
+
+	<div class="docs">
+		{% for document in docs %}
+			<div class="document" id="{{ document.id }}">
+				<img src="{{ asset('assets/uploads/file/' ~ document.name)}}" alt="image du document">
+				<p>{{ document.titre }}</p>
+			</div>
+		{% endfor %}
+	</div>
+
+	{{ form_errors(documentsForm) }}
+
+	{{ form_start(documentsForm) }}
+
+	{{ form_row(documentsForm.remove, {label: 'Listes des documents : ', choice: eleves.documents, value: ''}) }}
+
+	{{ form_row(documentsForm.add, { value: '', label: 'Ajouter un document : ' }) }}
+
+	<button>Confirmer</button>
+
+	{{ form_end(documentsForm) }}
 
 
 {% endblock %}

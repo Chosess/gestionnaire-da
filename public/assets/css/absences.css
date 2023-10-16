@@ -19,6 +19,7 @@ section.infos > div:first-child div.grid > div.actuel {
   color: green;
 }
 section.infos > div:first-child section.infosComplementaires {
+  overflow-y: scroll;
   margin-left: 20px;
 }
 section.infos > div:first-child section.infosComplementaires > div > a {

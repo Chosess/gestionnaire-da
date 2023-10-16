@@ -1,10 +1,12 @@
-section.infos{
-    &>div:first-child{
+section.infos {
+    &>div:first-child {
         display: flex;
+
         div.grid {
             display: grid;
             grid: auto-flow 70px / repeat(7, 1fr);
             border: 2px solid black;
+
             &>div {
                 width: 70px;
                 height: 70px;
@@ -12,29 +14,37 @@ section.infos{
                 text-align: center;
                 cursor: pointer;
             }
-            &>div.actuel{
+
+            &>div.actuel {
                 font-weight: bold;
                 text-decoration: underline;
                 color: green;
             }
         }
-        section.infosComplementaires{
+
+        section.infosComplementaires {
+            overflow-y: scroll;
             margin-left: 20px;
-            &>div{
-                &>a{
+
+            &>div {
+                &>a {
                     color: black;
                     text-decoration: none;
-                    &>div.absence{
+
+                    &>div.absence {
                         border: 2px solid black;
                         border-radius: 20px;
                         margin-top: 10px;
-                        &>div.flex{
+
+                        &>div.flex {
                             display: flex;
-                            &>p{
+
+                            &>p {
                                 margin: 10px;
                             }
                         }
-                        p{
+
+                        p {
                             margin: 10px;
                         }
                     }
@@ -42,28 +52,33 @@ section.infos{
             }
         }
     }
-    &>div:last-child{
-        &>form{
+
+    &>div:last-child {
+        &>form {
             margin-top: 20px;
             padding: 10px;
             border: 2px solid black;
             border-radius: 20px;
             display: flex;
             justify-content: space-evenly;
-            &>div{
-                &>div{
+
+            &>div {
+                &>div {
                     margin-top: 10px;
-                    &>label{
+
+                    &>label {
                         margin-right: 10px;
                     }
                 }
-                &>button{
+
+                &>button {
                     margin-top: 10px;
                 }
             }
-            &>div:first-child{
-                &>div:last-child{
-                    &>textarea{
+
+            &>div:first-child {
+                &>div:last-child {
+                    &>textarea {
                         width: 400px;
                         height: 100px;
                     }
@@ -72,6 +87,3 @@ section.infos{
         }
     }
 }
-
-    
-

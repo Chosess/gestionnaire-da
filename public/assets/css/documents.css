@@ -1,0 +1,29 @@
+section.infos > div.docs {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+section.infos > div.docs > div.document {
+  border: 1px solid black;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+}
+section.infos > div.docs > div.document > img {
+  width: 90%;
+  height: 90%;
+}
+section.infos > div.docs > div.document > p {
+  margin: 10px;
+}
+section.infos > form > div:first-child {
+  display: none;
+}
+section.infos > form > div:nth-child(2), section.infos > form > button {
+  margin-top: 20px;
+}/*# sourceMappingURL=documents.css.map */

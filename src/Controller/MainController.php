@@ -208,14 +208,5 @@ class MainController extends AbstractController
             'elevesForm' => $form->createView(),
         ]);
     }
-
-    #[Route('//{id}/documents', name: '_documents')]
-    public function documents(Eleves $eleves, ElevesRepository $elevesRepository): Response
-    {
-        return $this->render('main/documents.html.twig', [
-            'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
-            'eleves' => $eleves
-        ]);
-    }
 }
 

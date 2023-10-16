@@ -6,6 +6,7 @@ body div.flex section.navbar {
   border: 1px solid black;
   border-radius: 5px;
   width: 300px;
+  overflow-y: scroll;
 }
 body div.flex section.navbar ul {
   list-style-type: none;

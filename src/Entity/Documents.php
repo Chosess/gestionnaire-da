@@ -13,11 +13,11 @@ class Documents
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $document = null;
 
     #[ORM\ManyToOne(inversedBy: 'documents')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Eleves $eleves = null;
 
     public function getId(): ?int
@@ -35,6 +35,10 @@ class Documents
         $this->document = $document;
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->document;
     }
 
     public function getEleves(): ?Eleves
