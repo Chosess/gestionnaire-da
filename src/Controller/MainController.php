@@ -8,7 +8,6 @@ use App\Form\ElevesFormType;
 use App\Repository\ElevesRepository;
 use App\Service\PictureService;
 use DateTime;
-use DateTimeZone;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +35,7 @@ class MainController extends AbstractController
                 $folder = 'image';
 
                 // on ajoute la nouvelle photo de profil
-                $fichier = $pictureService->add($image, $folder, 300, 300);
+                $fichier = $pictureService->add($image, $folder);
 
                 $eleve->setPhoto($fichier);
 
@@ -135,7 +134,7 @@ class MainController extends AbstractController
 
 
                 // on ajoute la nouvelle photo de profil
-                $fichier = $pictureService->add($image, $folder, 300, 300);
+                $fichier = $pictureService->add($image, $folder);
 
                 $eleves->setPhoto($fichier);
 
@@ -214,15 +213,6 @@ class MainController extends AbstractController
     public function documents(Eleves $eleves, ElevesRepository $elevesRepository): Response
     {
         return $this->render('main/documents.html.twig', [
-            'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
-            'eleves' => $eleves
-        ]);
-    }
-
-    #[Route('//{id}/absences', name: '_absences')]
-    public function absences(Eleves $eleves, ElevesRepository $elevesRepository): Response
-    {
-        return $this->render('main/absences.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves
         ]);

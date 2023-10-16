@@ -7,6 +7,7 @@ use App\Entity\Eleves;
 use App\Form\AbsencesFormType;
 use App\Repository\AbsencesRepository;
 use App\Repository\ElevesRepository;
+use App\Service\FileService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AbsencesController extends AbstractController
 {
     #[Route('/{id}/absences', name: '_absences')]
-    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session): Response
+    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session, FileService $fileService): Response
     {
         // on met l'id de l'élève dans la session
         $session->set('eleve', $eleves->getId());
@@ -85,10 +86,20 @@ class AbsencesController extends AbstractController
                     $absences->setFin($fin);
                 }
 
+                // si il y as seulement une date de début, la date de fin prend la même date que celle de début
                 if (empty($fin) && !empty($debut)) {
                     $absences->setFin($debut);
                 }
 
+                // le fichier 
+                $file = $absencesForm->get('document')->getData();
+
+                if(!empty($file)){
+                    $file = $fileService->add($file, 'file');
+                    $absences->setDocument($file);
+                }
+
+                
                 $eleves->addAbsence($absences);
                 $entityManager->persist($eleves);
 
@@ -99,11 +110,11 @@ class AbsencesController extends AbstractController
         }
 
         $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()]);
-        foreach($abs as $ab){
+        foreach ($abs as $ab) {
             //on vérifie si le motif dépasse 50 caractères
             $motif = $ab->getMotif();
             // si il l'est on le coupe à 50 caractères
-            if(strlen($motif) > 50){
+            if (strlen($motif) > 50) {
                 $motif = substr($motif, 0, 50) . ' ...';
             }
             $infosAbsences[] = [
@@ -113,6 +124,10 @@ class AbsencesController extends AbstractController
                 'motif' => $motif,
                 'justif' => $ab->isJustif()
             ];
+        }
+
+        if (empty($infosAbsences)) {
+            $infosAbsences = 'vide';
         }
 
         return $this->render('main/absences.html.twig', [
@@ -126,7 +141,7 @@ class AbsencesController extends AbstractController
     }
 
     #[Route('/absences/{id}', name: '_modif')]
-    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository): Response
+    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository, FileService $fileService): Response
     {
         $mois = date("n");
         $annee = date('Y');
@@ -197,6 +212,15 @@ class AbsencesController extends AbstractController
                     $absences->setFin($debut);
                 }
 
+                // le fichier 
+                $file = $absencesForm->get('document')->getData();
+
+                if(!empty($file)){
+                    $file = $fileService->add($file, 'file');
+                    $absences->setDocument($file);
+                }
+
+
                 $eleves->addAbsence($absences);
                 $entityManager->persist($eleves);
 
@@ -207,11 +231,11 @@ class AbsencesController extends AbstractController
         }
 
         $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()]);
-        foreach($abs as $ab){
+        foreach ($abs as $ab) {
             //on vérifie si le motif dépasse 50 caractères
             $motif = $ab->getMotif();
             // si il l'est on le coupe à 50 caractères
-            if(strlen($motif) > 50){
+            if (strlen($motif) > 50) {
                 $motif = substr($motif, 0, 50) . ' ...';
             }
             $infosAbsences[] = [
@@ -224,11 +248,11 @@ class AbsencesController extends AbstractController
         }
 
         $absences = [
-                'debut' => $absences->getDebut()->format('d/m/Y'),
-                'fin' => $absences->getFin()->format('d/m/Y'),
-                'motif' => $absences->getMotif(),
-                'justif' => $absences->isJustif(),
-                'document' => $absences->getDocument()
+            'debut' => $absences->getDebut()->format('d/m/Y'),
+            'fin' => $absences->getFin()->format('d/m/Y'),
+            'motif' => $absences->getMotif(),
+            'justif' => $absences->isJustif(),
+            'document' => $absences->getDocument()
         ];
 
 

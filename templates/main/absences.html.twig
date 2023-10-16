@@ -48,62 +48,59 @@
 
 		</div>
 
-		<div>
-			{{ form_errors(absencesForm) }}
-
-			{{ form_start(absencesForm) }}
-			<div>
-				{{ form_row(absencesForm.debut, { value: '' }) }}
-				{{ form_row(absencesForm.fin, { value: '' }) }}
-				{{ form_row(absencesForm.motif, { value: '' }) }}
-			</div>
+		<section class="infosComplementaires">
 
 			<div>
-				{{ form_row(absencesForm.document, { value: '' }) }}
-				{{ form_row(absencesForm.justif, { value: '', label: 'Absence Justifiée' }) }}
+				{% for absence in infosAbsences %}
+					<a href="{{ path('_modif', {id: absence.id}) }}">
+						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}">
+							<div class="flex">
+								<p>Du
+									{{ absence.debut }}
+									au
+									{{ absence.fin }}</p>
+								<p>Justifiée :
 
-				<button>Confirmer l'absence</button>
+									{% if absence.justif == 0 %}
+										Non
+									{% endif %}
+
+									{% if absence.justif == 1 %}
+										Oui
+									{% endif %}
+
+								</p>
+							</div>
+							<p>Motif :
+								{{ absence.motif }}</p>
+						</div>
+					</a>
+				{% endfor %}
 			</div>
 
-			{{ form_end(absencesForm) }}
-		</div>
-
+		</section>
 
 	</div>
 
+	<div>
+		{{ form_errors(absencesForm) }}
 
-{% endblock %}
-
-{% block infosComplementaires %}
-	<section class="infosComplementaires">
-
+		{{ form_start(absencesForm) }}
 		<div>
-			{% for absence in infosAbsences %}
-				<a href="{{ path('_modif', {id: absence.id}) }}">
-					<div class="absence">
-						<div class="flex">
-							<p>Du
-								{{ absence.debut }}
-								au
-								{{ absence.fin }}</p>
-							<p>Justifiée :
-
-								{% if absence.justif == 0 %}
-									Non
-								{% endif %}
-
-								{% if absence.justif == 1 %}
-									Oui
-								{% endif %}
-
-							</p>
-						</div>
-						<p>Motif :
-							{{ absence.motif }}</p>
-					</div>
-				</a>
-			{% endfor %}
+			{{ form_row(absencesForm.debut, { value: '' }) }}
+			{{ form_row(absencesForm.fin, { value: '' }) }}
+			{{ form_row(absencesForm.motif, { value: '' }) }}
 		</div>
 
-	</section>
+		<div>
+			{{ form_row(absencesForm.document, { value: '' }) }}
+			{{ form_row(absencesForm.justif, { value: '', label: 'Absence Justifiée' }) }}
+
+			<button>Confirmer l'absence</button>
+		</div>
+
+		{{ form_end(absencesForm) }}
+	</div>
+
+
 {% endblock %}

@@ -48,62 +48,58 @@
 
 		</div>
 
+		<section class="infosComplementaires">
+
+			<div>
+				{% for absence in infosAbsences %}
+					<a href="{{ path('_modif', {id: absence.id}) }}">
+						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}">
+							<div class="flex">
+								<p>Du
+									{{ absence.debut }}
+									au
+									{{ absence.fin }}</p>
+								<p>Justifiée :
+
+									{% if absence.justif == 0 %}
+										Non
+									{% endif %}
+
+									{% if absence.justif == 1 %}
+										Oui
+									{% endif %}
+
+								</p>
+							</div>
+							<p>Motif :
+								{{ absence.motif }}</p>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+
+		</section>
+	</div>
+
+	<div>
+		{{ form_errors(absencesForm) }}
+
+		{{ form_start(absencesForm) }}
 		<div>
-			{{ form_errors(absencesForm) }}
-
-			{{ form_start(absencesForm) }}
-			<div>
-				{{ form_row(absencesForm.debut, { value: absences.debut }) }}
-				{{ form_row(absencesForm.fin, { value: absences.fin }) }}
-				{{ form_row(absencesForm.motif, { value: absences.motif }) }}
-			</div>
-
-			<div>
-				{{ form_row(absencesForm.document, { value: absences.document }) }}
-				{{ form_row(absencesForm.justif, { value: absences.justif, label: 'Absence Justifiée' }) }}
-
-				<button>Confirmer l'absence</button>
-			</div>
-
-			{{ form_end(absencesForm) }}
+			{{ form_row(absencesForm.debut, { value: absences.debut }) }}
+			{{ form_row(absencesForm.fin, { value: absences.fin }) }}
+			{{ form_row(absencesForm.motif, { value: absences.motif }) }}
 		</div>
 
+		<div>
+			{{ form_row(absencesForm.justif, { value: absences.justif, label: 'Absence Justifiée' }) }}
+			{{ form_row(absencesForm.document, { value: absences.document }) }}
 
+			<button>Confirmer l'absence</button>
+		</div>
+
+		{{ form_end(absencesForm) }}
 	</div>
 
 
-{% endblock %}
-
-{% block infosComplementaires %}
-	<section class="infosComplementaires">
-
-		<div>
-			{% for absence in infosAbsences %}
-				<a href="{{ path('_modif', {id: absence.id}) }}">
-					<div class="absence">
-						<div class="flex">
-							<p>Du
-								{{ absence.debut }}
-								au
-								{{ absence.fin }}</p>
-							<p>Justifiée :
-
-								{% if absence.justif == 0 %}
-									Non
-								{% endif %}
-
-								{% if absence.justif == 1 %}
-									Oui
-								{% endif %}
-
-							</p>
-						</div>
-						<p>Motif :
-							{{ absence.motif }}</p>
-					</div>
-				</a>
-			{% endfor %}
-		</div>
-
-	</section>
 {% endblock %}

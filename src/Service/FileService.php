@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-class PictureService
+class FileService
 {
     private $params;
 
@@ -16,23 +16,23 @@ class PictureService
         $this->params = $params;
     }
 
-    public function add(UploadedFile $picture, ?string $folder = '')
+    public function add(UploadedFile $file, ?string $folder = '')
     {
-        $fichier = md5(uniqid(rand(), true)) . '.webp';
+        $fichier = md5(uniqid(rand(), true)) . '---' . $file->getClientOriginalName();
 
-        $picture_infos = getimagesize($picture);
+        $file_infos = filetype($file);
 
-        if($picture_infos === false){
-            throw new Exception('Format d\'image incorrect');
+        if($file_infos === false){
+            throw new Exception('Format de fichier incorrect');
         }
 
         $path = $this->params->get('images_directory') . $folder;
-
+        
         if(!file_exists($path)){
             mkdir($path, 0755, true);
         }
 
-        $picture->move($path . '/', $fichier);
+        $file->move($path . '/', $fichier);
 
         return $fichier;
     }

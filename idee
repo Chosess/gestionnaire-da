@@ -1,4 +1,4 @@
-faire le scroll pour la barre des élèves 
+faire le scroll pour la barre des élèves et des absences
 
 // la validation de l'inscription doit aussi ajouter la date de l'inscription
 
@@ -11,7 +11,7 @@ empêcher l'accès aux page du site si non-connecté
 élève devient étudiants
 éducateur devient coach
 
-rajouter le champ 'lien de parenté' dans la personnes à contacter
+// rajouter le champ 'lien de parenté' dans la personnes à contacter
 
 
 faire un champ date pour naviguer entre les mois et années
@@ -32,4 +32,6 @@ faire l'ajout de document via l'ajout d'absences
 verifier si le champ debut ou fin d'absence est selectionné
 une variable représente le dernier champ selectionné avec addEventListener 'focus'
 
-transformer le champ document en fileType et faire le traitement
+// transformer le champ document en fileType et faire le traitement
+
+retourner une erreur si la date de fin d'absences est avant la date de début

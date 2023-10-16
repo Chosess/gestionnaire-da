@@ -1,3 +1,6 @@
+section.infos > div:first-child {
+  display: flex;
+}
 section.infos > div:first-child div.grid {
   display: grid;
   grid: auto-flow 70px/repeat(7, 1fr);
@@ -15,7 +18,28 @@ section.infos > div:first-child div.grid > div.actuel {
   text-decoration: underline;
   color: green;
 }
-section.infos > div:first-child > div:last-child > form {
+section.infos > div:first-child section.infosComplementaires {
+  margin-left: 20px;
+}
+section.infos > div:first-child section.infosComplementaires > div > a {
+  color: black;
+  text-decoration: none;
+}
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence {
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence > div.flex {
+  display: flex;
+}
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence > div.flex > p {
+  margin: 10px;
+}
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence p {
+  margin: 10px;
+}
+section.infos > div:last-child > form {
   margin-top: 20px;
   padding: 10px;
   border: 2px solid black;
@@ -23,31 +47,16 @@ section.infos > div:first-child > div:last-child > form {
   display: flex;
   justify-content: space-evenly;
 }
-section.infos > div:first-child > div:last-child > form > div > div {
+section.infos > div:last-child > form > div > div {
   margin-top: 10px;
 }
-section.infos > div:first-child > div:last-child > form > div > div > label {
+section.infos > div:last-child > form > div > div > label {
   margin-right: 10px;
 }
-section.infos > div:first-child > div:last-child > form > div > button {
+section.infos > div:last-child > form > div > button {
   margin-top: 10px;
 }
-
-section.infosComplementaires > div > a {
-  color: black;
-  text-decoration: none;
-}
-section.infosComplementaires > div > a > div.absence {
-  border: 2px solid black;
-  border-radius: 20px;
-  margin-top: 10px;
-}
-section.infosComplementaires > div > a > div.absence > div.flex {
-  display: flex;
-}
-section.infosComplementaires > div > a > div.absence > div.flex > p {
-  margin: 10px;
-}
-section.infosComplementaires > div > a > div.absence p {
-  margin: 10px;
+section.infos > div:last-child > form > div:first-child > div:last-child > textarea {
+  width: 400px;
+  height: 100px;
 }/*# sourceMappingURL=absences.css.map */
