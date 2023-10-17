@@ -20,7 +20,8 @@ class DocumentsFormType extends AbstractType
             ))
             ->add('add', FileType::class, array(
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'multiple' => true
             ));
     }
 

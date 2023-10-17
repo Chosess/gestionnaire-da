@@ -31,7 +31,8 @@ class AbsencesFormType extends AbstractType
                 'data_class' => null,
                 'required' => false,
                 'label' => 'file',
-                'mapped' => false
+                'mapped' => false,
+                'multiple' => true
             ))
         ;
     }

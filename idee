@@ -38,8 +38,12 @@ retourner une erreur si la date de fin d'absences est avant la date de début
 
 chiffrer toutes les infos en base de données
 
-mettre l'option multiple sur les documents
+// mettre l'option multiple sur les documents
 
 // mettre le champ remove documents en display none et le remplir en javascript
 
 les élèves non suivi doivent être affiché après les autres
+
+les photos ne prennent que les formats jpeg / png / webp
+
+la page ne se recharge pas quand on ajoute / supprime un document

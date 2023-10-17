@@ -19,10 +19,14 @@ class DocumentsController extends AbstractController
     #[Route('/{id}/documents', name: '_documents')]
     public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService): Response
     {
-        foreach($documentsRepository->findBy(['eleves' => $eleves->getId()]) as $doc){
+        foreach ($documentsRepository->findBy(['eleves' => $eleves->getId()]) as $doc) {
+            $titre = explode('---', $doc->getDocument())[1];
+            if(strlen($titre) > 15){
+                $titre = substr($titre, 0, 15) . '...';
+            }
             $docs[] = [
                 'id' => $doc->getId(),
-                'titre' => explode('---', $doc->getDocument())[1],
+                'titre' => $titre,
                 'name' => $doc->getDocument()
             ];
         }
@@ -32,8 +36,6 @@ class DocumentsController extends AbstractController
 
         if ($documentsForm->isSubmitted() && $documentsForm->isValid()) {
 
-            $documents = new Documents;
-            
             // l'ajout de document
             $addDocument = $documentsForm->get('add')->getData();
 
@@ -41,32 +43,37 @@ class DocumentsController extends AbstractController
             if (!empty($addDocument)) {
 
                 // on ajoute le document
-                $fichier = $fileService->add($addDocument, 'file');
+                foreach ($addDocument as $add) {
+                    $documents = new Documents;
 
-                $documents->setDocument($fichier);
-                $eleves->addDocument($documents);
+                    $fichier = $fileService->add($add, 'file');
+                    $documents->setDocument($fichier);
+                    $eleves->addDocument($documents);
+
+                    $entityManager->persist($eleves);
+                    $entityManager->persist($documents);
+                    $entityManager->flush();
+                }
             }
 
             // la suppression de document
             $removeDocuments = $documentsForm->get('remove')->getData();
 
-            if(!empty($removeDocuments)){
-                foreach(explode(',', $removeDocuments) as $removedocument){
+            if (!empty($removeDocuments)) {
+                foreach (explode(',', $removeDocuments) as $removedocument) {
                     $remdoc = $documentsRepository->findOneBy(['id' => $removedocument]);
                     $fileService->delete($remdoc->getDocument(), 'file');
-                    // $remdoc->setEleves(null);
-                    // $entityManager->remove($remdoc);
+                    $remdoc->setEleves(null);
                     $eleves->removeDocument($remdoc);
+                    $entityManager->remove($remdoc);
+                    $entityManager->persist($eleves);
+                    $entityManager->flush();
                 }
             }
 
-            $entityManager->persist($eleves);
-            $entityManager->persist($documents);
-            $entityManager->flush();
-
         }
 
-        if(empty($docs)){
+        if (empty($docs)) {
             $docs = '';
         }
 

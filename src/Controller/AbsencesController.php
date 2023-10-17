@@ -93,15 +93,17 @@ class AbsencesController extends AbstractController
                 }
 
                 // le fichier 
-                $file = $absencesForm->get('document')->getData();
+                $files = $absencesForm->get('document')->getData();
 
-                if(!empty($file)){
-                    $file = $fileService->add($file, 'file');
-                    $absences->setDocument($file);
-                    $document = new Documents;
-                    $document->setDocument($file);
-                    $eleves->addDocument($document);
-                    $entityManager->persist($document);
+                if(!empty($files)){
+                    foreach($files as $file){
+                        $file = $fileService->add($file, 'file');
+                        $absences->setDocument($file);
+                        $document = new Documents;
+                        $document->setDocument($file);
+                        $eleves->addDocument($document);
+                        $entityManager->persist($document);
+                    }
                 }
 
                 
@@ -218,15 +220,17 @@ class AbsencesController extends AbstractController
                 }
 
                 // le fichier 
-                $file = $absencesForm->get('document')->getData();
+                $files = $absencesForm->get('document')->getData();
 
-                if(!empty($file)){
-                    $file = $fileService->add($file, 'file');
-                    $absences->setDocument($file);
-                    $document = new Documents;
-                    $document->setDocument($file);
-                    $eleves->addDocument($document);
-                    $entityManager->persist($document);
+                if(!empty($files)){
+                    foreach($files as $file){
+                        $file = $fileService->add($file, 'file');
+                        $absences->setDocument($file);
+                        $document = new Documents;
+                        $document->setDocument($file);
+                        $eleves->addDocument($document);
+                        $entityManager->persist($document);
+                    }
                 }
 
 
