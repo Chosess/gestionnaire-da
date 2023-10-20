@@ -14,8 +14,8 @@ class Entretiens
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $date = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $commentaire = null;
@@ -29,12 +29,12 @@ class Entretiens
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeImmutable
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeImmutable $date): static
+    public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
 

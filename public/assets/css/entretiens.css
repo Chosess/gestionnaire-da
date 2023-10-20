@@ -1,0 +1,41 @@
+section.infos {
+  width: 60%;
+}
+section.infos > div:first-child > form {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+}
+section.infos > div:first-child > form > div:first-child {
+  width: 80%;
+  height: 100px;
+}
+section.infos > div:first-child > form > div:first-child > textarea {
+  width: 80%;
+  height: 60%;
+}
+section.infos > div:first-child > form > div:last-of-type > div {
+  margin-bottom: 20px;
+}
+section.infos > div:last-child {
+  overflow-y: scroll;
+}
+section.infos > div:last-child > a {
+  text-decoration: none;
+  color: black;
+}
+section.infos > div:last-child > a > div {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+section.infos > div:last-child > a > div > p > span {
+  text-decoration: underline;
+  font-style: italic;
+}/*# sourceMappingURL=entretiens.css.map */

@@ -1,0 +1,41 @@
+{% extends 'main/baseinfos.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/entretiens.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
+{% endblock %}
+
+{# {% block javascripts %}
+	<script src="{{ asset('assets/js/absences.js')}}" defer></script>
+{% endblock %} #}
+
+{% block infos %}
+
+    <div>
+        {{ form_errors(entretiensForm) }}
+
+        {{ form_start(entretiensForm) }}
+
+        {{ form_row(entretiensForm.commentaire, {label: 'Résumé de l\'entretien : ', value: valeurs.commentaire}) }}
+        <div>
+            {{ form_row(entretiensForm.date, {label: 'Date : ', value: valeurs.date}) }}
+            <button>Valider</button>
+        </div>
+
+        {{ form_end(entretiensForm) }}
+    </div>
+
+    <a href="{{ path('_suivi', {id: eleves.id}) }}">+ Ajouter un entretien</a>
+
+    <div>
+        {% for entretien in infosEntretiens %}
+            <a href="{{ path('_suivimodif', {id: entretien.id}) }}">
+                <div>
+                    <p><span>Résumé de l'entretien :</span> {{ entretien.commentaire }}</p>
+                    <p><span>Date :</span> {{ entretien.date }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
