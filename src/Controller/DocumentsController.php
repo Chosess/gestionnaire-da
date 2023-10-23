@@ -19,17 +19,6 @@ class DocumentsController extends AbstractController
     #[Route('/{id}/documents', name: '_documents')]
     public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService): Response
     {
-        foreach ($documentsRepository->findBy(['eleves' => $eleves->getId()]) as $doc) {
-            $titre = explode('---', $doc->getDocument())[1];
-            if(strlen($titre) > 15){
-                $titre = substr($titre, 0, 15) . '...';
-            }
-            $docs[] = [
-                'id' => $doc->getId(),
-                'titre' => $titre,
-                'name' => $doc->getDocument()
-            ];
-        }
 
         $documentsForm = $this->createForm(DocumentsFormType::class);
         $documentsForm->handleRequest($request);
@@ -73,6 +62,19 @@ class DocumentsController extends AbstractController
 
         }
 
+        
+        foreach ($documentsRepository->findBy(['eleves' => $eleves->getId()]) as $doc) {
+            $titre = explode('---', $doc->getDocument())[1];
+            if(strlen($titre) > 15){
+                $titre = substr($titre, 0, 15) . '...';
+            }
+            $docs[] = [
+                'id' => $doc->getId(),
+                'titre' => $titre,
+                'name' => $doc->getDocument()
+            ];
+        }
+        
         if (empty($docs)) {
             $docs = '';
         }

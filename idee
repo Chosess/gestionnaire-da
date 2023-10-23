@@ -59,3 +59,7 @@ pour les images peut-être faire un file_exists avant de les afficher
 // retour a la page ajout d'absences
 
 il y a un petit bug lors de l'ajout d'absences (ce bug fait que parfois les nouvelles absences ne s'affiche pas)
+
+faire les documents préremplies
+
+trier les twigs par pages

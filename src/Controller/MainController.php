@@ -6,6 +6,7 @@ use App\Entity\Eleves;
 use App\Entity\Transports;
 use App\Form\ElevesFormType;
 use App\Repository\ElevesRepository;
+use App\Repository\TransportsRepository;
 use App\Service\PictureService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -109,7 +110,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/{id}/infos', name: '_infos')]
-    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
+    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, TransportsRepository $transportsRepository): Response
     {
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
@@ -151,14 +152,15 @@ class MainController extends AbstractController
             }
 
             // enlever un transport
-            $removetransport = $form->get('transports')->getData();
-            
-            if(!empty($removetransport)){
-                foreach($removetransport as $rt){
-                    $rt->setEleves(null);
-                    $entityManager->remove($rt);
+            $removetransports = $form->get('removetransports')->getData();
+            if(!empty($removetransports)){
+                foreach(explode(',', $removetransports) as $removetransport){
+                    $transport = $transportsRepository->findOneBy(['id' => $removetransport]);
+                    $transport->setEleves(null);
+                    $entityManager->remove($transport);
                 }
             }
+            
 
             // la date de naissance
             $date = $form->get('date_naissance')->getData();
@@ -200,11 +202,21 @@ class MainController extends AbstractController
             $di = '';
         }
 
+        $transports = $transportsRepository->findBy(['eleves' => $eleves]);
+
+        foreach($transports as $transport){
+            $tableau[] = [
+                'id' => $transport->getId(),
+                'transport' => $transport->getTransport(),
+            ];
+        }
+
         return $this->render('main/infos.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'dn' => $dn,
             'di' => $di,
+            'tableau' => $tableau,
             'elevesForm' => $form->createView(),
         ]);
     }

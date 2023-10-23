@@ -1,157 +1,170 @@
 {% extends 'main/baseinfos.html.twig' %}
 
+{% block javascripts %}
+	<script src="{{ asset('assets/js/accueil.js')}}" defer></script>
+{% endblock %}
 
 {% block infos %}
 
-		{{ form_errors(elevesForm) }}
+	{{ form_errors(elevesForm) }}
 
-		{{ form_start(elevesForm) }}
+	{{ form_start(elevesForm) }}
 
+	<div>
 		<div>
-			<div>
-				<h2>Etudiant</h2>
-				{{ form_row(elevesForm.civilite, {
+			<h2>Etudiant</h2>
+			{{ form_row(elevesForm.civilite, {
                     value: eleves.civilite,
                     label: 'Civilité : '
                 }) }}
-				{{ form_row(elevesForm.nom, {
+			{{ form_row(elevesForm.nom, {
                     value: eleves.nom,
                     label: 'Nom : '
                 }) }}
-				{{ form_row(elevesForm.prenom, {
+			{{ form_row(elevesForm.prenom, {
                     value: eleves.prenom,
                     label: 'Prénom : '
                 }) }}
-				{{ form_row(elevesForm.photo, {
+			{{ form_row(elevesForm.photo, {
                     value: eleves.photo,
                     label: 'Photo : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Coordonnées</h2>
-				{{ form_row(elevesForm.adresse, {
+		<div>
+			<h2>Coordonnées</h2>
+			{{ form_row(elevesForm.adresse, {
                     value: eleves.adresse,
                     label: 'Adresse : '
                 }) }}
-				{{ form_row(elevesForm.code_postal, {
+			{{ form_row(elevesForm.code_postal, {
                     value: eleves.codePostal,
                     label: 'Code postal : '
                 }) }}
-				{{ form_row(elevesForm.ville, {
+			{{ form_row(elevesForm.ville, {
                     value: eleves.ville,
                     label: 'Ville : '
                 }) }}
-				{{ form_row(elevesForm.email, {
+			{{ form_row(elevesForm.email, {
                     value: eleves.email,
                     label: 'email : '
                 }) }}{{ form_row(elevesForm.portable, {
                     value: eleves.portable,
                     label: 'Portable : '
                 }) }}
-				{{ form_row(elevesForm.fixe, {
+			{{ form_row(elevesForm.fixe, {
                     value: eleves.fixe,
                     label: 'Fixe : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Personne à contacter en cas d'urgence</h2>
-				{{ form_row(elevesForm.nom_urgence, {
+		<div>
+			<h2>Personne à contacter en cas d'urgence</h2>
+			{{ form_row(elevesForm.nom_urgence, {
                     value: eleves.nomUrgence,
                     label: 'Nom : '
                 }) }}
-				{{ form_row(elevesForm.prenom_urgence, {
+			{{ form_row(elevesForm.prenom_urgence, {
                     value: eleves.prenomUrgence,
                     label: 'Prénom : '
                 }) }}
-				{{ form_row(elevesForm.telephone_urgence, {
+			{{ form_row(elevesForm.telephone_urgence, {
                     value: eleves.telephoneUrgence,
                     label: 'Téléphone : '
                 }) }}
-                {{ form_row(elevesForm.lien_parente, {
+			{{ form_row(elevesForm.lien_parente, {
                     value: eleves.lienParente,
                     label: 'Lien de parenté : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Naissance</h2>
-				{{ form_row(elevesForm.lieu_naissance, {
+		<div>
+			<h2>Naissance</h2>
+			{{ form_row(elevesForm.lieu_naissance, {
                     value: eleves.lieuNaissance,
                     label: 'Lieu : '
                 }) }}
-				{{ form_row(elevesForm.date_naissance, {
+			{{ form_row(elevesForm.date_naissance, {
                     value: dn,
                     label: 'Date : '
                 }) }}
-				{{ form_row(elevesForm.nationalite, {
+			{{ form_row(elevesForm.nationalite, {
                     value: eleves.nationalite,
                     label: 'Nationalité : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Situation Personnelle</h2>
-				{{ form_row(elevesForm.etat_civil, {
+		<div>
+			<h2>Situation Personnelle</h2>
+			{{ form_row(elevesForm.etat_civil, {
                     value: eleves.etatCivil,
                     label: 'Etat Civil : '
                 }) }}
-				{{ form_row(elevesForm.enfants, {
+			{{ form_row(elevesForm.enfants, {
                     value: eleves.enfants,
                     label: 'Enfants : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Moyen de locomotion</h2>
-				{% if eleves.transports == null %}
-					<p>Aucun transports sélectionné</p>
-				{% endif %}
+		<div>
+			<h2>Moyen de locomotion</h2>
+			{% if tableau == null %}
+				<p>Aucun transports sélectionné</p>
 
-                {{ form_row(elevesForm.transports, {
-                    label: 'Transport(s) : '
+			{% else %}
+
+				{% for transport in tableau %}
+						<p>{{ transport.transport }} <input type="checkbox" class="transport" id="{{ transport.id }}"> </p>
+				{% endfor %}
+
+				<div class="dnone">
+					{{ form_row(elevesForm.removetransports, {
+                    value: ''
                     }) }}
+				</div>
 
-                {{ form_row(elevesForm.newtransport, {
+			{% endif %}
+
+
+			{{ form_row(elevesForm.newtransport, {
                     value: '',
                     label: 'Ajouter un transport : '
                     }) }}
 
 
-			</div>
-
 		</div>
 
+	</div>
 
+
+	<div>
 		<div>
-			<div>
-				<h2>Matériel informatique</h2>
-				{{ form_row(elevesForm.ordinateur, {
+			<h2>Matériel informatique</h2>
+			{{ form_row(elevesForm.ordinateur, {
                     value: eleves.ordinateur,
                     label: 'Possède un ordinateur : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Apte au sport</h2>
-				{{ form_row(elevesForm.sport, {
+		<div>
+			<h2>Apte au sport</h2>
+			{{ form_row(elevesForm.sport, {
                     value: eleves.sport,
                     label: 'Est apte au sport : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Validation inscription</h2>
-				{{ form_row(elevesForm.validation_inscription, {
+		<div>
+			<h2>Validation inscription</h2>
+			{{ form_row(elevesForm.validation_inscription, {
                     value: eleves.validationInscription,
                     label: 'Inscription Validée : '
                 }) }}
-			</div>
+		</div>
 
-			<div>
-				<h2>Parcours</h2>
-				{{ form_row(elevesForm.date_inscription, {
+		<div>
+			<h2>Parcours</h2>
+			{{ form_row(elevesForm.date_inscription, {
                     value: di,
                     label: 'Date d\'inscription à la Digitale Académie : '
                 }) }}
@@ -187,19 +200,15 @@
                     value: eleves.droitImage,
                     label: 'Droit à l\'image : '
                 }) }}
-                {{ form_row(elevesForm.suivi, {
+			{{ form_row(elevesForm.suivi, {
                     value: eleves.suivi,
                     label: 'L\'étudiant n\'est plus suivi à la digitale académie : '
                 }) }}
-			</div>
-
-			<button>Confirmer les changements</button>
 		</div>
 
-		{{ form_end(elevesForm) }}
+		<button>Confirmer les changements</button>
+	</div>
 
-	</section>
+	{{ form_end(elevesForm) }}
 
-
-    </div>
-{% endblock %}
+</section></div>{% endblock %}

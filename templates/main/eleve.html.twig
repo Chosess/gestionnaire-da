@@ -16,7 +16,7 @@
 			<ul>
 
 				<a href="{{ path('app_main') }}">
-					<li>+ Ajouter un élève</li>
+					<li>+ Ajouter un étudiant</li>
 				</a>
 
 
@@ -55,7 +55,7 @@
 
 			<div>
 				<div>
-					<h2>Eleve</h2>
+					<h2>Etudiant</h2>
 					{{ form_row(elevesForm.civilite, {
                     label: 'Civilité : '
                 }) }}
@@ -102,7 +102,7 @@
 					{{ form_row(elevesForm.telephone_urgence, {
                     label: 'Téléphone : '
                 }) }}
-				{{ form_row(elevesForm.lien_parente, {
+					{{ form_row(elevesForm.lien_parente, {
                     label: 'Lien de parenté : '
                 }) }}
 				</div>
@@ -132,13 +132,9 @@
 
 				<div>
 					<h2>Moyen de locomotion</h2>
-					{% if eleves.transports == null %}
+					{% if transports == null %}
 						<p>Aucun transports sélectionné</p>
 					{% endif %}
-
-					{{ form_row(elevesForm.transports, {
-                    label: 'Transport(s) : '
-                    }) }}
 
 					{{ form_row(elevesForm.newtransport, {
                     value: '',

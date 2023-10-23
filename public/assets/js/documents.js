@@ -18,6 +18,5 @@ documents.forEach(document => {
             document.style.border = '2px solid blue';
         }
         input.value = valeurs.join();
-        console.log(input.value);
     })
 });
