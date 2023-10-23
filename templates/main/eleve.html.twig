@@ -131,18 +131,22 @@
 				</div>
 
 				<div>
-					<h2>Moyen de locomotion</h2>
-					{% if transports == null %}
-						<p>Aucun transports sélectionné</p>
-					{% endif %}
+			<h2>Moyen de locomotion</h2>
 
-					{{ form_row(elevesForm.newtransport, {
+				<div class="dnone">
+					{{ form_row(elevesForm.removetransports, {
+                    value: ''
+                    }) }}
+				</div>
+
+
+			{{ form_row(elevesForm.newtransport, {
                     value: '',
                     label: 'Ajouter un transport : '
                     }) }}
 
 
-				</div>
+		</div>
 
 			</div>
 

@@ -32,8 +32,6 @@ absences.forEach(absence => {
     tableauAbsences.push([absence.id.split('-')[0].split('/'), absence.id.split('-')[1].split('/')]);
 });
 
-console.log(tableauAbsences);
-
 // on ajoute un écouteur d'évènement sur tous les jours avec une boucle
 jours.forEach(jour => {
     jour.addEventListener('click', function () {
@@ -48,7 +46,6 @@ jours.forEach(jour => {
 
     tableauAbsences.forEach(absence => {
         let j = jour.id.split('/');
-        // console.log(jour.id);
         if(absence[0][2] <= j[2] && absence[1][2] >= j[2] && absence[0][1] <= j[1] && absence[1][1] >= j[1] && absence[0][0] <= j[0] && absence[1][0] >= j[0]){
             jour.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
             jour.style.border = "1px solid black";

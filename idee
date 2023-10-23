@@ -4,7 +4,7 @@
 
 // voir à quoi sert le champ suivi (réponse : encore suivi ou pas à la digitale académie)
 
-empêcher l'accès aux page du site si non-connecté
+empêcher l'accès aux page du site si non-connecté'
 
 // date inscription ne s'affiche pas
 
@@ -20,9 +20,9 @@ faire un champ date pour naviguer entre les mois et années (bonus)
 
 réinitialiser le mot de passe
 
-créer un git pour Jérémy
+// créer un git pour Jérémy
 
-à régler : ajouter / supprimer un transport le fais pour tous les étudiants en même temps
+// à régler : ajouter / supprimer un transport le fais pour tous les étudiants en même temps
 
 // faire un formulaire pour les absences avec début absences / fin absences, 
 // et lorsque l'on clique sur un jour sa valeur (id) s'inscrit dans début / fin (donc en javascript)
@@ -34,7 +34,7 @@ créer un git pour Jérémy
 
 // transformer le champ document en fileType et faire le traitement
 
-retourner une erreur si la date de fin d'absences est avant la date de début
+retourner une erreur si la date de fin d'absences est avant la date de début'
 
 chiffrer toutes les infos en base de données
 

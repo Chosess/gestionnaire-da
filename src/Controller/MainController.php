@@ -211,6 +211,10 @@ class MainController extends AbstractController
             ];
         }
 
+        if(empty($tableau)){
+            $tableau = 'vide';
+        }
+
         return $this->render('main/infos.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
