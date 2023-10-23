@@ -46,9 +46,34 @@ jours.forEach(jour => {
 
     tableauAbsences.forEach(absence => {
         let j = jour.id.split('/');
-        if(absence[0][2] <= j[2] && absence[1][2] >= j[2] && absence[0][1] <= j[1] && absence[1][1] >= j[1] && absence[0][0] <= j[0] && absence[1][0] >= j[0]){
+        if (absence[0][2] <= j[2] && absence[1][2] >= j[2] && absence[0][1] <= j[1] && absence[1][1] >= j[1] && absence[0][0] <= j[0] && absence[1][0] >= j[0]) {
             jour.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
             jour.style.border = "1px solid black";
         }
     });
 });
+
+
+// on récupère les inputs d'absences justifiées / non-justifiées
+let justifie = document.querySelector('#absences_form_justif');
+let nonjustifie = document.querySelector('.absencejustif');
+
+justifie.addEventListener('click', function(){
+    if(justifie.checked == false){
+        justifie.checked = false;
+        nonjustifie.checked = true;
+    } else if(justifie.checked == true){
+        justifie.checked = true;
+        nonjustifie.checked = false;
+    }
+})
+
+nonjustifie.addEventListener('click', function(){
+    if(nonjustifie.checked == false){
+        nonjustifie.checked = false;
+        justifie.checked = true;
+    } else if(nonjustifie.checked == true){
+        nonjustifie.checked = true;
+        justifie.checked = false;
+    }
+})

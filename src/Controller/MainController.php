@@ -53,7 +53,7 @@ class MainController extends AbstractController
             }
 
             // enlever un transport
-            $removetransport = $form->get('transports')->getData();
+            $removetransport = $form->get('removetransports')->getData();
             
             if(!empty($removetransport)){
                 foreach($removetransport as $rt){
@@ -80,26 +80,18 @@ class MainController extends AbstractController
                 $eleves->setDateInscription($dateinscription);
             }
 
+            // la date de fin de suivi
+            $datefin = $form->get('date_fin_suivi')->getData();
+            
+            $datefin = DateTime::createFromFormat("d/m/Y", $datefin);
+
+            if(!empty($datefin)){
+                $eleves->setDateFinSuivi($datefin);
+            }
 
 
             $entityManager->persist($eleve);
             $entityManager->flush();
-        }
-
-
-        //dn = date de naissance
-        $dn = $eleve->getDateNaissance();
-        if(!empty($dn)){
-            $dn = $dn->format('d/m/Y');
-        }
-
-        //di = date d'inscription
-        $inscri = $eleve->isValidationInscription();
-        $di = $eleve->getDateInscription();
-        if(!empty($di) && $inscri == true){
-            $di = $di->format('d/m/Y');
-        } else {
-            $di = '';
         }
 
         return $this->render('main/eleve.html.twig', [
@@ -180,7 +172,14 @@ class MainController extends AbstractController
                 $eleves->setDateInscription($dateinscription);
             }
 
+            // la date de fin de suivi
+            $datefin = $form->get('date_fin_suivi')->getData();
+            
+            $datefin = DateTime::createFromFormat("d/m/Y", $datefin);
 
+            if(!empty($datefin)){
+                $eleves->setDateFinSuivi($datefin);
+            }
 
             $entityManager->persist($eleves);
             $entityManager->flush();
@@ -202,6 +201,12 @@ class MainController extends AbstractController
             $di = '';
         }
 
+        //dfs = date de fin de suivi
+        $dfs = $eleves->getDateFinSuivi();
+        if(!empty($dfs)){
+            $dfs = $dfs->format('d/m/Y');
+        }
+
         $transports = $transportsRepository->findBy(['eleves' => $eleves]);
 
         foreach($transports as $transport){
@@ -220,6 +225,7 @@ class MainController extends AbstractController
             'eleves' => $eleves,
             'dn' => $dn,
             'di' => $di,
+            'dfs' => $dfs,
             'tableau' => $tableau,
             'elevesForm' => $form->createView(),
         ]);

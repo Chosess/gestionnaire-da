@@ -85,4 +85,8 @@ body div.flex section.infos > form > div > div p input {
 }
 body div.flex section.infos > form > div > div .dnone {
   display: none;
+}
+body div.flex section.infos > form > button {
+  height: 100px;
+  margin: 10px 0;
 }/*# sourceMappingURL=accueil.css.map */

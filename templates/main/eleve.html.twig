@@ -92,7 +92,53 @@
 				</div>
 
 				<div>
-					<h2>Personne à contacter en cas d'urgence</h2>
+					<h2>Naissance</h2>
+					{{ form_row(elevesForm.date_naissance, {
+                    label: 'Date : '
+                }) }}
+					{{ form_row(elevesForm.lieu_naissance, {
+                    label: 'Lieu : '
+                }) }}
+					{{ form_row(elevesForm.nationalite, {
+                    label: 'Nationalité : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Situation personnelle</h2>
+					{{ form_row(elevesForm.etat_civil, {
+                    label: 'Etat Civil : '
+                }) }}
+					{{ form_row(elevesForm.enfants, {
+                    label: 'Enfants : '
+                }) }}
+				</div>
+
+				<div>
+					<h2>Moyen de locomotion</h2>
+
+					<div class="dnone">
+						{{ form_row(elevesForm.removetransports, {
+                    value: ''
+                    }) }}
+					</div>
+
+
+					{{ form_row(elevesForm.newtransport, {
+                    value: '',
+                    label: 'Ajouter un transport : '
+                    }) }}
+
+
+				</div>
+
+			</div>
+
+
+			<div>
+
+				<div>
+					<h2>Responsable légal</h2>
 					{{ form_row(elevesForm.nom_urgence, {
                     label: 'Nom : '
                 }) }}
@@ -107,51 +153,6 @@
                 }) }}
 				</div>
 
-				<div>
-					<h2>Naissance</h2>
-					{{ form_row(elevesForm.lieu_naissance, {
-                    label: 'Lieu : '
-                }) }}
-					{{ form_row(elevesForm.date_naissance, {
-                    label: 'Date : '
-                }) }}
-					{{ form_row(elevesForm.nationalite, {
-                    label: 'Nationalité : '
-                }) }}
-				</div>
-
-				<div>
-					<h2>Situation Personnelle</h2>
-					{{ form_row(elevesForm.etat_civil, {
-                    label: 'Etat Civil : '
-                }) }}
-					{{ form_row(elevesForm.enfants, {
-                    label: 'Enfants : '
-                }) }}
-				</div>
-
-				<div>
-			<h2>Moyen de locomotion</h2>
-
-				<div class="dnone">
-					{{ form_row(elevesForm.removetransports, {
-                    value: ''
-                    }) }}
-				</div>
-
-
-			{{ form_row(elevesForm.newtransport, {
-                    value: '',
-                    label: 'Ajouter un transport : '
-                    }) }}
-
-
-		</div>
-
-			</div>
-
-
-			<div>
 				<div>
 					<h2>Matériel informatique</h2>
 					{{ form_row(elevesForm.ordinateur, {
@@ -169,7 +170,7 @@
 				<div>
 					<h2>Validation inscription</h2>
 					{{ form_row(elevesForm.validation_inscription, {
-                    label: 'Inscription Validée : '
+                    label: 'Inscription validée : '
                 }) }}
 				</div>
 
@@ -180,9 +181,6 @@
                 }) }}
 				{{ form_row(elevesForm.formation, {
                     label: 'Intitulé de la formation : '
-                }) }}
-				{{ form_row(elevesForm.niveau_formation, {
-                    label: 'Niveau de la formation : '
                 }) }}
 				{{ form_row(elevesForm.annee_formation, {
                     label: 'Année de la formation : '
@@ -207,10 +205,13 @@
 					{{ form_row(elevesForm.suivi, {
                     label: 'L\'étudiant n\'est plus suivi à la digitale académie : '
                 }) }}
+				{{ form_row(elevesForm.date_fin_suivi, {
+                    label: 'Depuis le : '
+                }) }}
 				</div>
 
-				<button>Confirmer les changements</button>
 			</div>
+				<button>Confirmer les changements</button>
 
 			{{ form_end(elevesForm) }}
 

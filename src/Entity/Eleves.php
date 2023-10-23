@@ -53,9 +53,6 @@ class Eleves
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $formation = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $niveau_formation = null;
-
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private ?int $annee_formation = null;
 
@@ -121,6 +118,9 @@ class Eleves
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lien_parente = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin_suivi = null;
 
     public function __construct()
     {
@@ -351,18 +351,6 @@ class Eleves
     public function setFormation(string $formation): static
     {
         $this->formation = $formation;
-
-        return $this;
-    }
-
-    public function getNiveauFormation(): ?string
-    {
-        return $this->niveau_formation;
-    }
-
-    public function setNiveauFormation(string $niveau_formation): static
-    {
-        $this->niveau_formation = $niveau_formation;
 
         return $this;
     }
@@ -627,6 +615,18 @@ class Eleves
     public function setLienParente(?string $lien_parente): static
     {
         $this->lien_parente = $lien_parente;
+
+        return $this;
+    }
+
+    public function getDateFinSuivi(): ?\DateTimeInterface
+    {
+        return $this->date_fin_suivi;
+    }
+
+    public function setDateFinSuivi(?\DateTimeInterface $date_fin_suivi): static
+    {
+        $this->date_fin_suivi = $date_fin_suivi;
 
         return $this;
     }

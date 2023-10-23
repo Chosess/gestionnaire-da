@@ -94,7 +94,8 @@
 
 		<div>
 			{{ form_row(absencesForm.document, { value: '' }) }}
-			{{ form_row(absencesForm.justif, { value: '', label: 'Absence Justifiée' }) }}
+			{{ form_row(absencesForm.justif, { value: '', label: 'Absence justifiée' }) }}
+			<p>Absence non-justifiée<input type="checkbox" class="absencejustif" checked></p>
 
 			<button>Confirmer l'absence</button>
 		</div>

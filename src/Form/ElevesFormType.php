@@ -27,7 +27,15 @@ class ElevesFormType extends AbstractType
                     new Image()
                 ]
             ))
-            ->add('civilite')
+            ->add('civilite', ChoiceType::class, array(
+                'label' => 'Choisissez plusieurs options',
+                'choices' => [
+                    'Mr' => 'Mr',
+                    'Mme' => 'Mme',
+                    'Autre' => 'Autre',
+                ],
+                'expanded' => true
+            ))
             ->add('validation_inscription')
             ->add('date_inscription', TextType::class, array(
                 'required' => false,
@@ -37,7 +45,6 @@ class ElevesFormType extends AbstractType
                     'placeholder' => 'jj/mm/aaaa'
                 )))
             ->add('formation')
-            ->add('niveau_formation')
             ->add('annee_formation')
             ->add('prescripteur')
             ->add('conseiller')
@@ -76,6 +83,14 @@ class ElevesFormType extends AbstractType
                 'mapped' => false
                 ))
             ->add('lien_parente')
+            ->add('date_fin_suivi', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
         ;
     }
 

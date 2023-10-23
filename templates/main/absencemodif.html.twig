@@ -81,7 +81,7 @@
 		</section>
 	</div>
 
-    <a href="{{ path('_suivi', {id: eleves.id}) }}">+ Ajouter une absence</a>
+    <a href="{{ path('_absences', {id: eleves.id}) }}">+ Ajouter une absence</a>
 
 	<div>
 		{{ form_errors(absencesForm) }}
@@ -94,8 +94,14 @@
 		</div>
 
 		<div>
-			{{ form_row(absencesForm.justif, { value: absences.justif, label: 'Absence Justifiée' }) }}
 			{{ form_row(absencesForm.document, { value: absences.document }) }}
+			{{ form_row(absencesForm.justif, { value: absences.justif, label: 'Absence justifiée' }) }}
+			
+			<p>Absence non-justifiée<input type="checkbox" class="absencejustif"
+			{% if absences.justif == false %}checked{% endif %}
+			></p>
+			
+			
 
 			<button>Confirmer l'absence</button>
 		</div>
