@@ -92,12 +92,13 @@ body {
                     &>div {
                         border: 1px solid black;
                         border-radius: 5px;
-                        margin: 10px 0;
+                        margin-bottom: 5px;
                         padding: 0 10px;
 
                         h2 {
                             font-size: 20px;
                             text-decoration: underline;
+                            margin: 10px 0;
                         }
 
                         p {
@@ -109,14 +110,19 @@ body {
                             }
                         }
 
+                        &>div{
+                            margin: 2px 0;
+                        }
+
                         .dnone {
                             display: none;
                         }
                     }
-                }
-                &>button{
-                    height: 100px;
-                    margin: 10px 0;
+                    &>button{
+                        height: 50px;
+                        border: 2px solid black;
+                        border-radius: 10px;
+                    }
                 }
             }
         }

@@ -3,6 +3,10 @@
 {% block title %}Accueil
 {% endblock %}
 
+{% block javascripts %}
+	<script src="{{ asset('assets/js/checkbox.js')}}" defer></script>
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
 {% endblock %}
@@ -156,7 +160,7 @@
 				<div>
 					<h2>Matériel informatique</h2>
 					{{ form_row(elevesForm.ordinateur, {
-                    label: 'Possède un ordinateur : '
+                    label: 'Possède un ordinateur : ',
                 }) }}
 				</div>
 
@@ -211,7 +215,31 @@
 				</div>
 
 			</div>
-				<button>Confirmer les changements</button>
+			
+			
+    <div>
+        <div>
+			<h2>Cotisations</h2>
+			{{ form_row(elevesForm.cotisations, {
+                label: 'Cotisations payées : '
+            }) }}
+			{{ form_row(elevesForm.cotisations_date, {
+                label: 'Payées le : '
+            }) }}
+		</div>
+
+        <div>
+			<h2>CNED</h2>
+			{{ form_row(elevesForm.identifiant_cned, {
+                label: 'identifiants CNED : '
+            }) }}
+			{{ form_row(elevesForm.password_cned, {
+                label: 'Mot de passe CNED : '
+            }) }}
+		</div>
+
+		<button>Confirmer les changements</button>
+
 
 			{{ form_end(elevesForm) }}
 

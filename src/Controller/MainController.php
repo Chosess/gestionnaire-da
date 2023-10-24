@@ -181,6 +181,15 @@ class MainController extends AbstractController
                 $eleves->setDateFinSuivi($datefin);
             }
 
+            // la date de cotisations
+            $cotisationsdate = $form->get('cotisations_date')->getData();
+            
+            $cotisationsdate = DateTime::createFromFormat("d/m/Y", $cotisationsdate);
+
+            if(!empty($cotisationsdate)){
+                $eleves->setCotisationsDate($cotisationsdate);
+            }
+
             $entityManager->persist($eleves);
             $entityManager->flush();
         }
@@ -207,6 +216,12 @@ class MainController extends AbstractController
             $dfs = $dfs->format('d/m/Y');
         }
 
+        //dc = date de cotisations
+        $dc = $eleves->getCotisationsDate();
+        if(!empty($dc)){
+            $dc = $dc->format('d/m/Y');
+        }
+
         $transports = $transportsRepository->findBy(['eleves' => $eleves]);
 
         foreach($transports as $transport){
@@ -226,6 +241,7 @@ class MainController extends AbstractController
             'dn' => $dn,
             'di' => $di,
             'dfs' => $dfs,
+            'dc' => $dc,
             'tableau' => $tableau,
             'elevesForm' => $form->createView(),
         ]);

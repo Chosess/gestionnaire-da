@@ -2,6 +2,7 @@
 
 {% block javascripts %}
 	<script src="{{ asset('assets/js/accueil.js')}}" defer></script>
+	<script src="{{ asset('assets/js/checkbox.js')}}" defer></script>
 {% endblock %}
 
 {% block infos %}
@@ -207,7 +208,35 @@
 		</div>
 
 	</div>
+
+    <div>
+        <div>
+			<h2>Cotisations</h2>
+			{{ form_row(elevesForm.cotisations, {
+                value: eleves.cotisations,
+                label: 'Cotisations payées : '
+            }) }}
+			{{ form_row(elevesForm.cotisations_date, {
+                value: dc,
+                label: 'Payées le : '
+            }) }}
+		</div>
+
+        <div>
+			<h2>CNED</h2>
+			{{ form_row(elevesForm.identifiant_cned, {
+                value: eleves.identifiantCned,
+                label: 'identifiants CNED : '
+            }) }}
+			{{ form_row(elevesForm.password_cned, {
+                value: eleves.passwordCned,
+                label: 'Mot de passe CNED : '
+            }) }}
+		</div>
+
 		<button>Confirmer les changements</button>
+    </div>
+
 
 	{{ form_end(elevesForm) }}
 

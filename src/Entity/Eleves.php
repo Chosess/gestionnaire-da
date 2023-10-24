@@ -122,6 +122,18 @@ class Eleves
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin_suivi = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $cotisations = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $cotisations_date = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $identifiant_cned = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $password_cned = null;
+
     public function __construct()
     {
         $this->entretiens = new ArrayCollection();
@@ -627,6 +639,54 @@ class Eleves
     public function setDateFinSuivi(?\DateTimeInterface $date_fin_suivi): static
     {
         $this->date_fin_suivi = $date_fin_suivi;
+
+        return $this;
+    }
+
+    public function isCotisations(): ?bool
+    {
+        return $this->cotisations;
+    }
+
+    public function setCotisations(?bool $cotisations): static
+    {
+        $this->cotisations = $cotisations;
+
+        return $this;
+    }
+
+    public function getCotisationsDate(): ?\DateTimeInterface
+    {
+        return $this->cotisations_date;
+    }
+
+    public function setCotisationsDate(?\DateTimeInterface $cotisations_date): static
+    {
+        $this->cotisations_date = $cotisations_date;
+
+        return $this;
+    }
+
+    public function getIdentifiantCned(): ?string
+    {
+        return $this->identifiant_cned;
+    }
+
+    public function setIdentifiantCned(?string $identifiant_cned): static
+    {
+        $this->identifiant_cned = $identifiant_cned;
+
+        return $this;
+    }
+
+    public function getPasswordCned(): ?string
+    {
+        return $this->password_cned;
+    }
+
+    public function setPasswordCned(?string $password_cned): static
+    {
+        $this->password_cned = $password_cned;
 
         return $this;
     }

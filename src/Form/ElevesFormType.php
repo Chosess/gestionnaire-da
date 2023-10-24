@@ -91,6 +91,17 @@ class ElevesFormType extends AbstractType
                     'placeholder' => 'jj/mm/aaaa'
                 )
             ))
+            ->add('cotisations')
+            ->add('cotisations_date', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
+            ->add('identifiant_cned')
+            ->add('password_cned')
         ;
     }
 

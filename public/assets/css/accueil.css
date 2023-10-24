@@ -69,12 +69,13 @@ body div.flex section.infos > form {
 body div.flex section.infos > form > div > div {
   border: 1px solid black;
   border-radius: 5px;
-  margin: 10px 0;
+  margin-bottom: 5px;
   padding: 0 10px;
 }
 body div.flex section.infos > form > div > div h2 {
   font-size: 20px;
   text-decoration: underline;
+  margin: 10px 0;
 }
 body div.flex section.infos > form > div > div p {
   font-size: 14px;
@@ -83,10 +84,14 @@ body div.flex section.infos > form > div > div p {
 body div.flex section.infos > form > div > div p input {
   text-align: center;
 }
+body div.flex section.infos > form > div > div > div {
+  margin: 2px 0;
+}
 body div.flex section.infos > form > div > div .dnone {
   display: none;
 }
-body div.flex section.infos > form > button {
-  height: 100px;
-  margin: 10px 0;
+body div.flex section.infos > form > div > button {
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 10px;
 }/*# sourceMappingURL=accueil.css.map */
