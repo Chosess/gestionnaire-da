@@ -68,14 +68,15 @@ trier les twigs par pages
 
 // date de fin de suivi
 
-cotisations payé oui non / date
+// cotisations payé oui non / date
 
 dossier complet / incomplet et champ pour ce qui manque$
 
 // enlever le niveau de la formation
 
-civilité menu déroulant (((( il faut demander si la da préfère des cases à cocher ou une liste déroulante))))
+// civilité menu déroulant 
+((((((((((( il faut demander si la da préfère des cases à cocher ou une liste déroulante )))))))))))
 
 coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable)
 
-rajouter deux champs : identifiant et mot de passe CNED
+// rajouter deux champs : identifiant et mot de passe CNED
