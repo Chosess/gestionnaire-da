@@ -13,7 +13,7 @@
 
 	<div class="docs">
 		{% for document in docs %}
-			<div class="document" id="{{ document.id }}">
+			<div class="document {{ document.name }}" id="{{ document.id }}">
 				<img src="{{ asset('assets/uploads/file/' ~ document.name)}}" alt="image du document">
 				<p>{{ document.titre }}</p>
 			</div>
@@ -28,7 +28,11 @@
 
 	{{ form_row(documentsForm.add, { value: '', label: 'Ajouter un document : ' }) }}
 
-	<button>Confirmer</button>
+	<div class="flex">
+		<button>Confirmer</button>
+
+		<p class="telecharger"><span>Télécharger</span></p>
+	</div>
 
 	{{ form_end(documentsForm) }}
 

@@ -7,6 +7,7 @@ use App\Entity\Eleves;
 use App\Form\DocumentsFormType;
 use App\Repository\DocumentsRepository;
 use App\Repository\ElevesRepository;
+use App\Service\ChiffrementService;
 use App\Service\FileService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocumentsController extends AbstractController
 {
     #[Route('/{id}/documents', name: '_documents')]
-    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService): Response
+    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService, ChiffrementService $chiffrementService): Response
     {
 
         $documentsForm = $this->createForm(DocumentsFormType::class);

@@ -1,4 +1,7 @@
 body {
+    background-image: url(../uploads/Water_bubble-2017_High_Quality_Wallpaper_1920x1200.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
     div.flex {
         display: flex;
         gap: 20px;
@@ -8,6 +11,7 @@ body {
             border-radius: 5px;
             width: 300px;
             overflow-y: scroll;
+            background-color: rgba(255, 255, 255, 0.8);
 
             ul {
                 list-style-type: none;
@@ -31,8 +35,9 @@ body {
 
         section.eleve {
             height: 100%;
-
+            
             div:first-child {
+                background-color: rgba(255, 255, 255, 0.8);
                 border: 1px solid black;
                 border-radius: 5px;
                 width: 200px;
@@ -44,6 +49,7 @@ body {
                     margin: 10px 0;
                     width: 150px;
                     height: 150px;
+                    border-radius: 10px;
                 }
 
                 p {
@@ -61,12 +67,13 @@ body {
                 ul {
                     list-style-type: none;
                     padding-left: 5px;
-
+                    
                     &>a {
                         text-decoration: none;
                         color: black;
-
+                        
                         li {
+                            background-color: rgba(255, 255, 255, 0.8);
                             border: 1px solid black;
                             padding: 5px;
                             margin-bottom: -1px;
@@ -87,9 +94,10 @@ body {
             &>form {
                 display: flex;
                 gap: 20px;
-
+                
                 &>div {
                     &>div {
+                        background-color: rgba(255, 255, 255, 0.8);
                         border: 1px solid black;
                         border-radius: 5px;
                         margin-bottom: 5px;
@@ -122,6 +130,14 @@ body {
                         height: 50px;
                         border: 2px solid black;
                         border-radius: 10px;
+                    }
+                    &>div:last-child{
+                        &>div.overflow:first-of-type{
+                            max-height: 200px;
+                            overflow-y: scroll;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                        }
                     }
                 }
             }

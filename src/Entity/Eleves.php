@@ -108,9 +108,6 @@ class Eleves
     private ?bool $ordinateur = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $sport = null;
-
-    #[ORM\Column(nullable: true)]
     private ?bool $droit_image = null;
 
     #[ORM\Column(nullable: true)]
@@ -133,6 +130,48 @@ class Eleves
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $password_cned = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $moyen_paiement = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $montant = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $dispositif_aide = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Motif = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $indicatif_cned = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $stage_debut = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $stage_fin = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stage_entreprise = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stage_tuteur = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stage_tuteur_fonction = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stage_tel = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_cned = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $statut_cned = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_inscription_cned = null;
 
     public function __construct()
     {
@@ -583,18 +622,6 @@ class Eleves
         return $this;
     }
 
-    public function isSport(): ?bool
-    {
-        return $this->sport;
-    }
-
-    public function setSport(bool $sport): static
-    {
-        $this->sport = $sport;
-
-        return $this;
-    }
-
     public function isDroitImage(): ?bool
     {
         return $this->droit_image;
@@ -687,6 +714,174 @@ class Eleves
     public function setPasswordCned(?string $password_cned): static
     {
         $this->password_cned = $password_cned;
+
+        return $this;
+    }
+
+    public function getMoyenPaiement(): ?string
+    {
+        return $this->moyen_paiement;
+    }
+
+    public function setMoyenPaiement(?string $moyen_paiement): static
+    {
+        $this->moyen_paiement = $moyen_paiement;
+
+        return $this;
+    }
+
+    public function getMontant(): ?int
+    {
+        return $this->montant;
+    }
+
+    public function setMontant(?int $montant): static
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    public function getDispositifAide(): ?string
+    {
+        return $this->dispositif_aide;
+    }
+
+    public function setDispositifAide(?string $dispositif_aide): static
+    {
+        $this->dispositif_aide = $dispositif_aide;
+
+        return $this;
+    }
+
+    public function getMotif(): ?string
+    {
+        return $this->Motif;
+    }
+
+    public function setMotif(?string $Motif): static
+    {
+        $this->Motif = $Motif;
+
+        return $this;
+    }
+
+    public function getIndicatifCned(): ?string
+    {
+        return $this->indicatif_cned;
+    }
+
+    public function setIndicatifCned(?string $indicatif_cned): static
+    {
+        $this->indicatif_cned = $indicatif_cned;
+
+        return $this;
+    }
+
+    public function getStageDebut(): ?\DateTimeInterface
+    {
+        return $this->stage_debut;
+    }
+
+    public function setStageDebut(?\DateTimeInterface $stage_debut): static
+    {
+        $this->stage_debut = $stage_debut;
+
+        return $this;
+    }
+
+    public function getStageFin(): ?\DateTimeInterface
+    {
+        return $this->stage_fin;
+    }
+
+    public function setStageFin(?\DateTimeInterface $stage_fin): static
+    {
+        $this->stage_fin = $stage_fin;
+
+        return $this;
+    }
+
+    public function getStageEntreprise(): ?string
+    {
+        return $this->stage_entreprise;
+    }
+
+    public function setStageEntreprise(?string $stage_entreprise): static
+    {
+        $this->stage_entreprise = $stage_entreprise;
+
+        return $this;
+    }
+
+    public function getStageTuteur(): ?string
+    {
+        return $this->stage_tuteur;
+    }
+
+    public function setStageTuteur(?string $stage_tuteur): static
+    {
+        $this->stage_tuteur = $stage_tuteur;
+
+        return $this;
+    }
+
+    public function getStageTuteurFonction(): ?string
+    {
+        return $this->stage_tuteur_fonction;
+    }
+
+    public function setStageTuteurFonction(?string $stage_tuteur_fonction): static
+    {
+        $this->stage_tuteur_fonction = $stage_tuteur_fonction;
+
+        return $this;
+    }
+
+    public function getStageTel(): ?string
+    {
+        return $this->stage_tel;
+    }
+
+    public function setStageTel(?string $stage_tel): static
+    {
+        $this->stage_tel = $stage_tel;
+
+        return $this;
+    }
+
+    public function getDateCned(): ?\DateTimeInterface
+    {
+        return $this->date_cned;
+    }
+
+    public function setDateCned(?\DateTimeInterface $date_cned): static
+    {
+        $this->date_cned = $date_cned;
+
+        return $this;
+    }
+
+    public function getStatutCned(): ?string
+    {
+        return $this->statut_cned;
+    }
+
+    public function setStatutCned(?string $statut_cned): static
+    {
+        $this->statut_cned = $statut_cned;
+
+        return $this;
+    }
+
+    public function getDateInscriptionCned(): ?\DateTimeInterface
+    {
+        return $this->date_inscription_cned;
+    }
+
+    public function setDateInscriptionCned(?\DateTimeInterface $date_inscription_cned): static
+    {
+        $this->date_inscription_cned = $date_inscription_cned;
 
         return $this;
     }

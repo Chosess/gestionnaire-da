@@ -32,7 +32,6 @@ class ElevesFormType extends AbstractType
                 'choices' => [
                     'Mr' => 'Mr',
                     'Mme' => 'Mme',
-                    'Autre' => 'Autre',
                 ],
                 'expanded' => true
             ))
@@ -70,7 +69,6 @@ class ElevesFormType extends AbstractType
             ->add('etat_civil')
             ->add('enfants')
             ->add('ordinateur')
-            ->add('sport')
             ->add('droit_image')
             ->add('suivi')
             ->add('educateurs_id')
@@ -102,6 +100,76 @@ class ElevesFormType extends AbstractType
             ))
             ->add('identifiant_cned')
             ->add('password_cned')
+            ->add('motif')
+            ->add('montant')
+            ->add('moyen_paiement', ChoiceType::class, array(
+                'label' => 'Choisissez plusieurs options',
+                'required' => false,
+                'choices' => [
+                    'Chèque' => 'Chèque',
+                    'Espèces' => 'Espèces',
+                ],
+            ))
+            ->add('dispositif_aide', ChoiceType::class, array(
+                'label' => 'Choisissez plusieurs options',
+                'required' => false,
+                'choices' => [
+                    'Mission Locale' => 'Mission Locale',
+                    'Bourse' => 'Bourse',
+                    'Autre' => 'Autre',
+                ],
+            ))
+            ->add('valeur_dispositif', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+            ))
+            ->add('indicatif_cned')
+            ->add('stage_debut', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
+            ->add('stage_fin', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
+            ->add('stage_entreprise')
+            ->add('stage_tuteur')
+            ->add('stage_tuteur_fonction')
+            ->add('stage_tel')
+            ->add('date_cned', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
+            ->add('statut_cned', ChoiceType::class, array(
+                'label' => 'Choisissez plusieurs options',
+                'required' => false,
+                'choices' => [
+                    'en attente de validation PJ' => 'En attente de validation PJ',
+                    'en attente de paiement' => 'En attente de paiement',
+                    'inscription validée' => 'Inscription validée',
+                ],
+            ))
+            ->add('date_inscription_cned', TextType::class, array(
+                'required' => false,
+                'empty_data' => null,
+                'mapped' => false,
+                'attr' => array(
+                    'placeholder' => 'jj/mm/aaaa'
+                )
+            ))
         ;
     }
 

@@ -11,14 +11,16 @@ use App\Service\PictureService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 
 class MainController extends AbstractController
 {
     #[Route('/accueil', name: 'app_main')]
-    public function index( Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
+    public function index( Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, RouterInterface $routerInterface): Response
     {
         $eleve = new Eleves;
 
@@ -77,7 +79,7 @@ class MainController extends AbstractController
             $dateinscription = DateTime::createFromFormat("d/m/Y", $dateinscription);
 
             if(!empty($dateinscription)){
-                $eleves->setDateInscription($dateinscription);
+                $eleve->setDateInscription($dateinscription);
             }
 
             // la date de fin de suivi
@@ -86,12 +88,15 @@ class MainController extends AbstractController
             $datefin = DateTime::createFromFormat("d/m/Y", $datefin);
 
             if(!empty($datefin)){
-                $eleves->setDateFinSuivi($datefin);
+                $eleve->setDateFinSuivi($datefin);
             }
 
 
             $entityManager->persist($eleve);
             $entityManager->flush();
+
+            $route = $routerInterface->generate('_infos', ['id' => $eleve->getId()]);
+            return new RedirectResponse($route);
         }
 
         return $this->render('main/eleve.html.twig', [
@@ -190,6 +195,33 @@ class MainController extends AbstractController
                 $eleves->setCotisationsDate($cotisationsdate);
             }
 
+            // la date de début de stage
+            $stagedebut = $form->get('stage_debut')->getData();
+            
+            $stagedebut = DateTime::createFromFormat("d/m/Y", $stagedebut);
+
+            if(!empty($stagedebut)){
+                $eleves->setStageDebut($stagedebut);
+            }
+
+            // la date de début de stage
+            $stagefin = $form->get('stage_fin')->getData();
+            
+            $stagefin = DateTime::createFromFormat("d/m/Y", $stagefin);
+
+            if(!empty($stagefin)){
+                $eleves->setStageFin($stagefin);
+            }
+
+            // le dipositif d'aide
+            $dispositif = $form->get('dispositif_aide')->getData();
+            $valeurdispositif = $form->get('valeur_dispositif')->getData();
+
+            if($dispositif == 'Autre' && !empty($valeurdispositif)){
+                $eleves->setDispositifAide($valeurdispositif);
+            }
+            
+
             $entityManager->persist($eleves);
             $entityManager->flush();
         }
@@ -222,6 +254,32 @@ class MainController extends AbstractController
             $dc = $dc->format('d/m/Y');
         }
 
+        //sd = debut stage
+        $sd = $eleves->getStageDebut();
+        if(!empty($sd)){
+            $sd = $sd->format('d/m/Y');
+        }
+
+        //sf = fin stage
+        $sf = $eleves->getStageFin();
+        if(!empty($sf)){
+            $sf = $sf->format('d/m/Y');
+        }
+
+        //da = dispositif d'aide
+        $da = $eleves->getDispositifAide();
+        if(!empty($da && $da != 'Mission Locale' && $da != 'Bourse')){
+            $da = [
+                'choix' => 'Autre',
+                'valeur' => $da
+            ];
+        } else {
+            $da = [
+                'choix' => $da,
+                'valeur' => ''
+            ];
+        }
+
         $transports = $transportsRepository->findBy(['eleves' => $eleves]);
 
         foreach($transports as $transport){
@@ -242,6 +300,9 @@ class MainController extends AbstractController
             'di' => $di,
             'dfs' => $dfs,
             'dc' => $dc,
+            'sd' => $sd,
+            'sf' => $sf,
+            'da' => $da,
             'tableau' => $tableau,
             'elevesForm' => $form->createView(),
         ]);

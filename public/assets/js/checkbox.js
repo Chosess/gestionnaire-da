@@ -2,6 +2,14 @@
 // on sélectionne les inputs de type checkbox qui n'ont pas la classe transport
 let checkboxs = document.querySelectorAll('input[type="checkbox"]:not(.transport)');
 
+// on affiche / enlève les champs date de fin de suivi et motif si l'étudiant es toujours suivi à la mission locale
+let suivi = document.querySelector('.jsnone');
+let suividisplay = suivi.style.display;
+
+if(suivi.previousElementSibling.children[1].checked == true){
+    suivi.style.display = 'none';
+}
+
 checkboxs.forEach(checkbox => {
     // on rajoute le mot oui devant l'input
     checkbox.insertAdjacentHTML('beforebegin', '<span>Oui</span>');
@@ -23,11 +31,18 @@ checkboxs.forEach(checkbox => {
             checkbox.checked = true;
             inputnon.checked = false;
             checkbox.value = 1;
+            if(suivi.previousElementSibling.children[4] === inputnon){
+                suivi.style.display = 'none';
+            }
         } else {
             checkbox.checked = false;
             inputnon.checked = true;
             checkbox.value = '';
+            if(suivi.previousElementSibling.children[4] === inputnon){
+                suivi.style.display = suividisplay;
+            }
         }
+
     })
 
     inputnon.addEventListener('click', function(){
@@ -35,10 +50,16 @@ checkboxs.forEach(checkbox => {
             inputnon.checked = true;
             checkbox.checked = false;
             checkbox.value = '';
+            if(suivi.previousElementSibling.children[4] === inputnon){
+                suivi.style.display = suividisplay;
+            }
         } else {
             inputnon.checked = false;
             checkbox.checked = true;
             checkbox.value = 1;
+            if(suivi.previousElementSibling.children[4] === inputnon){
+                suivi.style.display = 'none';
+            }
         }
     })
     

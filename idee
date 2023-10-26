@@ -75,8 +75,20 @@ dossier complet / incomplet et champ pour ce qui manque$
 // enlever le niveau de la formation
 
 // civilité menu déroulant 
-((((((((((( il faut demander si la da préfère des cases à cocher ou une liste déroulante )))))))))))
+((((((((((( il faut demander si la Digitale Académie préfère des cases à cocher ou une liste déroulante )))))))))))
 
 coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable)
 
 // rajouter deux champs : identifiant et mot de passe CNED
+
+chiffrement
+
+// dans la liste des élève mettre les noms en majuscule
+
+ajouter une options pour télécharger les documents
+
+// mettre une image de fond (background_image)
+
+revoir l'affichage des documents'
+
+remplir les blocks title dans les twigs

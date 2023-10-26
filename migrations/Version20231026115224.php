@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20231024075843 extends AbstractMigration
+final class Version20231026115224 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20231024075843 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE eleves ADD cotisations TINYINT(1) DEFAULT NULL, ADD cotisations_date DATETIME DEFAULT NULL, ADD identifiant_cned VARCHAR(255) DEFAULT NULL, ADD password_cned VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE eleves ADD date_cned DATETIME DEFAULT NULL, ADD statut_cned VARCHAR(255) DEFAULT NULL, ADD date_inscription_cned DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE eleves DROP cotisations, DROP cotisations_date, DROP identifiant_cned, DROP password_cned');
+        $this->addSql('ALTER TABLE eleves DROP date_cned, DROP statut_cned, DROP date_inscription_cned');
     }
 }

@@ -5,6 +5,8 @@
 
 {% block javascripts %}
 	<script src="{{ asset('assets/js/checkbox.js')}}" defer></script>
+	<script src="{{ asset('assets/js/cned.js')}}" defer></script>
+	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -28,7 +30,7 @@
 
 
 					<a href="{{ path('_infos', {id: eleve.id}) }}">
-						<li>{{ eleve.nom }}
+						<li>{{ eleve.nom|upper }}
 							{{ eleve.prenom }}</li>
 					</a>
 
@@ -86,7 +88,7 @@
                     label: 'Ville : '
                 }) }}
 					{{ form_row(elevesForm.email, {
-                    label: 'email : '
+                    label: 'Email : '
                 }) }}{{ form_row(elevesForm.portable, {
                     label: 'Portable : '
                 }) }}
@@ -127,12 +129,10 @@
                     }) }}
 					</div>
 
-
 					{{ form_row(elevesForm.newtransport, {
                     value: '',
                     label: 'Ajouter un transport : '
                     }) }}
-
 
 				</div>
 
@@ -140,7 +140,6 @@
 
 
 			<div>
-
 				<div>
 					<h2>Responsable légal</h2>
 					{{ form_row(elevesForm.nom_urgence, {
@@ -158,36 +157,70 @@
 				</div>
 
 				<div>
-					<h2>Matériel informatique</h2>
+					<h2>Informations complémentaires</h2>
 					{{ form_row(elevesForm.ordinateur, {
                     label: 'Possède un ordinateur : ',
                 }) }}
-				</div>
-
-				<div>
-					<h2>Apte au sport</h2>
-					{{ form_row(elevesForm.sport, {
-                    label: 'Est apte au sport : '
+				{{ form_row(elevesForm.droit_image, {
+                    label: 'Droit à l\'image : '
                 }) }}
 				</div>
 
-				<div>
-					<h2>Validation inscription</h2>
-					{{ form_row(elevesForm.validation_inscription, {
-                    label: 'Inscription validée : '
-                }) }}
-				</div>
+		<div>
+			<h2>Inscription DA</h2>
+			{{ form_row(elevesForm.validation_inscription, {
+                label: 'Inscription validée : '
+            }) }}
+			{{ form_row(elevesForm.date_inscription, {
+                label: 'Le : '
+            }) }}
+		</div>
+		
+        <div>
+			<h2>Cotisation DA</h2>
+			{{ form_row(elevesForm.cotisations, {
+                label: 'Cotisation payée : '
+            }) }}
+			{{ form_row(elevesForm.cotisations_date, {
+                label: 'Payée le : '
+            }) }}
+			{{ form_row(elevesForm.moyen_paiement, {
+                label: 'Moyen de paiement : '
+            }) }}
+            {{ form_row(elevesForm.montant, {
+                label: 'Montant : '
+            }) }}
+		</div>
 
-				<div>
-					<h2>Parcours</h2>
-					{{ form_row(elevesForm.date_inscription, {
-                    label: 'Date d\'inscription à la Digitale Académie : '
-                }) }}
+        <div>
+            <h2>Inscription CNED</h2>
+			{{ form_row(elevesForm.date_cned, {
+                label: 'Commande effectuée le : '
+            }) }}
+			{{ form_row(elevesForm.statut_cned, {
+                label: 'Statut : '
+            }) }}
+            {{ form_row(elevesForm.date_inscription_cned, {
+                label: 'Le : '
+            }) }}
+		</div>
+
+		<div>
+			<h2>Parcours</h2>
 				{{ form_row(elevesForm.formation, {
                     label: 'Intitulé de la formation : '
                 }) }}
 				{{ form_row(elevesForm.annee_formation, {
                     label: 'Année de la formation : '
+                }) }}
+                {{ form_row(elevesForm.indicatif_cned, {
+                    label: 'Indicatif CNED : '
+                }) }}
+                {{ form_row(elevesForm.identifiant_cned, {
+                    label: 'Identifiant CNED : '
+                }) }}
+                {{ form_row(elevesForm.password_cned, {
+                    label: 'Mot de passe CNED : '
                 }) }}
 			</div>
 
@@ -203,38 +236,52 @@
 				{{ form_row(elevesForm.conseiller, {
                     label: 'Conseiller(e) (Pôle emploi ou Mission locale) : '
                 }) }}
-				{{ form_row(elevesForm.droit_image, {
-                    label: 'Droit à l\'image : '
+			    {{ form_row(elevesForm.suivi, {
+					checked: true,
+                    label: 'L\'étudiant est toujours suivi à la digitale académie : '
                 }) }}
-					{{ form_row(elevesForm.suivi, {
-                    label: 'L\'étudiant n\'est plus suivi à la digitale académie : '
-                }) }}
+
+			<div class="jsnone">
 				{{ form_row(elevesForm.date_fin_suivi, {
-                    label: 'Depuis le : '
-                }) }}
-				</div>
-
+                        label: 'Depuis le : '
+                    }) }}
+				{{ form_row(elevesForm.motif, {
+                        label: 'Motif : '
+                    }) }}
 			</div>
-			
-			
-    <div>
-        <div>
-			<h2>Cotisations</h2>
-			{{ form_row(elevesForm.cotisations, {
-                label: 'Cotisations payées : '
-            }) }}
-			{{ form_row(elevesForm.cotisations_date, {
-                label: 'Payées le : '
-            }) }}
 		</div>
+	</div>
+
+	<div>
+		<div>
+			<h2>Dispositif d'aide</h2>
+			{{ form_row(elevesForm.dispositif_aide, {
+                label: 'Dispositif d\'aide : '
+            }) }}
+			{{ form_row(elevesForm.valeur_dispositif, {
+                label: 'Veuillez préciser : ',
+            }) }}
+        </div>
 
         <div>
-			<h2>CNED</h2>
-			{{ form_row(elevesForm.identifiant_cned, {
-                label: 'identifiants CNED : '
+			<h2>Stage</h2>
+			{{ form_row(elevesForm.stage_debut, {
+                label: 'Début : '
             }) }}
-			{{ form_row(elevesForm.password_cned, {
-                label: 'Mot de passe CNED : '
+			{{ form_row(elevesForm.stage_fin, {
+                label: 'Fin : '
+            }) }}
+			{{ form_row(elevesForm.stage_entreprise, {
+                label: 'Nom de l\'entreprise : '
+            }) }}
+			{{ form_row(elevesForm.stage_tuteur, {
+                label: 'Nom du tuteur : '
+            }) }}
+			{{ form_row(elevesForm.stage_tuteur_fonction, {
+                label: 'Fonction du tuteur : '
+            }) }}
+			{{ form_row(elevesForm.stage_tel, {
+                label: 'Téléphone du tuteur : '
             }) }}
 		</div>
 

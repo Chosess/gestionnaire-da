@@ -20,7 +20,7 @@
 				{% for eleve in elevesRepository %}
 
 					<a href="{{ path('_infos', {id: eleve.id}) }}">
-						<li>{{ eleve.nom }}
+						<li>{{ eleve.nom|upper }}
 							{{ eleve.prenom }}</li>
 					</a>
 

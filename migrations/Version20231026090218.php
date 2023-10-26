@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20231013113559 extends AbstractMigration
+final class Version20231026090218 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20231013113559 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_F9C0EFFFE81B0679 ON absences (debut)');
+        $this->addSql('ALTER TABLE eleves ADD motif VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP INDEX UNIQ_F9C0EFFFE81B0679 ON absences');
+        $this->addSql('ALTER TABLE eleves DROP motif');
     }
 }

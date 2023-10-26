@@ -24,6 +24,36 @@ section.infos > div.docs > div.document > p {
 section.infos > form > div:first-child {
   display: none;
 }
-section.infos > form > div:nth-child(2), section.infos > form > button {
+section.infos > form > div:nth-child(2) {
   margin-top: 20px;
+}
+section.infos > form > div.flex {
+  margin-top: 20px;
+}
+section.infos > form > div.flex > button {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 50px;
+}
+section.infos > form > div.flex > p {
+  position: relative;
+  width: 100px;
+  height: 46px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 0;
+  text-align: center;
+}
+section.infos > form > div.flex > p > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section.infos > form > div.flex > p:hover {
+  background-color: rgb(219, 219, 219);
+}
+section.infos > form > div.flex > p:active {
+  background-color: rgb(179, 179, 179);
 }/*# sourceMappingURL=documents.css.map */
