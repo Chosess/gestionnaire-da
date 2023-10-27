@@ -13,6 +13,7 @@ section.infos > div.docs > div.document {
   width: 150px;
   height: 150px;
   margin: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 section.infos > div.docs > div.document > img {
   width: 90%;
@@ -44,6 +45,7 @@ section.infos > form > div.flex > p {
   border-radius: 10px;
   margin: 0;
   text-align: center;
+  background-color: rgb(240, 240, 240);
 }
 section.infos > form > div.flex > p > span {
   position: absolute;

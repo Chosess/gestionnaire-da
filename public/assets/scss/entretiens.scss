@@ -2,6 +2,7 @@ section.infos{
     width: 60%;
     &>div:first-child{
         &>form{
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid black;
             border-radius: 10px;
             display: flex;
@@ -26,10 +27,16 @@ section.infos{
 
     &>div:last-child{
         overflow-y: scroll;
+        max-height: 600px;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 20px;
         &>a{
             text-decoration: none;
             color: black;
             &>div{
+                background-color: rgba(255, 255, 255, 0.8);
                 border: 1px solid black;
                 border-radius: 10px;
                 margin-top: 20px;

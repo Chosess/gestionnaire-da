@@ -14,6 +14,7 @@ section.infos {
             width: 150px;
             height: 150px;
             margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
 
             &>img {
                 width: 90%;
@@ -49,6 +50,7 @@ section.infos {
                 border-radius: 10px;
                 margin: 0;
                 text-align: center;
+                background-color: rgba(240, 240, 240);
                 &>span{
                     position: absolute;
                     top: 50%;
