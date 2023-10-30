@@ -61,7 +61,7 @@ class EntretiensController extends AbstractController
             $infosEntretiens = 'vide';
         }
 
-        return $this->render('main/entretiens.html.twig', [
+        return $this->render('main/entretien/entretiens.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'infosEntretiens' => $infosEntretiens,
@@ -115,7 +115,7 @@ class EntretiensController extends AbstractController
             'date' => $entretiens->getDate()->format('d/m/Y'),
         ];
 
-        return $this->render('main/entretiensmodif.html.twig', [
+        return $this->render('main/entretien/entretiensmodif.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'valeurs' => $valeurs,

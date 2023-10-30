@@ -1,5 +1,8 @@
 {% extends 'main/baseinfos.html.twig' %}
 
+{% block title %}Modification d'un entretien
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/entretiens.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
@@ -16,14 +19,16 @@
 
         {{ form_start(entretiensForm) }}
 
-        {{ form_row(entretiensForm.commentaire, {label: 'Résumé de l\'entretien : ', value: ''}) }}
+        {{ form_row(entretiensForm.commentaire, {label: 'Résumé de l\'entretien : ', value: valeurs.commentaire}) }}
         <div>
-            {{ form_row(entretiensForm.date, {label: 'Date : ', value: ''}) }}
+            {{ form_row(entretiensForm.date, {label: 'Date : ', value: valeurs.date}) }}
             <button>Valider</button>
         </div>
 
         {{ form_end(entretiensForm) }}
     </div>
+
+    <a href="{{ path('_suivi', {id: eleves.id}) }}">+ Ajouter un entretien</a>
 
     <div>
         {% for entretien in infosEntretiens %}

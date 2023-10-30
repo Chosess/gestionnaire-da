@@ -99,7 +99,7 @@ class MainController extends AbstractController
             return new RedirectResponse($route);
         }
 
-        return $this->render('main/eleve.html.twig', [
+        return $this->render('main/eleve/eleve.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'elevesForm' => $form->createView(),
@@ -293,7 +293,7 @@ class MainController extends AbstractController
             $tableau = 'vide';
         }
 
-        return $this->render('main/infos.html.twig', [
+        return $this->render('main/eleve/infos.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'dn' => $dn,

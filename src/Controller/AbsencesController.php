@@ -137,7 +137,7 @@ class AbsencesController extends AbstractController
             $infosAbsences = 'vide';
         }
 
-        return $this->render('main/absences.html.twig', [
+        return $this->render('main/absence/absences.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'infosAbsences' => $infosAbsences,
@@ -269,7 +269,7 @@ class AbsencesController extends AbstractController
         ];
 
 
-        return $this->render('main/absencemodif.html.twig', [
+        return $this->render('main/absence/absencemodif.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'absences' => $absences,
