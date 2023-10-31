@@ -39,6 +39,12 @@ section.infos > div:first-child section.infosComplementaires > div > a > div.abs
 section.infos > div:first-child section.infosComplementaires > div > a > div.absence > div.flex > p {
   margin: 10px;
 }
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence > div.flex > p:last-of-type {
+  color: rgba(255, 0, 0, 0.8);
+}
+section.infos > div:first-child section.infosComplementaires > div > a > div.absence > div.flex > p.orange {
+  color: rgba(255, 131, 0, 0.8);
+}
 section.infos > div:first-child section.infosComplementaires > div > a > div.absence p {
   margin: 10px;
 }

@@ -11,6 +11,7 @@ use App\Service\ChiffrementService;
 use App\Service\FileService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,8 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocumentsController extends AbstractController
 {
     #[Route('/{id}/documents', name: '_documents')]
-    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService, ChiffrementService $chiffrementService): Response
+    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService, Security $security,ChiffrementService $chiffrementService): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
 
         $documentsForm = $this->createForm(DocumentsFormType::class);
         $documentsForm->handleRequest($request);

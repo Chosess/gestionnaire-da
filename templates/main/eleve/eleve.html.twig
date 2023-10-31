@@ -51,6 +51,12 @@
 				<p>Nom / Prénom du Coach</p>
 			</div>
 
+			<div class="coach">
+				<p>Connecté(e) en tant que : </p>
+				<p>{{ user.nom|upper ~ ' ' ~ user.prenom }}</p>
+				<p><a href="{{ path('app_logout') }}">Déconnexion</a></p>
+			</div>
+
 		</section>
 
 

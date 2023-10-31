@@ -44,6 +44,12 @@ section.infos {
                             &>p {
                                 margin: 10px;
                             }
+                            &>p:last-of-type{
+                                color: rgba(255, 0, 0, 0.8);
+                            }
+                            &>p.orange{
+                                color: rgba(255, 131, 0, 0.8);
+                            }
                         }
 
                         p {

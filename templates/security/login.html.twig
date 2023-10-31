@@ -2,6 +2,10 @@
 
 {% block title %}Connexion{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/register.min.css')}}">
+{% endblock %}
+
 {% block body %}
 <form method="post">
     {% if error %}
@@ -25,12 +29,13 @@
     >
 
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        Connexion
     </button>
-</form>
-
+    
     <p>
         <a href="{{ path('app_register') }}">S'inscrire</a>
     </p>
+
+</form>
 
 {% endblock %}

@@ -11,6 +11,7 @@ use App\Service\PictureService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,8 +21,15 @@ use Symfony\Component\Routing\RouterInterface;
 class MainController extends AbstractController
 {
     #[Route('/accueil', name: 'app_main')]
-    public function index( Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, RouterInterface $routerInterface): Response
+    public function index( Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, RouterInterface $routerInterface, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         $eleve = new Eleves;
 
         $form = $this->createForm(ElevesFormType::class, $eleve);
@@ -102,13 +110,21 @@ class MainController extends AbstractController
         return $this->render('main/eleve/eleve.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
+            'user' => $user,
             'elevesForm' => $form->createView(),
         ]);
     }
 
     #[Route('/{id}/infos', name: '_infos')]
-    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, TransportsRepository $transportsRepository): Response
+    public function infos(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService, TransportsRepository $transportsRepository, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(ElevesFormType::class, $eleves);
         $form->handleRequest($request);
 

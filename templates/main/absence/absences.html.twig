@@ -48,13 +48,17 @@
 			<div>
 				{% for absence in infosAbsences %}
 					<a href="{{ path('_modif', {id: absence.id}) }}">
-						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}">
+						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}-{{ absence.justif }}">
 							<div class="flex">
 								<p>Du
 									{{ absence.debut }}
 									au
 									{{ absence.fin }}</p>
-								<p>Justifiée :
+								<p 
+									{% if absence.justif == 1 %}
+										class="orange"
+									{% endif %}
+								>Justifiée :
 
 									{% if absence.justif == 0 %}
 										Non

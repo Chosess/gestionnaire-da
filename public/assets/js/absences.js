@@ -29,7 +29,7 @@ let absences = document.querySelectorAll('.absence');
 // on crée un tableau pour récupérer toutes les absences
 let tableauAbsences = [];
 absences.forEach(absence => {
-    tableauAbsences.push([absence.id.split('-')[0].split('/'), absence.id.split('-')[1].split('/')]);
+    tableauAbsences.push([absence.id.split('-')[0].split('/'), absence.id.split('-')[1].split('/'), absence.id.split('-')[2]]);
 });
 
 // on ajoute un écouteur d'évènement sur tous les jours avec une boucle
@@ -47,7 +47,11 @@ jours.forEach(jour => {
     tableauAbsences.forEach(absence => {
         let j = jour.id.split('/');
         if (absence[0][2] <= j[2] && absence[1][2] >= j[2] && absence[0][1] <= j[1] && absence[1][1] >= j[1] && absence[0][0] <= j[0] && absence[1][0] >= j[0]) {
-            jour.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
+            if(absence[2] == 1){
+            jour.style.backgroundColor = "rgba(255, 131, 0, 0.8)";
+            } else {
+                jour.style.backgroundColor = "rgba(255, 0, 0, 0.8)";
+            }
             jour.style.border = "1px solid black";
         }
     });

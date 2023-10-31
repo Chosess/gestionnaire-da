@@ -50,13 +50,17 @@
 					<a href="{{ path('_modif', {id: absence.id}) }}"
 						{% if absence.id is same as(absences.id) %} class="selectionne"{% endif %}
 						>
-						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}">
+						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}-{{ absence.justif }}">
 							<div class="flex">
 								<p>Du
 									{{ absence.debut }}
 									au
 									{{ absence.fin }}</p>
-								<p>Justifiée :
+								<p 
+									{% if absence.justif == 1 %}
+										class="orange"
+									{% endif %}
+								>Justifiée :
 
 									{% if absence.justif == 0 %}
 										Non

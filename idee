@@ -24,20 +24,24 @@ il faudrait essayer d'uploads d'autres fichiers (ex : pdf)
 
 pour les images peut-être faire un file_exists avant de les afficher
 
-// il y a un petit bug lors de l'ajout d'absences (ce bug fait que parfois les nouvelles absences ne s'affiche pas)'
-// (le bug arrive lorsqu'il n'y a aucune date de fin ou que la date de fin est avant la date de début)
-
 faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// dossier complet / incomplet et champ pour ce qui manque$ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable) !!!!!!!!!!!!!!!!!
 
 revoir l'affichage des documents'
 
 Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-si l'absence est justifiée elle apparait en orange'
+// si l'absence est justifiée elle apparait en orange'
+
+// faire le css de la connexion
+
+// bouton déconnexion + 'connecté en tant que' nom et prénom du coach
+
+// il y a un petit bug lors de l'ajout d'absences (ce bug fait que parfois les nouvelles absences ne s'affiche pas)'
+// (le bug arrive lorsqu'il n'y a aucune date de fin ou que la date de fin est avant la date de début)
+
+// dossier complet / incomplet et champ pour ce qui manque$ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable) !!!!!!!!!!!!!!!!!
 
 // trier les absences par date
 

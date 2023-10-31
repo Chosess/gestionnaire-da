@@ -12,6 +12,7 @@ use App\Service\FileService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -20,8 +21,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class AbsencesController extends AbstractController
 {
     #[Route('/{id}/absences', name: '_absences')]
-    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session, FileService $fileService): Response
+    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session, FileService $fileService, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         // on met l'id de l'élève dans la session
         $session->set('eleve', $eleves->getId());
 
@@ -141,8 +149,15 @@ class AbsencesController extends AbstractController
     }
 
     #[Route('/absences/{id}', name: '_modif')]
-    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository, FileService $fileService): Response
+    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository, FileService $fileService, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         $mois = date("n");
         $annee = date('Y');
 

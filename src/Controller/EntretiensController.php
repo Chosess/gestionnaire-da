@@ -10,6 +10,7 @@ use App\Repository\EntretiensRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -18,8 +19,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class EntretiensController extends AbstractController
 {
     #[Route('/{id}/suivi', name: '_suivi')]
-    public function suivi(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, EntretiensRepository $entretiensRepository, Session $session): Response
+    public function suivi(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, EntretiensRepository $entretiensRepository, Session $session, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         // on met l'id de l'élève dans la session
         $session->set('eleve', $eleves->getId());
 
@@ -75,8 +83,15 @@ class EntretiensController extends AbstractController
     }
 
     #[Route('/suivi/{id}', name: '_suivimodif')]
-    public function modifsuivi(Entretiens $entretiens, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, EntretiensRepository $entretiensRepository, Session $session): Response
+    public function modifsuivi(Entretiens $entretiens, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, EntretiensRepository $entretiensRepository, Session $session, Security $security): Response
     {
+        // on redirige l'utilisateur si il n'est pas connecté
+        $user = $security->getUser();
+
+        if(empty($user)){
+            return $this->redirectToRoute('app_login');
+        }
+
         $eleves = $elevesRepository->findOneBy(['id' => $session->get('eleve')]);
 
         $entretiensForm = $this->createForm(EntretiensFormType::class);
