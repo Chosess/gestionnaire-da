@@ -1,5 +1,10 @@
 section.infos {
-    &>div:first-child {
+    &>h3{
+        font-size: 40px;
+        text-align: center;
+        margin: 10px 0;
+    }
+    &>div:first-of-type {
         display: flex;
 
         div.grid {

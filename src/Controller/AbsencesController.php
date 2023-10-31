@@ -26,7 +26,7 @@ class AbsencesController extends AbstractController
         // on redirige l'utilisateur si il n'est pas connecté
         $user = $security->getUser();
 
-        if(empty($user)){
+        if (empty($user)) {
             return $this->redirectToRoute('app_login');
         }
 
@@ -96,8 +96,8 @@ class AbsencesController extends AbstractController
                 // le fichier 
                 $files = $absencesForm->get('document')->getData();
 
-                if(!empty($files)){
-                    foreach($files as $file){
+                if (!empty($files)) {
+                    foreach ($files as $file) {
                         $file = $fileService->add($file, 'file');
                         $absences->setDocument($file);
                         $document = new Documents;
@@ -107,7 +107,7 @@ class AbsencesController extends AbstractController
                     }
                 }
 
-                
+
                 $eleves->addAbsence($absences);
                 $entityManager->persist($eleves);
 
@@ -138,11 +138,15 @@ class AbsencesController extends AbstractController
             $infosAbsences = 'vide';
         }
 
+        $tableauMois= ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        $moisActuel = $tableauMois[$mois - 1];
+
         return $this->render('main/absence/absences.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
             'infosAbsences' => $infosAbsences,
             'jours' => $jours,
+            'moisActuel' => $moisActuel,
             'infosUtiles' => $infosUtiles,
             'absencesForm' => $absencesForm->createView()
         ]);
@@ -154,7 +158,7 @@ class AbsencesController extends AbstractController
         // on redirige l'utilisateur si il n'est pas connecté
         $user = $security->getUser();
 
-        if(empty($user)){
+        if (empty($user)) {
             return $this->redirectToRoute('app_login');
         }
 
@@ -224,8 +228,8 @@ class AbsencesController extends AbstractController
                 // le fichier 
                 $files = $absencesForm->get('document')->getData();
 
-                if(!empty($files)){
-                    foreach($files as $file){
+                if (!empty($files)) {
+                    foreach ($files as $file) {
                         $file = $fileService->add($file, 'file');
                         $absences->setDocument($file);
                         $document = new Documents;
@@ -271,28 +275,12 @@ class AbsencesController extends AbstractController
             'id' => $absences->getId(),
         ];
 
-        if(empty($infosAbsences)){
+        if (empty($infosAbsences)) {
             $infosAbsences = 'vide';
         }
 
-
-// dd(openssl_get_cipher_methods());
-
-
-        // $data = 'un truc bidon';
-        // $cipher_algo = 'aes-256-cbc';
-        // $passphrase =
-        // $test = openssl_encrypt(
-        //     $data,
-        //     $cipher_algo,
-        //     $passphrase,
-        //     $options = 0,
-        //     $iv = "",
-        //     $tag = null,
-        //     $aad = "",
-        //     $tag_length = 16
-        // );
-
+        $tableauMois= ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        $moisActuel = $tableauMois[$mois - 1];
 
         return $this->render('main/absence/absencemodif.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
@@ -300,6 +288,7 @@ class AbsencesController extends AbstractController
             'absences' => $absences,
             'infosAbsences' => $infosAbsences,
             'jours' => $jours,
+            'moisActuel' => $moisActuel,
             'infosUtiles' => $infosUtiles,
             'absencesForm' => $absencesForm->createView()
         ]);

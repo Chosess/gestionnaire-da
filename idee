@@ -1,6 +1,9 @@
 réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// IntlChar::ord
+
+Personnaliser les messages d'erreur' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -16,8 +19,6 @@ empêcher l'accès aux page du site si non-connecté'
 
 faire un champ date pour naviguer entre les mois et années (bonus)
 
-retourner une erreur si la date de fin d'absences est avant la date de début'
-
 les photos ne prennent que les formats jpeg / png / webp
 
 la page ne se recharge pas quand on ajoute / supprime un document /// soluce : faire le findBy en bas du controller
@@ -32,7 +33,7 @@ revoir l'affichage des documents'
 
 afficher le mois sur le calendrier absences
 
-revoir le js sur inscription DA
+// revoir le js sur inscription DA
 
 // rajouter un champ mail stage
 
