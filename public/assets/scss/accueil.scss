@@ -16,6 +16,8 @@ body {
             ul {
                 list-style-type: none;
                 padding: 0;
+                display: flex;
+                flex-direction: column;
 
                 &>a {
                     text-decoration: none;
@@ -24,9 +26,29 @@ body {
                     li {
                         border: 1px solid black;
                         border-radius: 5px;
-                        margin: 10px;
+                        margin: 5px;
                         padding-left: 5px;
                     }
+                }
+                &>a:first-of-type{
+                    order: -2;
+                }
+                &>li.nonsuivi{
+                order: 1;
+                text-decoration: underline;
+                }
+                &>a.nonsuivi{
+                    order: 2;
+                    color: rgb(110, 110, 110);
+
+                    li {
+                        border: 1px solid rgb(255, 0, 0);
+                    }
+                    
+                }
+                &>a.selectionne{
+                    // order: -1;
+                    color: blue;
                 }
             }
         }
@@ -142,5 +164,9 @@ body {
                 }
             }
         }
+    }
+    textarea{
+        position: relative;
+        z-index: 2;
     }
 }

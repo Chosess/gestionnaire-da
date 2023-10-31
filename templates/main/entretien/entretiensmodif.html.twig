@@ -1,16 +1,12 @@
 {% extends 'main/baseinfos.html.twig' %}
 
-{% block title %}Modification d'un entretien
+{% block title %}Modification de l'entretien
 {% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/entretiens.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
 {% endblock %}
-
-{# {% block javascripts %}
-	<script src="{{ asset('assets/js/absences.js')}}" defer></script>
-{% endblock %} #}
 
 {% block infos %}
 
@@ -32,7 +28,7 @@
 
     <div>
         {% for entretien in infosEntretiens %}
-            <a href="{{ path('_suivimodif', {id: entretien.id}) }}">
+            <a href="{{ path('_suivimodif', {id: entretien.id}) }}"{% if entretien.id is same as(id) %} class="selectionne"{% endif %}>
                 <div>
                     <p><span>Résumé de l'entretien :</span> {{ entretien.commentaire }}</p>
                     <p><span>Date :</span> {{ entretien.date }}</p>

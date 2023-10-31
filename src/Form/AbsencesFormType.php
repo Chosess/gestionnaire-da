@@ -21,7 +21,6 @@ class AbsencesFormType extends AbstractType
                 )))
             ->add('fin', TextType::class, array(
                 'mapped' => false,
-                'required' => false,
                 'attr' => array(
                     'placeholder' => 'jj/mm/aaaa'
                 )))

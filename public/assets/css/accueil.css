@@ -17,6 +17,8 @@ body div.flex section.navbar {
 body div.flex section.navbar ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 body div.flex section.navbar ul > a {
   text-decoration: none;
@@ -25,8 +27,25 @@ body div.flex section.navbar ul > a {
 body div.flex section.navbar ul > a li {
   border: 1px solid black;
   border-radius: 5px;
-  margin: 10px;
+  margin: 5px;
   padding-left: 5px;
+}
+body div.flex section.navbar ul > a:first-of-type {
+  order: -2;
+}
+body div.flex section.navbar ul > li.nonsuivi {
+  order: 1;
+  text-decoration: underline;
+}
+body div.flex section.navbar ul > a.nonsuivi {
+  order: 2;
+  color: rgb(110, 110, 110);
+}
+body div.flex section.navbar ul > a.nonsuivi li {
+  border: 1px solid rgb(255, 0, 0);
+}
+body div.flex section.navbar ul > a.selectionne {
+  color: blue;
 }
 body div.flex section.eleve {
   height: 100%;
@@ -110,4 +129,8 @@ body div.flex section.infos > form > div > div:last-child > div.overflow:first-o
   overflow-y: scroll;
   border: 1px solid black;
   border-radius: 10px;
+}
+body textarea {
+  position: relative;
+  z-index: 2;
 }/*# sourceMappingURL=accueil.css.map */

@@ -50,9 +50,14 @@ class EntretiensController extends AbstractController
         $er = $entretiensRepository->findBy(['eleves' => $eleves->getId()]);
 
         foreach ($er as $entretien) {
+            $commentaire = $entretien->getCommentaire();
+            // si le commentaire fait plus de 50 caractères, on le coupe
+            if (strlen($commentaire) > 50) {
+                $commentaire = substr($commentaire, 0, 50) . ' ...';
+            }
             $infosEntretiens[] = [
+                'commentaire' => $commentaire,
                 'date' => $entretien->getDate()->format('d/m/Y'),
-                'commentaire' => $entretien->getCommentaire(),
                 'id' => $entretien->getId(),
             ];
         }
@@ -99,8 +104,13 @@ class EntretiensController extends AbstractController
         $er = $entretiensRepository->findBy(['eleves' => $eleves->getId()]);
 
         foreach ($er as $entretien) {
+            $commentaire = $entretien->getCommentaire();
+            // si le commentaire fait plus de 50 caractères, on le coupe
+            if (strlen($commentaire) > 50) {
+                $commentaire = substr($commentaire, 0, 50) . ' ...';
+            }
             $infosEntretiens[] = [
-                'commentaire' => $entretien->getCommentaire(),
+                'commentaire' => $commentaire,
                 'date' => $entretien->getDate()->format('d/m/Y'),
                 'id' => $entretien->getId(),
             ];
@@ -118,6 +128,7 @@ class EntretiensController extends AbstractController
         return $this->render('main/entretien/entretiensmodif.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,
+            'id' => $entretiens->getId(),
             'valeurs' => $valeurs,
             'infosEntretiens' => $infosEntretiens,
             'entretiensForm' => $entretiensForm->createView(),

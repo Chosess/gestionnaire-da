@@ -7,6 +7,7 @@
 	<script src="{{ asset('assets/js/checkbox.js')}}" defer></script>
 	<script src="{{ asset('assets/js/cned.js')}}" defer></script>
 	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
+	<script src="{{ asset('assets/js/incomplet.js')}}" defer></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -15,27 +16,26 @@
 
 {% block body %}
 
-
 	<div class="flex">
 
 		<section class="navbar">
 			<ul>
-
 				<a href="{{ path('app_main') }}">
 					<li>+ Ajouter un étudiant</li>
 				</a>
 
-
 				{% for eleve in elevesRepository %}
-
-
-					<a href="{{ path('_infos', {id: eleve.id}) }}">
-						<li>{{ eleve.nom|upper }}
-							{{ eleve.prenom }}</li>
-					</a>
-
-
+						<a href="{{ path('_infos', {id: eleve.id}) }}" class="
+						{% if eleve.suivi == 0 %}nonsuivi{% endif %}
+						{% if eleve is same as(eleves) %}selectionne{% endif %}
+						">
+							<li>{{ eleve.nom|upper }}
+								{{ eleve.prenom }}</li>
+						</a>
 				{% endfor %}
+					
+				<li class="nonsuivi">Etudiants qui ne sont plus suivis</li>
+
 			</ul>
 
 		</section>
@@ -282,6 +282,18 @@
             }) }}
 			{{ form_row(elevesForm.stage_tel, {
                 label: 'Téléphone du tuteur : '
+            }) }}
+		</div>
+
+        <div>
+			<h2>Dossier</h2>
+			{{ form_row(elevesForm.complet, {
+                value: eleves.complet,
+                label: 'Dossier complet : '
+            }) }}
+			{{ form_row(elevesForm.incomplet, {
+                value: eleves.incomplet,
+                label: 'Documents manquants : '
             }) }}
 		</div>
 

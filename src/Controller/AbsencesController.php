@@ -83,14 +83,7 @@ class AbsencesController extends AbstractController
                 // traitement de la date de fin
                 $fin = DateTime::createFromFormat("d/m/Y", $fin);
 
-                if (!empty($fin)) {
-                    $absences->setFin($fin);
-                }
-
-                // si il y as seulement une date de début, la date de fin prend la même date que celle de début
-                if (empty($fin) && !empty($debut)) {
-                    $absences->setFin($debut);
-                }
+                $absences->setFin($fin);
 
                 // le fichier 
                 $files = $absencesForm->get('document')->getData();
@@ -116,7 +109,7 @@ class AbsencesController extends AbstractController
             endif;
         }
 
-        $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()]);
+        $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()], ['debut' => 'DESC']);
         foreach ($abs as $ab) {
             //on vérifie si le motif dépasse 50 caractères
             $motif = $ab->getMotif();
@@ -211,13 +204,7 @@ class AbsencesController extends AbstractController
                 // traitement de la date de fin
                 $fin = DateTime::createFromFormat("d/m/Y", $fin);
 
-                if (!empty($fin)) {
-                    $absences->setFin($fin);
-                }
-
-                if (empty($fin) && !empty($debut)) {
-                    $absences->setFin($debut);
-                }
+                $absences->setFin($fin);
 
                 // le fichier 
                 $files = $absencesForm->get('document')->getData();
@@ -243,11 +230,11 @@ class AbsencesController extends AbstractController
             endif;
         }
 
-        $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()]);
+        $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()], ['debut' => 'DESC']);
         foreach ($abs as $ab) {
-            //on vérifie si le motif dépasse 50 caractères
+            //on récupère le motif
             $motif = $ab->getMotif();
-            // si il l'est on le coupe à 50 caractères
+            // on vérifie si le motif dépasse 50 caractères si il l'est on le coupe à 50 caractères
             if (strlen($motif) > 50) {
                 $motif = substr($motif, 0, 50) . ' ...';
             }
@@ -265,8 +252,13 @@ class AbsencesController extends AbstractController
             'fin' => $absences->getFin()->format('d/m/Y'),
             'motif' => $absences->getMotif(),
             'justif' => $absences->isJustif(),
-            'document' => $absences->getDocument()
+            'document' => $absences->getDocument(),
+            'id' => $absences->getId(),
         ];
+
+        if(empty($infosAbsences)){
+            $infosAbsences = 'vide';
+        }
 
 
         return $this->render('main/absence/absencemodif.html.twig', [

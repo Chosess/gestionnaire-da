@@ -1,4 +1,7 @@
-{% extends 'main/infos.html.twig' %}
+{% extends 'main/baseinfos.html.twig' %}
+
+{% block title %}Modification de l'absence
+{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/absences.min.css')}}">
@@ -28,17 +31,9 @@
 
 			{% for jour in jours %}
 
-				{% if infosUtiles.jourActuel == jour %}
-
-					<div class="actuel jours" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
-
-				{% else %}
-
-					<div class="jours" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
-
-
-				{% endif %}
-
+				<div class="jours
+				{% if infosUtiles.jourActuel == jour %}actuel{% endif %}
+				" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
 
 			{% endfor %}
 
@@ -52,7 +47,9 @@
 
 			<div>
 				{% for absence in infosAbsences %}
-					<a href="{{ path('_modif', {id: absence.id}) }}">
+					<a href="{{ path('_modif', {id: absence.id}) }}"
+						{% if absence.id is same as(absences.id) %} class="selectionne"{% endif %}
+						>
 						<div class="absence" id="{{ absence.debut }}-{{ absence.fin }}">
 							<div class="flex">
 								<p>Du

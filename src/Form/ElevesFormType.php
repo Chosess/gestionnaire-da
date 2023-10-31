@@ -170,6 +170,8 @@ class ElevesFormType extends AbstractType
                     'placeholder' => 'jj/mm/aaaa'
                 )
             ))
+            ->add('complet')
+            ->add('incomplet')
         ;
     }
 

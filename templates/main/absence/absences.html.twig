@@ -1,5 +1,8 @@
 {% extends 'main/baseinfos.html.twig' %}
 
+{% block title %}Nouvel absence
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/absences.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/accueil.min.css')}}">
@@ -28,17 +31,9 @@
 
 			{% for jour in jours %}
 
-				{% if infosUtiles.jourActuel == jour %}
-
-					<div class="actuel jours" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
-
-				{% else %}
-
-					<div class="jours" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
-
-
-				{% endif %}
-
+				<div class="jours
+				{% if infosUtiles.jourActuel == jour %}actuel{% endif %}
+				" id="{{ jour.jour }}/{{ jour.mois }}/{{ jour.annee }}">{{ jour.jour }}</div>
 
 			{% endfor %}
 

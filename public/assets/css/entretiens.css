@@ -45,4 +45,7 @@ section.infos > div:last-child > a > div {
 section.infos > div:last-child > a > div > p > span {
   text-decoration: underline;
   font-style: italic;
+}
+section.infos > div:last-child > a.selectionne {
+  color: blue;
 }/*# sourceMappingURL=entretiens.css.map */

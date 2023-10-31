@@ -8,6 +8,7 @@
 	<script src="{{ asset('assets/js/checkbox.js')}}" defer></script>
 	<script src="{{ asset('assets/js/cned.js')}}" defer></script>
 	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
+	<script src="{{ asset('assets/js/incomplet.js')}}" defer></script>
 {% endblock %}
 
 {% block infos %}
@@ -300,6 +301,18 @@
 			{{ form_row(elevesForm.stage_tel, {
                 value: eleves.stageTel,
                 label: 'Téléphone du tuteur : '
+            }) }}
+		</div>
+
+        <div>
+			<h2>Dossier</h2>
+			{{ form_row(elevesForm.complet, {
+                value: eleves.complet,
+                label: 'Dossier complet : '
+            }) }}
+			{{ form_row(elevesForm.incomplet, {
+                value: eleves.incomplet,
+                label: 'Documents manquants : '
             }) }}
 		</div>
 

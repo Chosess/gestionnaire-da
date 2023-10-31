@@ -18,13 +18,17 @@
 				</a>
 
 				{% for eleve in elevesRepository %}
-
-					<a href="{{ path('_infos', {id: eleve.id}) }}">
-						<li>{{ eleve.nom|upper }}
-							{{ eleve.prenom }}</li>
-					</a>
-
+						<a href="{{ path('_infos', {id: eleve.id}) }}" class="
+						{% if eleve.suivi == 0 %}nonsuivi{% endif %}
+						{% if eleve is same as(eleves) %}selectionne{% endif %}
+						">
+							<li>{{ eleve.nom|upper }}
+								{{ eleve.prenom }}</li>
+						</a>
 				{% endfor %}
+					
+				<li class="nonsuivi">Etudiants qui ne sont plus suivis</li>
+
 			</ul>
 
 		</section>

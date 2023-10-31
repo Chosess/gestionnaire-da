@@ -5,13 +5,14 @@ empêcher l'accès aux page du site si non-connecté'
 
 faire un champ date pour naviguer entre les mois et années (bonus)
 
-réinitialiser le mot de passe
+réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 retourner une erreur si la date de fin d'absences est avant la date de début'
 
-chiffrer toutes les infos en base de données
+chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-les élèves non suivi doivent être affiché après les autres
+// les élèves non suivi doivent être affiché après les autres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Voir avec la DA quelles couleurs / affichage il préfère
 
 les photos ne prennent que les formats jpeg / png / webp
 
@@ -21,29 +22,31 @@ il y a un petit bug lorsqu'il n'y a aucun document
 
 il faudrait essayer d'uploads d'autres fichiers (ex : pdf)
 
-trier les absences par date
-
 pour les images peut-être faire un file_exists avant de les afficher
 
+// il y a un petit bug lors de l'ajout d'absences (ce bug fait que parfois les nouvelles absences ne s'affiche pas)'
+// (le bug arrive lorsqu'il n'y a aucune date de fin ou que la date de fin est avant la date de début)
 
-il y a un petit bug lors de l'ajout d'absences (ce bug fait que parfois les nouvelles absences ne s'affiche pas)'
+faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-faire les documents préremplies
+// dossier complet / incomplet et champ pour ce qui manque$ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-trier les twigs par pages
-
-dossier complet / incomplet et champ pour ce qui manque$
-
-// civilité menu déroulant 
-((((((((((( il faut demander si la Digitale Académie préfère des cases à cocher ou une liste déroulante )))))))))))
-
-coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable)
-
-chiffrement
+coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable) !!!!!!!!!!!!!!!!!
 
 revoir l'affichage des documents'
 
 Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent'
+
+si l'absence est justifiée elle apparait en orange'
+
+// trier les absences par date
+
+// civilité menu déroulant 
+// il faut demander si la Digitale Académie préfère des cases à cocher ou une liste déroulante
+
+// faire en sorte que l'entretien, l'absence ou l'étudiants' sélectionné soit visible dans la liste (le mettre en rouge par exemple)
+
+// trier les twigs par pages
 
 // faire une barre de défilement avec les absences des élèves
 
@@ -69,7 +72,7 @@ Vérifier avec différents types de documents si l'upload et le téléchargement
 
 // retour a la page ajout d'absences
 
-// CONTACT URGENCE DEVIENT RESPONSABLE L2GAL et en bas de page
+// contact urgence devient responsable légal et en bas de page
 
 // date de fin de suivi
 

@@ -42,6 +42,9 @@ section.infos > div:first-child section.infosComplementaires > div > a > div.abs
 section.infos > div:first-child section.infosComplementaires > div > a > div.absence p {
   margin: 10px;
 }
+section.infos > div:first-child section.infosComplementaires > div > a.selectionne {
+  color: blue;
+}
 section.infos > div:last-child > form {
   margin-top: 20px;
   padding: 10px;

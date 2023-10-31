@@ -51,6 +51,9 @@ section.infos {
                         }
                     }
                 }
+                &>a.selectionne{
+                    color: blue;
+                }
             }
         }
     }

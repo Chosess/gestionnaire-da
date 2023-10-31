@@ -173,6 +173,12 @@ class Eleves
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_inscription_cned = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $complet = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $incomplet = null;
+
     public function __construct()
     {
         $this->entretiens = new ArrayCollection();
@@ -882,6 +888,30 @@ class Eleves
     public function setDateInscriptionCned(?\DateTimeInterface $date_inscription_cned): static
     {
         $this->date_inscription_cned = $date_inscription_cned;
+
+        return $this;
+    }
+
+    public function isComplet(): ?bool
+    {
+        return $this->complet;
+    }
+
+    public function setComplet(?bool $complet): static
+    {
+        $this->complet = $complet;
+
+        return $this;
+    }
+
+    public function getIncomplet(): ?string
+    {
+        return $this->incomplet;
+    }
+
+    public function setIncomplet(?string $incomplet): static
+    {
+        $this->incomplet = $incomplet;
 
         return $this;
     }
