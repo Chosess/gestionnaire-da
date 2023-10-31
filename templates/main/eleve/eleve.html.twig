@@ -9,6 +9,8 @@
 	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
 	<script src="{{ asset('assets/js/incomplet.js')}}" defer></script>
 	<script src="{{ asset('assets/js/coach.js')}}" defer></script>
+	<script src="{{ asset('assets/js/inscription.js')}}" defer></script>
+	<script src="{{ asset('assets/js/cotisation.js')}}" defer></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -266,9 +268,12 @@
 			{{ form_row(elevesForm.valeur_dispositif, {
                 label: 'Veuillez préciser : ',
             }) }}
-				{{ form_row(elevesForm.conseiller, {
-                    label: 'Conseiller(e) : '
-                }) }}
+			{{ form_row(elevesForm.conseiller, {
+                label: 'Conseiller(e) : '
+            }) }}
+			{{ form_row(elevesForm.lieu_ml, {
+                label: 'Lieu : '
+            }) }}
         </div>
 
         <div>
@@ -290,6 +295,9 @@
             }) }}
 			{{ form_row(elevesForm.stage_tel, {
                 label: 'Téléphone du tuteur : '
+            }) }}
+			{{ form_row(elevesForm.stage_mail, {
+                label: 'Email du tuteur : '
             }) }}
 		</div>
 

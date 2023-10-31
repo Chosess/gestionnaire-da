@@ -142,6 +142,7 @@ class ElevesFormType extends AbstractType
                 )
             ))
             ->add('stage_entreprise')
+            ->add('stage_mail')
             ->add('stage_tuteur')
             ->add('stage_tuteur_fonction')
             ->add('stage_tel')
@@ -173,6 +174,14 @@ class ElevesFormType extends AbstractType
             ->add('complet')
             ->add('incomplet')
             ->add('educateur_non_inscrit')
+            ->add('lieu_ml')
+            ->add('permis', ChoiceType::class, array(
+                'choices' => [
+                    'Non' => 'Non',
+                    'Oui' => 'Oui',
+                    'En cours' => 'En cours',
+                ],
+            ))
         ;
     }
 

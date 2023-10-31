@@ -30,15 +30,15 @@ pour les images peut-être faire un file_exists avant de les afficher
 
 revoir l'affichage des documents'
 
-rajouter un champ mail stage
-
-rajouter un champ lieu pour mission locale
-
-permis b oui / non / en cours
-
 afficher le mois sur le calendrier absences
 
 revoir le js sur inscription DA
+
+// rajouter un champ mail stage
+
+// rajouter un champ lieu pour mission locale
+
+// permis b oui / non / en cours
 
 // si l'absence est justifiée elle apparait en orange'
 

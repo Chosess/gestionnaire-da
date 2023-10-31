@@ -10,6 +10,8 @@
 	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
 	<script src="{{ asset('assets/js/incomplet.js')}}" defer></script>
 	<script src="{{ asset('assets/js/coach.js')}}" defer></script>
+	<script src="{{ asset('assets/js/inscription.js')}}" defer></script>
+	<script src="{{ asset('assets/js/cotisation.js')}}" defer></script>
 {% endblock %}
 
 {% block infos %}
@@ -151,12 +153,17 @@
 		<div>
 			<h2>Informations complémentaires</h2>
 			{{ form_row(elevesForm.ordinateur, {
-                    value: eleves.ordinateur,
-                    label: 'Possède un ordinateur : '
-                }) }}
+                value: eleves.ordinateur,
+                label: 'Possède un ordinateur : '
+            }) }}
 			{{ form_row(elevesForm.droit_image, {
-                    label: 'Droit à l\'image : '
-                }) }}
+                value: eleves.droitImage,
+                label: 'Droit à l\'image : '
+            }) }}
+            {{ form_row(elevesForm.permis, {
+                value: eleves.permis,
+                label: 'Permis : '
+            }) }}
 		</div>
 
 		<div>
@@ -303,6 +310,14 @@
 			{{ form_row(elevesForm.stage_tel, {
                 value: eleves.stageTel,
                 label: 'Téléphone du tuteur : '
+            }) }}
+			{{ form_row(elevesForm.stage_mail, {
+                value: eleves.stageMail,
+                label: 'Email du tuteur : '
+            }) }}
+			{{ form_row(elevesForm.lieu_ml, {
+                value: eleves.lieuMl,
+                label: 'Lieu : '
             }) }}
 		</div>
 
