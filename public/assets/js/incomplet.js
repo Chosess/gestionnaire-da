@@ -12,6 +12,10 @@ let non = oui.nextElementSibling.nextElementSibling;
 // on récupère le display initial de la div parente du champ incomplet
 let display = div.style.display;
 
+if(oui.checked == true){
+    div.style.display = 'none';
+}
+
 oui.addEventListener('click', function(){
     if(oui.checked == true){
         div.style.display = 'none';

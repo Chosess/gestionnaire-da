@@ -172,6 +172,7 @@ class ElevesFormType extends AbstractType
             ))
             ->add('complet')
             ->add('incomplet')
+            ->add('educateur_non_inscrit')
         ;
     }
 

@@ -9,6 +9,7 @@
 	<script src="{{ asset('assets/js/cned.js')}}" defer></script>
 	<script src="{{ asset('assets/js/dispositif.js')}}" defer></script>
 	<script src="{{ asset('assets/js/incomplet.js')}}" defer></script>
+	<script src="{{ asset('assets/js/coach.js')}}" defer></script>
 {% endblock %}
 
 {% block infos %}
@@ -233,8 +234,13 @@
 			<div>
 				<h2>Suivi</h2>
 				{{ form_row(elevesForm.educateurs_id, {
+                    required: false,
                     choice: eleves.educateursId,
                     label: 'Coach référent : '
+                }) }}
+				{{ form_row(elevesForm.educateur_non_inscrit, {
+                    value: eleves.educateurNonInscrit,
+                    label: 'Coach référent (si non inscrit) : '
                 }) }}
 				{{ form_row(elevesForm.prescripteur, {
                     value: eleves.prescripteur,

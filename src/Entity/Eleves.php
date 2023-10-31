@@ -29,7 +29,7 @@ class Eleves
     private ?string $civilite = null;
 
     #[ORM\ManyToOne(inversedBy: 'eleves')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Educateurs $educateurs_id = null;
 
     #[ORM\OneToMany(mappedBy: 'eleves', targetEntity: Entretiens::class)]
@@ -178,6 +178,9 @@ class Eleves
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $incomplet = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $educateur_non_inscrit = null;
 
     public function __construct()
     {
@@ -912,6 +915,18 @@ class Eleves
     public function setIncomplet(?string $incomplet): static
     {
         $this->incomplet = $incomplet;
+
+        return $this;
+    }
+
+    public function getEducateurNonInscrit(): ?string
+    {
+        return $this->educateur_non_inscrit;
+    }
+
+    public function setEducateurNonInscrit(?string $educateur_non_inscrit): static
+    {
+        $this->educateur_non_inscrit = $educateur_non_inscrit;
 
         return $this;
     }

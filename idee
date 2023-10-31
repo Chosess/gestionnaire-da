@@ -31,11 +31,11 @@ faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // dossier complet / incomplet et champ pour ce qui manque$ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable) !!!!!!!!!!!!!!!!!
+// coach réferent rajouter un champ input text (il faudra peut-être mettre la relation en nullable) !!!!!!!!!!!!!!!!!
 
 revoir l'affichage des documents'
 
-Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent'
+Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 si l'absence est justifiée elle apparait en orange'
 
