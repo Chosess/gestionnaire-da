@@ -1,3 +1,14 @@
+réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// les élèves non suivi doivent être affiché après les autres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Voir avec la DA quelles couleurs / affichage il préfère
+
 empêcher l'accès aux page du site si non-connecté'
 
 élève devient étudiants
@@ -5,14 +16,7 @@ empêcher l'accès aux page du site si non-connecté'
 
 faire un champ date pour naviguer entre les mois et années (bonus)
 
-réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 retourner une erreur si la date de fin d'absences est avant la date de début'
-
-chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// les élèves non suivi doivent être affiché après les autres !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Voir avec la DA quelles couleurs / affichage il préfère
 
 les photos ne prennent que les formats jpeg / png / webp
 
@@ -24,11 +28,17 @@ il faudrait essayer d'uploads d'autres fichiers (ex : pdf)
 
 pour les images peut-être faire un file_exists avant de les afficher
 
-faire les documents préremplies !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 revoir l'affichage des documents'
 
-Vérifier avec différents types de documents si l'upload et le téléchargement fonctionnent' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+rajouter un champ mail stage
+
+rajouter un champ lieu pour mission locale
+
+permis b oui / non / en cours
+
+afficher le mois sur le calendrier absences
+
+revoir le js sur inscription DA
 
 // si l'absence est justifiée elle apparait en orange'
 

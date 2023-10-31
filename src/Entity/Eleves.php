@@ -182,6 +182,15 @@ class Eleves
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $educateur_non_inscrit = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stage_mail = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lieu_ml = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $permis = null;
+
     public function __construct()
     {
         $this->entretiens = new ArrayCollection();
@@ -927,6 +936,42 @@ class Eleves
     public function setEducateurNonInscrit(?string $educateur_non_inscrit): static
     {
         $this->educateur_non_inscrit = $educateur_non_inscrit;
+
+        return $this;
+    }
+
+    public function getStageMail(): ?string
+    {
+        return $this->stage_mail;
+    }
+
+    public function setStageMail(?string $stage_mail): static
+    {
+        $this->stage_mail = $stage_mail;
+
+        return $this;
+    }
+
+    public function getLieuMl(): ?string
+    {
+        return $this->lieu_ml;
+    }
+
+    public function setLieuMl(?string $lieu_ml): static
+    {
+        $this->lieu_ml = $lieu_ml;
+
+        return $this;
+    }
+
+    public function getPermis(): ?string
+    {
+        return $this->permis;
+    }
+
+    public function setPermis(?string $permis): static
+    {
+        $this->permis = $permis;
 
         return $this;
     }

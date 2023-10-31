@@ -276,6 +276,24 @@ class AbsencesController extends AbstractController
         }
 
 
+// dd(openssl_get_cipher_methods());
+
+
+        // $data = 'un truc bidon';
+        // $cipher_algo = 'aes-256-cbc';
+        // $passphrase =
+        // $test = openssl_encrypt(
+        //     $data,
+        //     $cipher_algo,
+        //     $passphrase,
+        //     $options = 0,
+        //     $iv = "",
+        //     $tag = null,
+        //     $aad = "",
+        //     $tag_length = 16
+        // );
+
+
         return $this->render('main/absence/absencemodif.html.twig', [
             'elevesRepository' => $elevesRepository->findBy([], ['nom' => 'ASC']),
             'eleves' => $eleves,

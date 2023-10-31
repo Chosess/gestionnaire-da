@@ -169,10 +169,6 @@
                 value: di,
                 label: 'Le : '
             }) }}
-		</div>
-        
-        <div>
-			<h2>Cotisation DA</h2>
 			{{ form_row(elevesForm.cotisations, {
                 value: eleves.cotisations,
                 label: 'Cotisation payée : '
@@ -246,10 +242,6 @@
                     value: eleves.prescripteur,
                     label: 'Prescripteur : '
                 }) }}
-				{{ form_row(elevesForm.conseiller, {
-                    value: eleves.conseiller,
-                    label: 'Conseiller(e) (Pôle emploi ou Mission locale) : '
-                }) }}
 			    {{ form_row(elevesForm.suivi, {
                     value: eleves.suivi,
                     label: 'L\'étudiant est toujours suivi à la digitale académie : '
@@ -279,6 +271,10 @@
                 value: da.valeur,
                 label: 'Veuillez préciser : ',
             }) }}
+				{{ form_row(elevesForm.conseiller, {
+                    value: eleves.conseiller,
+                    label: 'Conseiller(e) : '
+                }) }}
             
         </div>
 
