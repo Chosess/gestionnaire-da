@@ -180,9 +180,6 @@ class Eleves
     private ?string $incomplet = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $educateur_non_inscrit = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $stage_mail = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -924,18 +921,6 @@ class Eleves
     public function setIncomplet(?string $incomplet): static
     {
         $this->incomplet = $incomplet;
-
-        return $this;
-    }
-
-    public function getEducateurNonInscrit(): ?string
-    {
-        return $this->educateur_non_inscrit;
-    }
-
-    public function setEducateurNonInscrit(?string $educateur_non_inscrit): static
-    {
-        $this->educateur_non_inscrit = $educateur_non_inscrit;
 
         return $this;
     }

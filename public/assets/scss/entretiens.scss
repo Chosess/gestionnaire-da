@@ -1,7 +1,8 @@
-section.infos{
+section.infos {
     width: 60%;
-    &>div:first-child{
-        &>form{
+
+    &>div:first-child {
+        &>form {
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid black;
             border-radius: 10px;
@@ -9,50 +10,81 @@ section.infos{
             justify-content: space-evenly;
             align-items: center;
             padding: 10px;
-            &>div:first-child{
+            box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+
+            &>div:first-child {
                 width: 80%;
                 height: 100px;
-                &>textarea{
+
+                &>textarea {
                     width: 80%;
                     height: 60%;
                 }
             }
-            &>div:last-of-type{
-                &>div{
+
+            &>div:last-of-type {
+                &>div {
                     margin-bottom: 20px;
+                }
+
+                &>button {
+                    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 1), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+                    border: 0;
+                    border-radius: 10px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 1);
+                    }
                 }
             }
         }
     }
 
-    &>div:last-child{
+    a{
+        margin-top: 20px;
+        display: block;
+    }
+
+    &>div:last-child {
         overflow-y: scroll;
-        max-height: 600px;
+        max-height: 500px;
         border: 1px solid black;
         border-radius: 10px;
-        padding: 10px;
+        padding: 0 10px;
         margin-top: 20px;
-        &>a{
+
+        &>a {
             text-decoration: none;
             color: black;
-            &>div{
+
+            &>div {
                 background-color: rgba(255, 255, 255, 0.8);
                 border: 1px solid black;
                 border-radius: 10px;
-                margin-top: 20px;
+                margin-bottom: 20px;
                 display: flex;
                 justify-content: space-evenly;
                 align-items: center;
-                &>p{
-                    &>span{
+                box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
+                }
+
+                &>p {
+                    &>span {
                         text-decoration: underline;
                         font-style: italic;
                     }
                 }
             }
         }
-        &>a.selectionne{
-                color: blue;
+
+        &>a.selectionne {
+            color: blue;
         }
     }
 }

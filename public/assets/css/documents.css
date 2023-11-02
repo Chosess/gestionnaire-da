@@ -14,6 +14,11 @@ section.infos > div.docs > div.document {
   height: 150px;
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+section.infos > div.docs > div.document:hover {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
 }
 section.infos > div.docs > div.document > img {
   width: 90%;
@@ -26,7 +31,13 @@ section.infos > form > div:first-child {
   display: none;
 }
 section.infos > form > div:nth-child(2) {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
+  height: -moz-fit-content;
+  height: fit-content;
   margin-top: 20px;
+  padding: 14px 20px;
+  border-radius: 10px;
 }
 section.infos > form > div.flex {
   margin-top: 20px;
@@ -40,12 +51,17 @@ section.infos > form > div.flex > button {
 section.infos > form > div.flex > p {
   position: relative;
   width: 100px;
-  height: 46px;
-  border: 2px solid black;
+  height: 50px;
+  border: 0;
   border-radius: 10px;
   margin: 0;
   text-align: center;
   background-color: rgb(240, 240, 240);
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+section.infos > form > div.flex > p:hover {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
 }
 section.infos > form > div.flex > p > span {
   position: absolute;

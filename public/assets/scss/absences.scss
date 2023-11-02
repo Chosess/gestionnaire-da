@@ -12,6 +12,7 @@ section.infos {
             grid: auto-flow 70px / repeat(7, 1fr);
             border: 2px solid black;
             background-color: rgba(255, 255, 255, 0.8);
+            height: 100%;
 
             &>div {
                 width: 70px;
@@ -30,7 +31,11 @@ section.infos {
 
         section.infosComplementaires {
             overflow-y: scroll;
+            max-height: 440px;
             margin-left: 20px;
+            border: 2px solid black;
+            padding: 0 10px;
+            border-radius: 10px;
 
             &>div {
                 &>a {

@@ -15,6 +15,12 @@ section.infos {
             height: 150px;
             margin: 20px;
             background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
+            }
 
             &>img {
                 width: 90%;
@@ -28,40 +34,59 @@ section.infos {
     }
 
     &>form {
+        
         &>div:first-child {
             display: none;
         }
-        &>div:nth-child(2){
+        
+        &>div:nth-child(2) {
+            box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
+            height: fit-content;
             margin-top: 20px;
+            padding: 14px 20px;
+            border-radius: 10px;
         }
-        &>div.flex{
+
+        &>div.flex {
             margin-top: 20px;
-            &>button{
+
+            &>button {
                 border: 2px solid black;
                 border-radius: 10px;
                 width: 100px;
                 height: 50px;
             }
+
             &>p {
                 position: relative;
                 width: 100px;
-                height: 46px;
-                border: 2px solid black;
+                height: 50px;
+                border: 0;
                 border-radius: 10px;
                 margin: 0;
                 text-align: center;
                 background-color: rgba(240, 240, 240);
-                &>span{
+                box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
+                }
+
+                &>span {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                 }
             }
-            &>p:hover{
+
+            &>p:hover {
                 background-color: rgb(219, 219, 219);
             }
-            &>p:active{
+
+            &>p:active {
                 background-color: rgb(179, 179, 179);
             }
         }

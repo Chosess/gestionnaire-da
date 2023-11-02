@@ -114,7 +114,7 @@ class ElevesFormType extends AbstractType
                 'label' => 'Choisissez plusieurs options',
                 'required' => false,
                 'choices' => [
-                    'Mission Locale' => 'Mission Locale',
+                    'Mission Locale' => 'Mission locale',
                     'Bourse' => 'Bourse',
                     'Autre' => 'Autre',
                 ],
@@ -158,9 +158,9 @@ class ElevesFormType extends AbstractType
                 'label' => 'Choisissez plusieurs options',
                 'required' => false,
                 'choices' => [
-                    'en attente de validation PJ' => 'En attente de validation PJ',
-                    'en attente de paiement' => 'En attente de paiement',
-                    'inscription validée' => 'Inscription validée',
+                    'En attente de validation PJ' => 'En attente de validation PJ',
+                    'En attente de paiement' => 'En attente de paiement',
+                    'Inscription validée' => 'Inscription validée',
                 ],
             ))
             ->add('date_inscription_cned', TextType::class, array(
@@ -173,13 +173,12 @@ class ElevesFormType extends AbstractType
             ))
             ->add('complet')
             ->add('incomplet')
-            ->add('educateur_non_inscrit')
             ->add('lieu_ml')
             ->add('permis', ChoiceType::class, array(
                 'choices' => [
                     'Non' => 'Non',
-                    'Oui' => 'Oui',
                     'En cours' => 'En cours',
+                    'Oui' => 'Oui',
                 ],
             ))
         ;

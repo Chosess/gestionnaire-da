@@ -240,10 +240,6 @@
                     choice: eleves.educateursId,
                     label: 'Coach référent : '
                 }) }}
-				{{ form_row(elevesForm.educateur_non_inscrit, {
-                    value: eleves.educateurNonInscrit,
-                    label: 'Coach référent (si non inscrit) : '
-                }) }}
 				{{ form_row(elevesForm.prescripteur, {
                     value: eleves.prescripteur,
                     label: 'Prescripteur : '
@@ -281,6 +277,10 @@
                     value: eleves.conseiller,
                     label: 'Conseiller(e) : '
                 }) }}
+			{{ form_row(elevesForm.lieu_ml, {
+                value: eleves.lieuMl,
+                label: 'Lieu : '
+            }) }}
             
         </div>
 
@@ -313,10 +313,6 @@
 			{{ form_row(elevesForm.stage_mail, {
                 value: eleves.stageMail,
                 label: 'Email du tuteur : '
-            }) }}
-			{{ form_row(elevesForm.lieu_ml, {
-                value: eleves.lieuMl,
-                label: 'Lieu : '
             }) }}
 		</div>
 

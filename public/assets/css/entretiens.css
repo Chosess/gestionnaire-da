@@ -9,6 +9,7 @@ section.infos > div:first-child > form {
   justify-content: space-evenly;
   align-items: center;
   padding: 10px;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
 }
 section.infos > div:first-child > form > div:first-child {
   width: 80%;
@@ -21,12 +22,26 @@ section.infos > div:first-child > form > div:first-child > textarea {
 section.infos > div:first-child > form > div:last-of-type > div {
   margin-bottom: 20px;
 }
+section.infos > div:first-child > form > div:last-of-type > button {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgb(255, 255, 255), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+section.infos > div:first-child > form > div:last-of-type > button:hover {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgb(255, 255, 255);
+}
+section.infos a {
+  margin-top: 20px;
+  display: block;
+}
 section.infos > div:last-child {
   overflow-y: scroll;
-  max-height: 600px;
+  max-height: 500px;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px;
+  padding: 0 10px;
   margin-top: 20px;
 }
 section.infos > div:last-child > a {
@@ -37,10 +52,15 @@ section.infos > div:last-child > a > div {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+section.infos > div:last-child > a > div:hover {
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
 }
 section.infos > div:last-child > a > div > p > span {
   text-decoration: underline;

@@ -43,19 +43,12 @@
 					<img src="{{ asset('assets/uploads/image/' ~ eleves.photo)}}" alt="Photo de profil">
 				{% endif %}
 
-				<p>{{ eleves.civilite }}
+				<p> {{ eleves.civilite }}
 					{{ eleves.nom }}
 					{{ eleves.prenom }}</p>
-				<p>
-					{% if eleves.educateursId is empty %}
-						{% if eleves.educateurNonInscrit is not empty %}
-							{{ eleves.educateurNonInscrit }}
-						{% endif %}
-					{% else %}
-						{{ eleves.educateursId.nom }}
-						{{ eleves.educateursId.prenom }}
-					{% endif %}
-				</p>
+					
+				<p> {{ eleves.educateursId.nom }}
+					{{ eleves.educateursId.prenom }}</p>
 			</div>
 
 			<div>

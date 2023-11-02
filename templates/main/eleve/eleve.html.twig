@@ -23,7 +23,7 @@
 		<section class="navbar">
 			<ul>
 				<a href="{{ path('app_main') }}">
-					<li>+ Ajouter un étudiant</li>
+					<li class="actuel">+ Ajouter un étudiant</li>
 				</a>
 
 				{% for eleve in elevesRepository %}
@@ -172,6 +172,9 @@
 				{{ form_row(elevesForm.droit_image, {
                     label: 'Droit à l\'image : '
                 }) }}
+				{{ form_row(elevesForm.permis, {
+					label: 'Permis : '
+				}) }}
 				</div>
 
 		<div>
@@ -233,11 +236,8 @@
 				{{ form_row(elevesForm.educateurs_id, {
                     required: false,
                     choice: eleves.educateursId,
+					value: user.id,
                     label: 'Coach référent : '
-                }) }}
-				{{ form_row(elevesForm.educateur_non_inscrit, {
-                    value: eleves.educateurNonInscrit,
-                    label: 'Coach référent (si non inscrit) : '
                 }) }}
 				{{ form_row(elevesForm.prescripteur, {
                     label: 'Prescripteur : '
@@ -303,11 +303,9 @@
         <div>
 			<h2>Dossier</h2>
 			{{ form_row(elevesForm.complet, {
-                value: eleves.complet,
                 label: 'Dossier complet : '
             }) }}
 			{{ form_row(elevesForm.incomplet, {
-                value: eleves.incomplet,
                 label: 'Documents manquants : '
             }) }}
 		</div>
