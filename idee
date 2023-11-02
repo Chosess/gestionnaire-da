@@ -23,7 +23,7 @@ les photos ne prennent que les formats jpeg / png / webp
 
 la page ne se recharge pas quand on ajoute / supprime un document /// soluce : faire le findBy en bas du controller
 
-il y a un petit bug lorsqu'il n'y a aucun document
+il y a un petit bug lorsqu'il n'y a aucun document / absence / entretiens
 
 il faudrait essayer d'uploads d'autres fichiers (ex : pdf)
 
@@ -31,7 +31,7 @@ pour les images peut-être faire un file_exists avant de les afficher
 
 revoir l'affichage des documents'
 
-afficher le mois sur le calendrier absences
+// afficher le mois sur le calendrier absences
 
 // revoir le js sur inscription DA
 
