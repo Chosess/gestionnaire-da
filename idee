@@ -1,7 +1,8 @@
 réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// IntlChar::ord
+// IntlChar::ord ou ord()
+(idée utilise base64_encode puis remplacer les majuscules par des minuscules et inversement, et les chiffres par (10 - 'le chiffre'))
 
 Personnaliser les messages d'erreur' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -13,6 +14,8 @@ Vérifier avec différents types de documents si l'upload et le téléchargement
 Voir avec la DA quelles couleurs / affichage il préfère
 
 empêcher l'accès aux page du site si non-connecté'
+
+faire une prévision des documents
 
 élève devient étudiants
 éducateur devient coach

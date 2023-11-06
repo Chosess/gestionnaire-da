@@ -19,8 +19,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocumentsController extends AbstractController
 {
     #[Route('/{id}/documents', name: '_documents')]
-    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService, Security $security,ChiffrementService $chiffrementService): Response
+    public function documents(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, EntityManagerInterface $entityManager, DocumentsRepository $documentsRepository, FileService $fileService, Security $security, ChiffrementService $chiffrementService): Response
     {
+        $string = "j'ai envie de mettre une phrase un peu longue";
+        $encode = $chiffrementService->encode($string);
+        $decode = $chiffrementService->decode($encode);
+        dd([
+            'phrase' => $string,
+            'encode' => $encode,
+            'decode' => $decode,
+        ]);
+
         // on redirige l'utilisateur si il n'est pas connecté
         $user = $security->getUser();
 

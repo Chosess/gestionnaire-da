@@ -55,7 +55,7 @@
 			<div class="coach">
 				<p>Connecté(e) en tant que : </p>
 				<p>{{ user.nom|upper ~ ' ' ~ user.prenom }}</p>
-				<p><a href="{{ path('app_logout') }}">Déconnexion</a></p>
+				<a href="{{ path('app_logout') }}"><p>Déconnexion</p></a>
 			</div>
 
 		</section>
@@ -234,7 +234,7 @@
 			<div>
 				<h2>Suivi</h2>
 				{{ form_row(elevesForm.educateurs_id, {
-                    required: false,
+                    required: true,
                     choice: eleves.educateursId,
 					value: user.id,
                     label: 'Coach référent : '
@@ -310,7 +310,7 @@
             }) }}
 		</div>
 
-		<button>Confirmer les changements</button>
+		<button>Confirmer l'inscription</button>
 
 
 			{{ form_end(elevesForm) }}

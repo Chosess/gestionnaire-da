@@ -110,11 +110,14 @@ body div.flex section.eleve > div.coach {
   border-radius: 5px;
   width: 200px;
 }
-body div.flex section.eleve > div.coach > p {
+body div.flex section.eleve > div.coach p {
   margin: 10px;
 }
-body div.flex section.eleve > div.coach > p > a {
+body div.flex section.eleve > div.coach > a {
   color: black;
+}
+body div.flex section.eleve > div.coach > a:hover {
+  color: blue;
 }
 body div.flex section.infos > form {
   display: flex;
@@ -146,13 +149,15 @@ body div.flex section.infos > form > div > div p input {
 }
 body div.flex section.infos > form > div > div > div {
   margin: 2px 0;
+  width: 20vw;
 }
-body div.flex section.infos > form > div > div > div > label {
+body div.flex section.infos > form > div > div > div label {
   display: inline-block;
-  width: 150px;
+  width: 160px;
 }
 body div.flex section.infos > form > div > div > div > div {
-  display: inline;
+  display: inline-block;
+  margin-bottom: 2px;
 }
 body div.flex section.infos > form > div > div .dnone {
   display: none;
@@ -172,6 +177,12 @@ body div.flex section.infos > form > div > div:last-child > div.overflow:first-o
   overflow-y: scroll;
   border: 1px solid black;
   border-radius: 10px;
+}
+body div.flex section.infos > form > div:first-of-type > div:first-of-type > div:first-of-type > div:first-of-type {
+  display: inline-block;
+}
+body div.flex section.infos > form > div:first-of-type > div:first-of-type > div:first-of-type > div:first-of-type > label {
+  width: 50px;
 }
 body textarea {
   position: relative;

@@ -131,10 +131,13 @@ body {
                 border: 1px solid black;
                 border-radius: 5px;
                 width: 200px;
-                &>p{
+                p{
                     margin: 10px;
-                    &>a{
-                        color: black;
+                }
+                &>a{
+                    color: black;
+                    &:hover{
+                        color: blue;
                     }
                 }
             }
@@ -180,12 +183,14 @@ body {
 
                         &>div{
                             margin: 2px 0;
-                            &>label{
+                            width: 20vw;
+                            label{
                                 display: inline-block;
-                                width: 150px;
+                                width: 160px;
                             }
                             &>div{
-                                display: inline;
+                                display: inline-block;
+                                margin-bottom: 2px;
                             }
                         }
 
@@ -210,6 +215,19 @@ body {
                             overflow-y: scroll;
                             border: 1px solid black;
                             border-radius: 10px;
+                        }
+                    }
+                }
+                
+                &>div:first-of-type{
+                    &>div:first-of-type{
+                        &>div:first-of-type{
+                            &>div:first-of-type{
+                                display: inline-block;
+                                &>label{
+                                    width: 50px;
+                                }
+                        }
                         }
                     }
                 }
