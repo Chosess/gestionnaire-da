@@ -1,8 +1,8 @@
 réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// IntlChar::ord ou ord()
-(idée utilise base64_encode puis remplacer les majuscules par des minuscules et inversement, et les chiffres par (10 - 'le chiffre'))
+// chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// (idée utilise base64_encode puis remplacer les majuscules par des minuscules et inversement, et les chiffres par (10 - 'le chiffre'))
+Mettre le chiffrement sur tous les champs
 
 Personnaliser les messages d'erreur' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
