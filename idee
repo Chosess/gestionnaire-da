@@ -2,7 +2,7 @@ réinitialiser le mot de passe et modifier les infos d'un coach' !!!!!!!!!!!!!!!
 
 // chiffrer toutes les infos en base de données !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // (idée utilise base64_encode puis remplacer les majuscules par des minuscules et inversement, et les chiffres par (10 - 'le chiffre'))
-Mettre le chiffrement sur tous les champs
+Mettre le chiffrement sur tous les champs (j'ai chiffrer les absences, il faut faire pareil pour les autres entités)
 
 Personnaliser les messages d'erreur' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

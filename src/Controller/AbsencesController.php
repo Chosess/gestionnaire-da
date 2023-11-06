@@ -8,6 +8,7 @@ use App\Entity\Eleves;
 use App\Form\AbsencesFormType;
 use App\Repository\AbsencesRepository;
 use App\Repository\ElevesRepository;
+use App\Service\ChiffrementService;
 use App\Service\FileService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AbsencesController extends AbstractController
 {
     #[Route('/{id}/absences', name: '_absences')]
-    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session, FileService $fileService, Security $security): Response
+    public function absences(Eleves $eleves, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, AbsencesRepository $absencesRepository, Session $session, FileService $fileService, Security $security, ChiffrementService $chiffrementService): Response
     {
         // on redirige l'utilisateur si il n'est pas connecté
         $user = $security->getUser();
@@ -74,6 +75,24 @@ class AbsencesController extends AbstractController
 
         if ($absencesForm->isSubmitted() && $absencesForm->isValid()) {
 
+            $formData = $absencesForm->all();
+            foreach ($formData as $data) {
+                if ($data->getName() == 'motif') {
+                    // on récupère le nom du champ et on le transforme pour pouvoir faire un setNomDuChamp
+                    $test = strtolower($data->getName());
+                    $test = explode('_', $test);
+                    $maj = [];
+                    foreach ($test as $tes) {
+                        $tes = ucfirst($tes);
+                        $maj[] = $tes;
+                    }
+                    $test = 'set' . join($maj);
+                    // on chiffre l'information
+                    $info = $chiffrementService->encode($data->getData());
+                    $absences->$test($info);
+                }
+            }
+
             // la date de début
             $debut = $absencesForm->get('debut')->getData();
 
@@ -120,7 +139,7 @@ class AbsencesController extends AbstractController
         $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()], ['debut' => 'DESC']);
         foreach ($abs as $ab) {
             //on vérifie si le motif dépasse 50 caractères
-            $motif = $ab->getMotif();
+            $motif = $chiffrementService->decode($ab->getMotif());
             // si il l'est on le coupe à 50 caractères
             if (strlen($motif) > 50) {
                 $motif = substr($motif, 0, 50) . ' ...';
@@ -138,7 +157,7 @@ class AbsencesController extends AbstractController
             $infosAbsences = 'vide';
         }
 
-        $tableauMois= ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        $tableauMois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
         $moisActuel = $tableauMois[$mois - 1];
 
         return $this->render('main/absence/absences.html.twig', [
@@ -153,7 +172,7 @@ class AbsencesController extends AbstractController
     }
 
     #[Route('/absences/{id}', name: '_modif')]
-    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository, FileService $fileService, Security $security): Response
+    public function absence(Absences $absences, ElevesRepository $elevesRepository, Request $request, AbsencesFormType $absencesForm, EntityManagerInterface $entityManager, Session $session, AbsencesRepository $absencesRepository, FileService $fileService, Security $security, ChiffrementService $chiffrementService): Response
     {
         // on redirige l'utilisateur si il n'est pas connecté
         $user = $security->getUser();
@@ -206,6 +225,24 @@ class AbsencesController extends AbstractController
 
         if ($absencesForm->isSubmitted() && $absencesForm->isValid()) {
 
+            $formData = $absencesForm->all();
+            foreach ($formData as $data) {
+                if ($data->getName() == 'motif') {
+                    // on récupère le nom du champ et on le transforme pour pouvoir faire un setNomDuChamp
+                    $test = strtolower($data->getName());
+                    $test = explode('_', $test);
+                    $maj = [];
+                    foreach ($test as $tes) {
+                        $tes = ucfirst($tes);
+                        $maj[] = $tes;
+                    }
+                    $test = 'set' . join($maj);
+                    // on chiffre l'information
+                    $info = $chiffrementService->encode($data->getData());
+                    $absences->$test($info);
+                }
+            }
+
             // la date de début
             $debut = $absencesForm->get('debut')->getData();
 
@@ -252,7 +289,7 @@ class AbsencesController extends AbstractController
         $abs = $absencesRepository->findBy(['eleves' => $eleves->getId()], ['debut' => 'DESC']);
         foreach ($abs as $ab) {
             //on récupère le motif
-            $motif = $ab->getMotif();
+            $motif = $chiffrementService->decode($ab->getMotif());
             // on vérifie si le motif dépasse 50 caractères si il l'est on le coupe à 50 caractères
             if (strlen($motif) > 50) {
                 $motif = substr($motif, 0, 50) . ' ...';
@@ -279,7 +316,7 @@ class AbsencesController extends AbstractController
             $infosAbsences = 'vide';
         }
 
-        $tableauMois= ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        $tableauMois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
         $moisActuel = $tableauMois[$mois - 1];
 
         return $this->render('main/absence/absencemodif.html.twig', [

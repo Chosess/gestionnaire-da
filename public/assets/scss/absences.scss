@@ -1,9 +1,10 @@
 section.infos {
-    &>h3{
+    &>h3 {
         font-size: 40px;
         text-align: center;
         margin: 10px 0;
     }
+
     &>div:first-of-type {
         display: flex;
 
@@ -19,7 +20,13 @@ section.infos {
                 height: 70px;
                 border: 1px solid black;
                 text-align: center;
+                font-size: 18px;
+                box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7), inset 3px 3px 1px rgba(255, 255, 255, 0.8), inset -3px -3px 1px rgba(0, 0, 0, 0.5);
                 cursor: pointer;
+
+                &:hover {
+                    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7), inset 3px 3px 1px rgba(0, 0, 0, 0.5), inset -3px -3px 1px rgba(255, 255, 255, 0.8);
+                }
             }
 
             &>div.actuel {
@@ -42,12 +49,18 @@ section.infos {
                 &>a {
                     color: black;
                     text-decoration: none;
-                    
+
                     &>div.absence {
                         background-color: rgba(255, 255, 255, 0.8);
                         border: 2px solid black;
                         border-radius: 20px;
                         margin-top: 10px;
+                        box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
+                        cursor: pointer;
+
+                        &:hover {
+                            box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(0, 0, 0, 0.5), inset -5px -5px 3px rgba(255, 255, 255, 0.8);
+                        }
 
                         &>div.flex {
                             display: flex;
@@ -55,10 +68,12 @@ section.infos {
                             &>p {
                                 margin: 10px;
                             }
-                            &>p:last-of-type{
+
+                            &>p:last-of-type {
                                 color: rgba(255, 0, 0, 0.8);
                             }
-                            &>p.orange{
+
+                            &>p.orange {
                                 color: rgba(255, 131, 0, 0.8);
                             }
                         }
@@ -68,7 +83,8 @@ section.infos {
                         }
                     }
                 }
-                &>a.selectionne{
+
+                &>a.selectionne {
                     color: blue;
                 }
             }
@@ -84,6 +100,7 @@ section.infos {
             display: flex;
             justify-content: space-evenly;
             background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7), inset 5px 5px 3px rgba(255, 255, 255, 0.8), inset -5px -5px 3px rgba(0, 0, 0, 0.5);
 
             &>div {
                 &>div {
