@@ -23,15 +23,14 @@
 		<div>
 			<h2>Etudiant</h2>
 			{{ form_row(elevesForm.civilite, {
-                    value: eleves.civilite,
                     label: 'Civilité : '
                 }) }}
 			{{ form_row(elevesForm.nom, {
-                    value: eleves.nom,
+                    value: infoEleves.nom,
                     label: 'Nom : '
                 }) }}
 			{{ form_row(elevesForm.prenom, {
-                    value: eleves.prenom,
+                    value: infoEleves.prenom,
                     label: 'Prénom : '
                 }) }}
 			{{ form_row(elevesForm.photo, {
@@ -43,26 +42,26 @@
 		<div>
 			<h2>Coordonnées</h2>
 			{{ form_row(elevesForm.adresse, {
-                    value: eleves.adresse,
+                    value: infoEleves.adresse,
                     label: 'Adresse : '
                 }) }}
 			{{ form_row(elevesForm.code_postal, {
-                    value: eleves.codePostal,
+                    value: infoEleves.code_postal,
                     label: 'Code postal : '
                 }) }}
 			{{ form_row(elevesForm.ville, {
-                    value: eleves.ville,
+                    value: infoEleves.ville,
                     label: 'Ville : '
                 }) }}
 			{{ form_row(elevesForm.email, {
-                    value: eleves.email,
+                    value: infoEleves.email,
                     label: 'Email : '
                 }) }}{{ form_row(elevesForm.portable, {
-                    value: eleves.portable,
+                    value: infoEleves.portable,
                     label: 'Portable : '
                 }) }}
 			{{ form_row(elevesForm.fixe, {
-                    value: eleves.fixe,
+                    value: infoEleves.fixe,
                     label: 'Fixe : '
                 }) }}
 		</div>
@@ -74,11 +73,11 @@
                     label: 'Date : '
                 }) }}
 			{{ form_row(elevesForm.lieu_naissance, {
-                    value: eleves.lieuNaissance,
+                    value: infoEleves.lieu_naissance,
                     label: 'Lieu : '
                 }) }}
 			{{ form_row(elevesForm.nationalite, {
-                    value: eleves.nationalite,
+                    value: infoEleves.nationalite,
                     label: 'Nationalité : '
                 }) }}
 		</div>
@@ -86,7 +85,7 @@
 		<div>
 			<h2>Situation personnelle</h2>
 			{{ form_row(elevesForm.etat_civil, {
-                    value: eleves.etatCivil,
+                    value: infoEleves.etat_civil,
                     label: 'Etat Civil : '
                 }) }}
 			{{ form_row(elevesForm.enfants, {
@@ -132,19 +131,19 @@
 		<div>
 			<h2>Responsable légal</h2>
 			{{ form_row(elevesForm.nom_urgence, {
-                    value: eleves.nomUrgence,
+                    value: infoEleves.nom_urgence,
                     label: 'Nom : '
                 }) }}
 			{{ form_row(elevesForm.prenom_urgence, {
-                    value: eleves.prenomUrgence,
+                    value: infoEleves.prenom_urgence,
                     label: 'Prénom : '
                 }) }}
 			{{ form_row(elevesForm.telephone_urgence, {
-                    value: eleves.telephoneUrgence,
+                    value: infoEleves.telephone_urgence,
                     label: 'Téléphone : '
                 }) }}
 			{{ form_row(elevesForm.lien_parente, {
-                    value: eleves.lienParente,
+                    value: infoEleves.lien_parente,
                     label: 'Lien de parenté : '
                 }) }}
 		</div>
@@ -160,7 +159,7 @@
                 label: 'Droit à l\'image : '
             }) }}
             {{ form_row(elevesForm.permis, {
-                value: eleves.permis,
+                value: infoEleves.permis,
                 label: 'Permis : '
             }) }}
 		</div>
@@ -184,7 +183,7 @@
                 label: 'Payée le : '
             }) }}
 			{{ form_row(elevesForm.moyen_paiement, {
-                value: eleves.moyenPaiement,
+                value: infoEleves.moyen_paiement,
                 label: 'Moyen de paiement : '
             }) }}
             {{ form_row(elevesForm.montant, {
@@ -196,15 +195,15 @@
         <div>
             <h2>Inscription CNED</h2>
 			{{ form_row(elevesForm.date_cned, {
-                value: '',
+                value: dcned,
                 label: 'Commande effectuée le : '
             }) }}
 			{{ form_row(elevesForm.statut_cned, {
-                value: eleves.statutCned,
+                value: infoEleves.statut_cned,
                 label: 'Statut : '
             }) }}
             {{ form_row(elevesForm.date_inscription_cned, {
-                value: '',
+                value: dicned,
                 label: 'Le : '
             }) }}
 		</div>
@@ -212,7 +211,7 @@
 		<div>
 			<h2>Parcours</h2>
 				{{ form_row(elevesForm.formation, {
-                    value: eleves.formation,
+                    value: infoEleves.formation,
                     label: 'Intitulé de la formation : '
                 }) }}
 				{{ form_row(elevesForm.annee_formation, {
@@ -220,15 +219,15 @@
                     label: 'Année de la formation : '
                 }) }}
                 {{ form_row(elevesForm.indicatif_cned, {
-                    value: eleves.indicatifCned,
+                    value: infoEleves.indicatif_cned,
                     label: 'Indicatif CNED : '
                 }) }}
                 {{ form_row(elevesForm.identifiant_cned, {
-                    value: eleves.identifiantCned,
+                    value: infoEleves.identifiant_cned,
                     label: 'Identifiant CNED : '
                 }) }}
                 {{ form_row(elevesForm.password_cned, {
-                    value: eleves.passwordCned,
+                    value: infoEleves.password_cned,
                     label: 'Mot de passe CNED : '
                 }) }}
 			</div>
@@ -241,7 +240,7 @@
                     label: 'Coach référent : '
                 }) }}
 				{{ form_row(elevesForm.prescripteur, {
-                    value: eleves.prescripteur,
+                    value: infoEleves.prescripteur,
                     label: 'Prescripteur : '
                 }) }}
 			    {{ form_row(elevesForm.suivi, {
@@ -255,7 +254,7 @@
                         label: 'Depuis le : '
                     }) }}
 				{{ form_row(elevesForm.motif, {
-                        value: eleves.motif,
+                        value: infoEleves.motif,
                         label: 'Motif : '
                     }) }}
 			</div>
@@ -274,11 +273,11 @@
                 label: 'Veuillez préciser : ',
             }) }}
 				{{ form_row(elevesForm.conseiller, {
-                    value: eleves.conseiller,
+                    value: infoEleves.conseiller,
                     label: 'Conseiller(e) : '
                 }) }}
 			{{ form_row(elevesForm.lieu_ml, {
-                value: eleves.lieuMl,
+                value: infoEleves.lieu_ml,
                 label: 'Lieu : '
             }) }}
             
@@ -295,23 +294,23 @@
                 label: 'Fin : '
             }) }}
 			{{ form_row(elevesForm.stage_entreprise, {
-                value: eleves.stageEntreprise,
+                value: infoEleves.stage_entreprise,
                 label: 'Nom de l\'entreprise : '
             }) }}
 			{{ form_row(elevesForm.stage_tuteur, {
-                value: eleves.stageTuteur,
+                value: infoEleves.stage_tuteur,
                 label: 'Nom du tuteur : '
             }) }}
 			{{ form_row(elevesForm.stage_tuteur_fonction, {
-                value: eleves.stageTuteurFonction,
+                value: infoEleves.stage_tuteur_fonction,
                 label: 'Fonction du tuteur : '
             }) }}
 			{{ form_row(elevesForm.stage_tel, {
-                value: eleves.stageTel,
+                value: infoEleves.stage_tel,
                 label: 'Téléphone du tuteur : '
             }) }}
 			{{ form_row(elevesForm.stage_mail, {
-                value: eleves.stageMail,
+                value: infoEleves.stage_mail,
                 label: 'Email du tuteur : '
             }) }}
 		</div>
@@ -323,7 +322,7 @@
                 label: 'Dossier complet : '
             }) }}
 			{{ form_row(elevesForm.incomplet, {
-                value: eleves.incomplet,
+                value: infoEleves.incomplet,
                 label: 'Documents manquants : '
             }) }}
 		</div>
