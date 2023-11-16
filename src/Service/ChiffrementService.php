@@ -21,15 +21,15 @@ class ChiffrementService
         $string = str_split($string);
         $valeur = [];
 
-        foreach ($string as $caractère) {
-            if (ctype_lower($caractère)) {
-                $caractère = strtoupper($caractère);
-            } else if(ctype_upper($caractère)){
-                $caractère = strtolower($caractère);
-            } else if($caractère != 0 && ctype_digit($caractère)){
-                $caractère = (10 - $caractère) . '';
+        foreach ($string as $caractere) {
+            if (ctype_lower($caractere)) {
+                $caractere = strtoupper($caractere);
+            } else if(ctype_upper($caractere)){
+                $caractere = strtolower($caractere);
+            } else if($caractere != 0 && ctype_digit($caractere)){
+                $caractere = (10 - $caractere) . '';
             } 
-            $valeur[] = $caractère;
+            $valeur[] = $caractere;
         }
 
         $string = join($valeur);
@@ -44,15 +44,15 @@ class ChiffrementService
 
         $valeur = [];
 
-        foreach ($string as $caractère) {
-            if (ctype_lower($caractère)) {
-                $caractère = strtoupper($caractère);
-            } else if(ctype_upper($caractère)){
-                $caractère = strtolower($caractère);
-            } else if($caractère != 0 && ctype_digit($caractère)){
-                $caractère = (10 - $caractère) . '';
+        foreach ($string as $caractere) {
+            if (ctype_lower($caractere)) {
+                $caractere = strtoupper($caractere);
+            } else if(ctype_upper($caractere)){
+                $caractere = strtolower($caractere);
+            } else if($caractere != 0 && ctype_digit($caractere)){
+                $caractere = (10 - $caractere) . '';
             }
-            $valeur[] = $caractère;
+            $valeur[] = $caractere;
         }
 
         $string = join($valeur);
